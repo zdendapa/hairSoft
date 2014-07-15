@@ -1,0 +1,156 @@
+
+html, body {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Arial', sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+div.mainTop {
+    width: 100%;
+    text-align: center;
+}
+.mainTop h1 {
+    display: inline-block;
+    vertical-align: middle;
+}
+.mainTop input {
+    position: absolute;
+}
+input.buttonTopMenu {
+    left: 1%;
+}
+input.buttonTopBack {
+    right: 1%;
+}
+
+/* ============================================ content */
+.main div.mainContent {
+    display: none;
+}
+.main div.mainBottom {
+    display: none;
+}
+
+/* --------- content zakazniciSeznam */
+div.mainContent.zakazniciSeznam {
+    position: absolute;
+    overflow:auto;
+    width: 100%;
+    display: none;
+}
+
+.mainContent.zakazniciSeznam ul {
+    padding-right: 3px;
+    padding-left: 2px;
+}
+.mainContent.zakazniciSeznam li {
+    width: 100%;
+    border: 1px solid;
+    border-radius: 5px;
+    background: #dddddd;
+    margin-top: 1px;
+    cursor: pointer;
+}
+.mainContent.zakazniciSeznam h2 {
+    font-size: 1em;
+    line-height: 20px;
+    font-weight: normal;
+    padding-left: 10px;
+}
+
+/* --------- content zakaznikDetail */
+
+.zakazniciDetail h1 {
+    text-align: center;
+}
+.zakazniciDetail li {
+    padding: 10px;
+    position: relative;
+}
+.zakazniciDetail span {
+    display: inline-block;
+    width: 100px;
+}
+
+.zakazniciDetail label, .zakazniciDetail input {
+
+}
+.zakazniciDetail label:first-child {
+
+}
+
+
+/* ------------------------ bottom */
+
+div.mainBottom {
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    text-align: center;
+    border-top: 1px solid black;
+    display: none;
+}
+input.bottomSearch {
+    display: inline-block;
+}
+input.buttonBottomRight {
+    position: absolute;
+    right: 1%;
+}
+
+
+.gradSeda {
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffffff 0%, #c4c4c4 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#c4c4c4)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#c4c4c4 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffffff 0%,#c4c4c4 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffffff 0%,#c4c4c4 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ffffff 0%,#c4c4c4 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#c4c4c4',GradientType=0 ); /* IE6-9 */
+
+}
+
+@media only screen and (min-width: 600px)  and (max-width: 1025px) {
+    div.mainTop {
+        height: 80px;
+    }
+    .mainTop input {
+        top: 40px;
+    }
+
+
+
+
+    div.mainContent {
+        top: 80px;
+        bottom: 80px;
+    }
+    .mainContent.zakazniciSeznam li {
+        height: 40px;
+        line-height: 40px;
+    }
+
+
+
+
+    div.mainBottom {
+        height: 80px;
+    }
+    input.buttonBottomRight {
+        bottom: 40px;
+    }
+}
+
+#verzeApp {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}

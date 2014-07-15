@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <title>Hair soft</title>
+</head>
+<body>
+
+
+<link rel="stylesheet" href="css/main.css" />
+<script type="text/javascript" charset="utf-8" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="phonegap.js"></script>
+<script type="text/javascript" src="js/scripts.js"></script>
+<script type="text/javascript">
+
+    var local = false;
+
+
+    if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+
+    if(local)
+    {
+        window.addEventListener("load", onDeviceReady, false);
+    }
+
+
+
+</script>
+<div id="main" class="main" data-role="page">
+
+    <div class="mainTop gradSeda">
+        <input class="buttonTopMenu" type="button" value="MENU">
+        <h1 class="mainTopTitle">Zákazníci</h1>
+        <input class="buttonTopBack" type="button" value="ZPĚT" onclick="backGo()">
+    </div>
+
+
+    <div class="mainContent zakazniciSeznam">
+        <ul>
+            <li>
+                <h2>Petr Novák</h2>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="mainContent zakazniciDetail">
+        <div>
+
+        </div>
+        <h1>Petr Novák</h1>
+        <ul>
+            <li><span>Jméno</span><input name="jmeno"></li>
+            <li><span>Příjmení</span><input name="prijmeni"></li>
+            <li><span>Pohlaví</span><label for="zakaznikSexM">MUŽ</label><input type="radio" value="M" id="zakaznikSexM" name="sex"/>
+                <label for="zakaznikSexZ">ŽENA</label><input type="radio" value="Z" id="zakaznikSexZ" name="sex"/></li>
+            <li><span>E-mail</span><input name="email"></li>
+            <li><span>Telefon</span><input name="telefon"></li>
+            <li><span>Adresa</span><input name="adresa"></li>
+            <li><span>Město</span><input name="mesto"></li>
+            <li><span>PSČ</span><input name="psc"></li>
+        </ul>
+
+
+
+    </div>
+
+    <div class="mainBottom zakazniciDetail gradSeda">
+        <input class="zdButtonSmazat" type="button" value="SMAZAT">
+        <input class="zdButtonEmail" type="button" value="EMAIL">
+        <input class="zdButtonUpravit" type="button" value="SMS">
+        <input class="zdButtonSmazat" type="button" value="SMAZAT">
+        <input class="zdButtonEmail" type="button" value="EMAIL">
+        <input class="zdButtonUpravit" type="button" value="SMS">
+    </div>
+
+    <div class="mainBottom general gradSeda">
+        <input class="bottomSearch">
+        <input class="buttonBottomRight" type="button" value="NOVÝ">
+    </div>
+
+    <div id="verzeApp">0.1</div>
+</div>
+</body>
+</html>
