@@ -14,9 +14,10 @@
 <script type="text/javascript" charset="utf-8" src="js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="phonegap.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
+<script type="text/javascript" src="js/fastclick.js"></script>
 <script type="text/javascript">
 
-    var local = false;
+    var local = true;
 
 
     if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
@@ -27,6 +28,10 @@
     {
         window.addEventListener("load", onDeviceReady, false);
     }
+
+    window.addEventListener('load', function() {
+        FastClick.attach(document.body);
+    }, false);
 
 
 

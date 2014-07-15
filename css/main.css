@@ -11,6 +11,10 @@ ul {
     margin: 0px;
 }
 
+input[type=button]:active {
+    background: rgba(0, 0, 0, 0.39);
+}
+
 div.mainTop {
     width: 100%;
     text-align: center;
@@ -46,7 +50,7 @@ div.mainContent.zakazniciSeznam {
 }
 
 .mainContent.zakazniciSeznam ul {
-    padding-right: 3px;
+    padding-right: 4px;
     padding-left: 2px;
 }
 .mainContent.zakazniciSeznam li {
