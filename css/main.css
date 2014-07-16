@@ -4,6 +4,10 @@ html, body {
     margin: 0px;
     font-family: 'Arial', sans-serif;
 }
+h1, h2, h3 {
+    margin: 0px;
+    padding: 0px;
+}
 
 ul {
     list-style-type: none;
@@ -82,12 +86,6 @@ div.mainContent.zakazniciSeznam {
     width: 100px;
 }
 
-.zakazniciDetail label, .zakazniciDetail input {
-
-}
-.zakazniciDetail label:first-child {
-
-}
 
 
 /* ------------------------ bottom */
@@ -123,13 +121,20 @@ input.buttonBottomRight {
 }
 
 @media only screen and (min-width: 600px)  and (max-width: 1025px) {
+    body {
+        font-size: 24px;
+    }
     div.mainTop {
         height: 80px;
     }
     .mainTop input {
-        top: 40px;
+        top: 24px;
+        font-size: 1em;
     }
 
+    .mainTop h1 {
+        line-height: 80px;
+    }
 
 
 
@@ -137,10 +142,33 @@ input.buttonBottomRight {
         top: 80px;
         bottom: 80px;
     }
+
+
+
+    /* --------- content zakazniciSeznam */
     .mainContent.zakazniciSeznam li {
-        height: 40px;
-        line-height: 40px;
+        height: 60px;
     }
+    .mainContent.zakazniciSeznam h2 {
+        font-size: 1em;
+        line-height: 60px;
+    }
+
+    /* --------- content zakazniciDetail */
+    .mainContent.zakazniciDetail h1 {
+        padding: 2%;
+    }
+    .zakazniciDetail input {
+        font-size: 1em;
+    }
+    .mainContent.zakazniciDetail input[type=radio] {
+        width: 10%;
+        height: 1.5em;
+        vertical-align: bottom;
+    }
+
+
+
 
 
 
@@ -151,6 +179,38 @@ input.buttonBottomRight {
     input.buttonBottomRight {
         bottom: 40px;
     }
+
+    /* --------- content zakazniciDetail */
+    div.mainBottom.zakazniciDetail {
+        height: 200px;
+    }
+    .mainBottom input.zdButtonObjednat {
+        background-image: url(../img/objednat.png);
+    }
+    .mainBottom input.zdButtonSms {
+        background-image: url(../img/sms.png);
+    }
+    .mainBottom input.zdButtonEmail {
+        background-image: url(../img/05.png);
+    }
+    .mainBottom input.zdButtonVolat {
+        background-image: url(../img/volat.png);
+    }
+    div.mainBottom.zakazniciDetail input {
+        height: 100px;
+        width: 50%;
+        cursor: pointer;
+        vertical-align: middle;
+        background-repeat: no-repeat;
+        background-position: 40px 6px;
+        background-size: 80px;
+    }
+
+
+
+
+
+
 }
 
 #verzeApp {

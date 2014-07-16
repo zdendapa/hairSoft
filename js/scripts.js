@@ -11,7 +11,8 @@ var lokal = false;
 
 
 var xmlZakaznici;
-var backFunction;
+var backFunction;   // what to do when you click back button
+var currentWindow;  // $(el) for quick hide(transform to offsreen)
 
 function onDeviceReady() {
 
@@ -61,10 +62,15 @@ function ajaxZakaznici(onSuccess,onFail)
 {
 
     logging("ajaxZakaznici",1);
+    var url;
+    if(local)
+        url = "data/test.xml";
+    else
+        url = "http://admin.hairsoft.cz/mobile/index1.php?  akce=128&tabulka=mob_lidi&id_id=8D47BE64559F";
     $.ajax({
         type: "POST",
         //url: "data/test.xml",
-        url: "http://admin.hairsoft.cz/mobile/index1.php?  akce=128&tabulka=mob_lidi&id_id=8D47BE64559F",
+        url: url,
         //url:'http://demo.livecycle.cz/fajnsvaca/api/getUserInfo.json',
         dataType: "xml",
         success: function(data) {
