@@ -19,6 +19,10 @@ input[type=button]:active {
     background: rgba(0, 0, 0, 0.39);
 }
 
+div.active:active {
+    opacity: 0.4;
+}
+
 div.mainTop {
     width: 100%;
     text-align: center;
@@ -35,6 +39,41 @@ input.buttonTopMenu {
 }
 input.buttonTopBack {
     right: 1%;
+}
+
+
+/* --------- menu */
+div.menu {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    height: 100%;
+    border-right: 1px solid black;
+}
+.menu div.objednavky {
+    background-image: url(../img/objednavky.png);
+}
+.menu div.sklad {
+    background-image: url(../img/sklad.png);
+}
+.menu div.zakaznici {
+    background-image: url(../img/zakaznici.png);
+}
+.menu div.trzba {
+    background-image: url(../img/denni_trzba.png);
+}
+.menu div.nastaveni {
+    background-image: url(../img/nastaveni.png);
+}
+.menu div {
+    height: 100px;
+    width: 50%;
+    background-position: 20px 20px;
+    background-size: 80px;
+    padding-left: 120px;
+    cursor: pointer;
+    vertical-align: middle;
+    background-repeat: no-repeat;
 }
 
 /* ============================================ content */
@@ -77,15 +116,29 @@ div.mainContent.zakazniciSeznam {
 .zakazniciDetail h1 {
     text-align: center;
 }
+
 .zakazniciDetail li {
-    padding: 10px;
-    position: relative;
+    display: table;
+    width: 100%;
+    padding-bottom: 10px;
 }
 .zakazniciDetail span {
-    display: inline-block;
+    display: table-cell;
     width: 100px;
 }
-
+div.zakazniciDetail {
+    width: 100%;
+    position: absolute;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+.mainContent.zakazniciDetail input {
+    display: table-cell;
+    width: 100%;
+}
+.mainContent.zakazniciDetail input[type=radio] {
+    display: inline-block;
+}
 
 
 /* ------------------------ bottom */
@@ -106,6 +159,20 @@ input.buttonBottomRight {
     position: absolute;
     right: 1%;
 }
+
+/* ------------------------ zakazniciDetail bottom */
+
+div.mainBottom.zakazniciDetail {
+    overflow: hidden;
+}
+
+
+div.mainBottom.zakazniciDetail input {
+    cursor: pointer;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+}
+
 
 
 .gradSeda {
@@ -155,6 +222,9 @@ input.buttonBottomRight {
     }
 
     /* --------- content zakazniciDetail */
+    .mainContent.zakazniciDetail ul {
+        padding: 10px;
+    }
     .mainContent.zakazniciDetail h1 {
         padding: 2%;
     }
@@ -165,6 +235,9 @@ input.buttonBottomRight {
         width: 10%;
         height: 1.5em;
         vertical-align: bottom;
+    }
+    div.mainContent.zakazniciDetail {
+        bottom: 200px;
     }
 
 
@@ -199,12 +272,11 @@ input.buttonBottomRight {
     div.mainBottom.zakazniciDetail input {
         height: 100px;
         width: 50%;
-        cursor: pointer;
-        vertical-align: middle;
-        background-repeat: no-repeat;
         background-position: 40px 6px;
         background-size: 80px;
+        padding-left: 120px;
     }
+
 
 
 

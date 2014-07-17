@@ -25,6 +25,11 @@ function onDeviceReady() {
 
     showZakazniciSeznam();
 
+
+
+    $('.menu div.active').on('click', function(e){
+        menuToggle();
+    });
 }
 
 function backGo()
@@ -33,6 +38,11 @@ function backGo()
     {
         backFunction();
     }
+}
+
+function menuToggle()
+{
+    $("div.menu").toggle();
 }
 
 function showZakazniciSeznam()
@@ -166,6 +176,21 @@ function ajaxErrorHandler(data) {
         alert("chyba:" +data.msg);
     }
 }
+
+var zakaznik = {
+    smsSend : function (){
+        window.location = "sms:+3490322111?body=messagebody";
+    },
+    telDial : function (){
+        window.location.href='tel:800-123-4567';
+    },
+    mailSend : function (){
+        window.location.href='mailto:email@email.com?cc=email2@email.com&bcc=email3@email.com&subject=The subject of the email&body=The body of the email';
+    },
+    objednat : function (){
+
+    }
+};
 
 
 //-------------------------------------------------------------------

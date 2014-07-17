@@ -38,13 +38,25 @@
 </script>
 <div id="main" class="main" data-role="page">
 
+
+    <!-------------------------------------------------- menu -->
+    <div class="menu gradSeda">
+        <div class="objednavky active"></div>
+        <div class="sklad active"></div>
+        <div class="zakaznici active"></div>
+        <div class="trzba active"></div>
+        <div class="nastaveni active"></div>
+    </div>
+
+    <!-------------------------------------------------- tops -->
+
     <div class="mainTop gradSeda">
-        <input class="buttonTopMenu" type="button" value="MENU">
+        <input class="buttonTopMenu" type="button" value="MENU" onclick="menuToggle()">
         <h1 class="mainTopTitle">Zákazníci</h1>
         <input class="buttonTopBack" type="button" value="ZPĚT" onclick="backGo()">
     </div>
 
-
+    <!-------------------------------------------------- main content -->
     <div class="mainContent zakazniciSeznam">
         <ul>
             <li>
@@ -75,11 +87,13 @@
 
     </div>
 
+    <!-------------------------------------------------- footers -->
+
     <div class="mainBottom zakazniciDetail gradSeda">
            <input class="zdButtonObjednat" type="button" value="OBJEDNAT"><!--
-        --><input class="zdButtonSms" type="button" value="SMS"><!--
-        --><input class="zdButtonEmail" type="button" value="EMAIL"><!--
-        --><input class="zdButtonVolat" type="button" value="VOLAT">
+        --><input class="zdButtonSms" type="button" value="SMS" onclick="zakaznik.smsSend()"><!--
+        --><input class="zdButtonEmail" type="button" value="EMAIL" onclick="zakaznik.mailSend()"><!--
+        --><input class="zdButtonVolat" type="button" value="VOLAT" onclick="zakaznik.telDial()">
     </div>
 
     <div class="mainBottom general gradSeda">
@@ -87,7 +101,7 @@
         <input class="buttonBottomRight" type="button" value="NOVÝ">
     </div>
 
-    <div id="verzeApp">0.1</div>
+    <div id="verzeApp">0.1b</div>
 </div>
 </body>
 </html>
