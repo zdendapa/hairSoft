@@ -117,7 +117,7 @@ function renderZakazniciSeznam()
         var jmeno = this.getElementsByTagName("lidi_jmeno")[0].childNodes[0].nodeValue;
         var prijmeni = this.getElementsByTagName("lidi_prijmeni")[0].childNodes[0].nodeValue;
         var lidiID = this.getElementsByTagName("lidi_id")[0].childNodes[0].nodeValue;
-        var li = '<li data-id="'+lidiID+'"><h2>'+ prijmeni+ ' ' + jmeno +'</h2></li>';
+        var li = '<li class="active" data-id="'+lidiID+'"><h2>'+ prijmeni+ ' ' + jmeno +'</h2></li>';
         $(".zakazniciSeznam ul").append(li);
     });
 }
