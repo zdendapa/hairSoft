@@ -42,6 +42,7 @@ input.buttonTopBack {
 }
 
 
+
 /* --------- menu */
 div.menu {
     display: none;
@@ -136,9 +137,6 @@ div.zakazniciDetail {
     display: table-cell;
     width: 100%;
 }
-.mainContent.zakazniciDetail input[type=radio] {
-    display: inline-block;
-}
 
 
 /* ------------------------ bottom */
@@ -187,7 +185,7 @@ div.mainBottom.zakazniciDetail input {
 
 }
 
-@media only screen and (min-width: 600px)  and (max-width: 1025px) {
+@media only screen and (min-width: 600px)  and (max-width: 3025px) {
     body {
         font-size: 24px;
     }
@@ -231,11 +229,7 @@ div.mainBottom.zakazniciDetail input {
     .zakazniciDetail input {
         font-size: 1em;
     }
-    .mainContent.zakazniciDetail input[type=radio] {
-        width: 10%;
-        height: 1.5em;
-        vertical-align: bottom;
-    }
+
     div.mainContent.zakazniciDetail {
         bottom: 200px;
     }
@@ -284,6 +278,56 @@ div.mainBottom.zakazniciDetail input {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+label.css-label{
+    margin-left: 20px;
+}
+
+input[type=radio].css-checkbox {
+    display:none;
+}
+label.css-label {
+    background-image:url(../img/radio.png);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+input[type=radio].css-checkbox + label.css-label {
+    padding-left:34px;
+    height:25px;
+    display:inline-block;
+    line-height:25px;
+    background-repeat:no-repeat;
+    background-position: 0 0;
+    vertical-align:middle;
+    cursor:pointer;
+    background-size: 25px;
+
+}
+
+input[type=radio].css-checkbox:checked + label.css-label {
+    background-position: 0 -25px;
+}
+
+
+
+
 
 #verzeApp {
     position: absolute;

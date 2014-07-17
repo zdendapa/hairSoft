@@ -17,7 +17,7 @@
 <script type="text/javascript" src="js/fastclick.js"></script>
 <script type="text/javascript">
 
-    var local = false;
+    var local = true;
 
 
     if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
@@ -74,8 +74,8 @@
         <ul>
             <li><span>Jméno</span><input name="jmeno"></li>
             <li><span>Příjmení</span><input name="prijmeni"></li>
-            <li><span>Pohlaví</span><label for="zakaznikSexM">MUŽ</label><input type="radio" value="M" id="zakaznikSexM" name="sex"/>
-                <label for="zakaznikSexZ">ŽENA</label><input type="radio" value="Z" id="zakaznikSexZ" name="sex"/></li>
+            <li><span>Pohlaví</span><input class="css-checkbox" type="radio" value="M" id="zakaznikSexM" name="sex"/><label class="css-label" for="zakaznikSexM">MUŽ</label>
+                <input class="css-checkbox" type="radio" value="Z" id="zakaznikSexZ" name="sex"/><label class="css-label" for="zakaznikSexZ">ŽENA</label></li>
             <li><span>E-mail</span><input name="email"></li>
             <li><span>Telefon</span><input name="telefon"></li>
             <li><span>Adresa</span><input name="adresa"></li>
