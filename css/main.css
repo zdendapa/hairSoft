@@ -15,13 +15,32 @@ ul {
     margin: 0px;
 }
 
+.button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 input[type=button]:active {
     background: rgba(0, 0, 0, 0.39);
 }
 
-div.active:active, li.active:active {
-    opacity: 0.4;
+.highlightOpacity {
+    opacity: 0.3;
 }
+
+.highlight {
+    background-repeat: no-repeat;
+    background-position: 20px 20px;
+    background:rgb(255,255,255) !important;
+    background: transparent\9 !important;
+    background:rgba(0,0,0,0.5) !important;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4cFFFFFF,endColorstr=#4cFFFFFF);
+}
+
+.highlightOpacity {
+    opacity: 0.5;
+}
+
+
 
 div.mainTop {
     width: 100%;
@@ -31,21 +50,27 @@ div.mainTop {
     display: inline-block;
     vertical-align: middle;
 }
-.mainTop input {
+.mainTop .buttonTopMenu {
     position: absolute;
+    left: 3%;
 }
-input.buttonTopMenu {
-    left: 1%;
+.mainTop input {
+    margin-top: 25px;
+    width: 60%;
+    background-image: url(../img/vyhledavani.png);
+    background-repeat: no-repeat;
+    background-position-x: 98%;
+    text-indent: 0.3em;
 }
-input.buttonTopBack {
-    right: 1%;
-}
+
+
 
 
 
 /* --------- menu */
 div.menu {
     display: none;
+    top: 80px;
     z-index: 1000;
     position: absolute;
     height: 100%;
@@ -68,7 +93,6 @@ div.menu {
 }
 .menu div {
     height: 100px;
-    width: 50%;
     background-position: 20px 20px;
     background-size: 80px;
     padding-left: 120px;
@@ -77,7 +101,7 @@ div.menu {
     background-repeat: no-repeat;
 }
 
-/* ============================================ content */
+/* ============================================ content a top*/
 .main div.mainContent {
     display: none;
 }
@@ -88,7 +112,8 @@ div.menu {
 /* --------- content zakazniciSeznam */
 div.mainContent.zakazniciSeznam {
     position: absolute;
-    overflow:auto;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch;
     width: 100%;
     display: none;
 }
@@ -100,7 +125,7 @@ div.mainContent.zakazniciSeznam {
 .mainContent.zakazniciSeznam li {
     width: 100%;
     border: 1px solid;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     background: #dddddd;
     margin-top: 1px;
     cursor: pointer;
@@ -113,6 +138,15 @@ div.mainContent.zakazniciSeznam {
 }
 
 /* --------- content zakaznikDetail */
+.mainTop div.zakazniciDetail {
+    display: none;
+}
+.mainTop .zakazniciDetail .left div.borderDiv {
+    background-image: url(../img/smazat.png);
+}
+.mainTop .zakazniciDetail .right div.borderDiv {
+    background-image: url(../img/editace.png);
+}
 
 .zakazniciDetail h1 {
     text-align: center;
@@ -137,10 +171,50 @@ div.zakazniciDetail {
     display: table-cell;
     width: 100%;
 }
+.mainBottom input.zdButtonObjednat {
+    background-image: url(../img/objednat.png);
+}
+.mainBottom input.zdButtonSms {
+    background-image: url(../img/sms.png);
+}
+.mainBottom input.zdButtonEmail {
+    background-image: url(../img/email.png);
+}
+.mainBottom input.zdButtonVolat {
+    background-image: url(../img/volat.png);
+}
+/* --------- content nastaveni */
+.mainContent.nastaveni {
+    text-align: center;
+}
+.mainContent.nastaveni h1, .mainContent.nastaveni input {
+    margin-top: 20px;
+}
+.mainContent.nastaveni input {
+    width: 80%;
+    text-align: center;
+}
+/* --------- content info */
+.special.info {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: grey;
+    z-index: 1000;
+}
+.special.info h1{
+    top: 50%;
+    position: absolute;
+    margin-top: -1em;
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+}
 
-
-/* ------------------------ bottom */
-
+/* ----------------------------------------------- bottom */
+/* ------------------------ spolecne bottom */
 div.mainBottom {
     width: 100%;
     position: absolute;
@@ -158,6 +232,24 @@ input.buttonBottomRight {
     right: 1%;
 }
 
+.twoButtons div.borderDiv {
+    background-size: 80px;
+    background-repeat: no-repeat;
+    background-position: 40px 6px;
+}
+.twoButtons div.button {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+}
+.twoButtons div.button > div {
+    border: 1px solid;
+    height: 98px;
+}
+.twoButtons div.labelDiv {
+    padding-top: 35px;
+}
+
 /* ------------------------ zakazniciDetail bottom */
 
 div.mainBottom.zakazniciDetail {
@@ -170,7 +262,22 @@ div.mainBottom.zakazniciDetail input {
     vertical-align: middle;
     background-repeat: no-repeat;
 }
+/* ------------------------ zakazniciSeznam a nastaveni bottom */
 
+/* ------------------------ zakazniciSeznam bottom */
+.mainBottom.zakazniciSeznam div.left .borderDiv {
+    background-image: url(../img/refresh.png);
+}
+.mainBottom.zakazniciSeznam .right .borderDiv {
+    background-image: url(../img/pridat.png);
+}
+/* ------------------------ nastaveni bottom */
+.mainBottom.zakazniciSeznam div.left .borderDiv {
+    background-image: url(../img/refresh.png);
+}
+.mainBottom.zakazniciSeznam .right .borderDiv {
+    background-image: url(../img/pridat.png);
+}
 
 
 .gradSeda {
@@ -185,7 +292,7 @@ div.mainBottom.zakazniciDetail input {
 
 }
 
-@media only screen and (min-width: 600px)  and (max-width: 3025px) {
+@media only screen and (min-width: 100px)  and (max-width: 3025px) {
     body {
         font-size: 24px;
     }
@@ -207,6 +314,7 @@ div.mainBottom.zakazniciDetail input {
         top: 80px;
         bottom: 80px;
     }
+
 
 
 
@@ -232,16 +340,21 @@ div.mainBottom.zakazniciDetail input {
 
     div.mainContent.zakazniciDetail {
         bottom: 200px;
+        top: 180px;
+    }
+
+    /* --------- content nastaveni */
+    .mainContent.nastaveni input{
+        font-size: 1em;
+
     }
 
 
 
 
 
-
-
     div.mainBottom {
-        height: 80px;
+        height: 100px;
     }
     input.buttonBottomRight {
         bottom: 40px;
@@ -251,18 +364,7 @@ div.mainBottom.zakazniciDetail input {
     div.mainBottom.zakazniciDetail {
         height: 200px;
     }
-    .mainBottom input.zdButtonObjednat {
-        background-image: url(../img/objednat.png);
-    }
-    .mainBottom input.zdButtonSms {
-        background-image: url(../img/sms.png);
-    }
-    .mainBottom input.zdButtonEmail {
-        background-image: url(../img/05.png);
-    }
-    .mainBottom input.zdButtonVolat {
-        background-image: url(../img/volat.png);
-    }
+
     div.mainBottom.zakazniciDetail input {
         height: 100px;
         width: 50%;
@@ -325,6 +427,108 @@ input[type=radio].css-checkbox:checked + label.css-label {
     background-position: 0 -25px;
 }
 
+/* --------- hamburger */
+a#nav-toggle
+{
+    display: block;
+    vertical-align: middle;
+    top: 20px;
+    background: black;
+    width: 50px;
+    height: 45px;
+}
+#nav-toggle span {
+    left: 4px;
+    top: 45%;
+}
+
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+    cursor: pointer;
+    border-radius: 1px;
+    height: 5px;
+    width: 42px;
+    background: white;
+    position: absolute;
+    display: block;
+    content: '';
+}
+#nav-toggle span:before {
+    top: -10px;
+}
+#nav-toggle span:after {
+    bottom: -10px;
+}
+
+div#nav-toggle2 {
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    width: 78px;
+    height: 46px;
+}
+.menuRight
+{
+    background-image:url(../img/menu1.png);
+}
+.menuLeft
+{
+    background-image:url(../img/menu1zpet.png);
+}
+
+/* --------- tlac zpet */
+div#rowLeft {
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    right: 3%;
+    width: 92px;
+    height: 46px;
+}
+#rowLeft span {
+    position: absolute;
+    left: 22px;
+    top: 11px;
+    font-weight: bold;
+}
+
+#rowLeft {
+    display: inline-block;
+    position: absolute;
+    top: 40%;
+    margin-left: -10px;
+
+}
+#rowLeft:before, #rowLeft:after {
+    content: "";
+    position: absolute;
+    background: white;
+    left: 0px;
+}
+#rowLeft:before {
+    top: 0px;
+    left: 15px;
+    width: 77px;
+    height: 46px;
+}
+#rowLeft:after {
+    border-top: 23px solid transparent;
+    border-right: 15px solid white;
+    border-bottom: 23px solid transparent;
+    background: transparent;
+}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -334,3 +538,4 @@ input[type=radio].css-checkbox:checked + label.css-label {
     right: 0px;
     bottom: 0px;
 }
+

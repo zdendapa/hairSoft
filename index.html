@@ -15,6 +15,7 @@
 <script type="text/javascript" src="phonegap.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
 <script type="text/javascript" src="js/fastclick.js"></script>
+
 <script type="text/javascript">
 
     var local = false;
@@ -30,6 +31,10 @@
     }
 
     window.addEventListener('load', function() {
+
+
+
+
         FastClick.attach(document.body);
     }, false);
 
@@ -38,53 +43,102 @@
 </script>
 <div id="main" class="main" data-role="page">
 
+    <div class="special info">
+        <h1>Načítám...</h1>
+    </div>
 
     <!-------------------------------------------------- menu -->
     <div class="menu gradSeda">
-        <div class="objednavky active"></div>
-        <div class="sklad active"></div>
-        <div class="zakaznici active"></div>
-        <div class="trzba active"></div>
-        <div class="nastaveni active"></div>
+        <div data-click="menuToggle();showWindow('showObjednavkySeznam')" class="objednavky button buttonOpacity"></div>
+        <div data-click="menuToggle();showWindow('showSkladSeznam')" class="sklad button buttonOpacity"></div>
+        <div data-click="menuToggle();showWindow('showZakazniciSeznam')" class="zakaznici button buttonOpacity"></div>
+        <div data-click="menuToggle();showWindow('showTrzbySeznam')" class="trzba button buttonOpacity"></div>
+        <div data-click="menuToggle();showWindow('showNastaveni')" class="nastaveni button buttonOpacity"></div>
     </div>
 
     <!-------------------------------------------------- tops -->
 
     <div class="mainTop gradSeda">
-        <input class="buttonTopMenu" type="button" value="MENU" onclick="menuToggle()">
-        <h1 class="mainTopTitle">Zákazníci</h1>
-        <input class="buttonTopBack" type="button" value="ZPĚT" onclick="backGo()">
+        <div id="nav-toggle2" class="buttonTopMenu button buttonOpacity menuRight" onclick="menuToggle()"></div>
+        <h1></h1>
+        <input placeholder="hledat">
+        <div data-click="backGo()" id="rowLeft" class="button buttonOpacity">
+            <span>Zpět</span>
+        </div>
+
+        <div class="twoButtons zakazniciDetail gradSeda">
+            <div class="button left">
+                <div class="borderDiv">
+                    <div class="labelDiv">
+                        SMAZAT
+                    </div>
+                </div>
+            </div><!--
+        --><div data-click="zakazniciDetailChangeToEdit()" class="button right">
+            <div class="borderDiv">
+                <div class="labelDiv">
+                    UPRAVIT
+                </div>
+            </div>
+            </div>
+        </div>
+
+
     </div>
 
     <!-------------------------------------------------- main content -->
     <div class="mainContent zakazniciSeznam">
         <ul>
             <li>
-                <h2>Petr Novák</h2>
             </li>
         </ul>
-
     </div>
 
     <div class="mainContent zakazniciDetail">
         <div>
 
         </div>
-        <h1>Petr Novák</h1>
+        <h1></h1>
         <ul>
-            <li><span>Jméno</span><input name="jmeno"></li>
-            <li><span>Příjmení</span><input name="prijmeni"></li>
-            <li><span>Pohlaví</span><input class="css-checkbox" type="radio" value="M" id="zakaznikSexM" name="sex"/><label class="css-label" for="zakaznikSexM">MUŽ</label>
-                <input class="css-checkbox" type="radio" value="Z" id="zakaznikSexZ" name="sex"/><label class="css-label" for="zakaznikSexZ">ŽENA</label></li>
-            <li><span>E-mail</span><input name="email"></li>
-            <li><span>Telefon</span><input name="telefon"></li>
-            <li><span>Adresa</span><input name="adresa"></li>
-            <li><span>Město</span><input name="mesto"></li>
-            <li><span>PSČ</span><input name="psc"></li>
+            <li><span>Jméno</span><input name="jmeno" readonly></li>
+            <li><span>Příjmení</span><input name="prijmeni" readonly></li>
+            <li><span>Pohlaví</span><input class="css-checkbox" type="radio" value="M" id="zakaznikSexM" name="sex" disabled/><label class="css-label" for="zakaznikSexM">MUŽ</label>
+                <input class="css-checkbox" type="radio" value="Z" id="zakaznikSexZ" name="sex" disabled/><label class="css-label" for="zakaznikSexZ">ŽENA</label></li>
+            <li><span>E-mail</span><input name="email" readonly></li>
+            <li><span>Telefon</span><input name="telefon" readonly></li>
+            <li><span>Adresa</span><input name="adresa" readonly></li>
+            <li><span>Město</span><input name="mesto" readonly></li>
+            <li><span>PSČ</span><input name="psc" readonly></li>
         </ul>
+    </div>
 
+    <div class="mainContent objednavkySeznam">
+        <ul>
+            <li>
+                <h2>Objednavka 1</h2>
+            </li>
+        </ul>
+    </div>
 
+    <div class="mainContent skladSeznam">
+        <ul>
+            <li>
+                <h2>sklad 1</h2>
+            </li>
+        </ul>
+    </div>
 
+    <div class="mainContent trzbySeznam">
+        <ul>
+            <li>
+                <h2>trzby 1</h2>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mainContent nastaveni">
+        <h1>Identifikátor</h1>
+        <input value="234243">
     </div>
 
     <!-------------------------------------------------- footers -->
@@ -101,7 +155,44 @@
         <input class="buttonBottomRight" type="button" value="NOVÝ">
     </div>
 
-    <div id="verzeApp">0.1b</div>
+    <div class="mainBottom twoButtons gradSeda zakazniciSeznam">
+        <div data-click="xmlZakaznici.loadForce(true)" class="button left">
+            <div class="borderDiv">
+                <div class="labelDiv">
+                    Obnovit
+                </div>
+            </div>
+        </div><!--
+        --><div data-click="" class="button right">
+        <div class="borderDiv">
+            <div class="labelDiv">
+                Nový
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="mainBottom gradSeda nastaveni">
+        <div class="twoButtons">
+            <div class="button">
+                <div class="borderDiv">
+                    <div class="labelDiv left">
+                        Načíst kód
+                    </div>
+                </div>
+            </div><!--
+        --><div data-click="identifikatorSave()" class="button">
+            <div class="borderDiv">
+                <div class="labelDiv right">
+                    Uložit
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </div>
+
+    <div id="verzeApp">0.2</div>
 </div>
 </body>
 </html>
