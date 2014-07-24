@@ -349,6 +349,9 @@ function zakazniciDetailToEdit(editable)
 
         $("#nav-toggle2").css("display","none");
         $("#rowLeft").css("display","none");
+
+        $("div.mainContent.zakazniciDetail").removeClass("withBottom4buttons");
+        $("div.mainBottom.zakazniciDetail").css("display","none");
     }
     else
     {
@@ -365,6 +368,9 @@ function zakazniciDetailToEdit(editable)
 
         $("#nav-toggle2").css("display","inline-block");
         $("#rowLeft").css("display","block");
+
+        $("div.mainContent.zakazniciDetail").addClass("withBottom4buttons");
+        $("div.mainBottom.zakazniciDetail").css("display","block");
     }
 }
 
@@ -517,16 +523,16 @@ function dataManagerLoad()
     identifikator = window.localStorage.getItem("hairSoft-identifikator");
 
 
-
     if(identifikator!=null)
     {
-        //hack
-        identifikator = "8D47BE64559F";
-
         $(".mainContent.nastaveni input").val(identifikator);
         showWindow("showWelcome");
     } else
     {
+        // hack
+        identifikator = "8D47BE64559F";
+        $(".mainContent.nastaveni input").val(identifikator);
+        // --- end hack
         showWindow("showNastaveni");
     }
     showInfow(false);
@@ -559,10 +565,12 @@ function scan()
 {
     cordova.plugins.barcodeScanner.scan(
         function (result) {
+            /*
             alert("We got a barcode\n" +
                 "Result: " + result.text + "\n" +
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);
+                */
             $(".mainContent.nastaveni input").val(result.text);
         },
         function (error) {
@@ -599,8 +607,9 @@ function ajaxErrorHandler(data) {
 
     if(!local)
     {
+        showInfow(false);
         var networkState = navigator.connection.type;
-        if(networkState == "Connection.UNKNOWN" || networkState== "Connection.NONE")
+        if(networkState == Connection.UNKNOWN || networkState== Connection.NONE)
         {
             alert("Nelze se připojit k internetu");
             return;false
