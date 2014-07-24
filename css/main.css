@@ -55,8 +55,9 @@ div.mainTop {
     left: 3%;
 }
 .mainTop input {
+    display: none;
     margin-top: 25px;
-    width: 60%;
+    width: 50%;
     background-image: url(../img/vyhledavani.png);
     background-repeat: no-repeat;
     background-position-x: 98%;
@@ -73,7 +74,7 @@ div.menu {
     top: 80px;
     z-index: 1000;
     position: absolute;
-    height: 100%;
+    bottom: 0px;
     border-right: 1px solid black;
 }
 .menu div.objednavky {
@@ -213,6 +214,13 @@ div.zakazniciDetail {
     color: #ffffff;
 }
 
+/* --------- content welcome */
+.mainContent.welcome h1 {
+    text-align: center;
+    padding-left: 120px;
+    margin-top: 50px;
+}
+
 /* ----------------------------------------------- bottom */
 /* ------------------------ spolecne bottom */
 div.mainBottom {
@@ -330,6 +338,7 @@ div.mainBottom.zakazniciDetail input {
     /* --------- content zakazniciDetail */
     .mainContent.zakazniciDetail ul {
         padding: 10px;
+        padding-right: 15px;
     }
     .mainContent.zakazniciDetail h1 {
         padding: 2%;
@@ -339,8 +348,12 @@ div.mainBottom.zakazniciDetail input {
     }
 
     div.mainContent.zakazniciDetail {
-        bottom: 200px;
         top: 180px;
+        bottom: 0px;
+    }
+
+    div.mainContent.zakazniciDetail.withBottom4buttons {
+        bottom: 200px;
     }
 
     /* --------- content nastaveni */
@@ -463,19 +476,25 @@ a#nav-toggle
 
 div#nav-toggle2 {
     cursor: pointer;
-    display: inline-block;
     position: absolute;
-    top: 20px;
-    width: 78px;
-    height: 46px;
+    top: 0px;
+    left: 0px;
+    width: 120px;
+    height: 78px;
+    border-right: 2px solid;
+    border-bottom: 2px solid;
 }
 .menuRight
 {
-    background-image:url(../img/menu1.png);
+    background-image:url(../img/menu1transparent.png);
 }
 .menuLeft
 {
-    background-image:url(../img/menu1zpet.png);
+    background-image:url(../img/menu1zpetTransparent.png);
+}
+.buttonTopMenu {
+    background-position: 20px 17px;
+    background-repeat: no-repeat;
 }
 
 /* --------- tlac zpet */

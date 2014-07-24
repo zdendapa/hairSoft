@@ -6,7 +6,7 @@
 */
 
 // nastav true jsi-li na lokalu
-var lokal = false;
+var lokal = true;
 
 
 var identifikator;
@@ -16,6 +16,8 @@ var currentWindow;  // $(el) for quick hide(transform to offsreen)
 var ulScrollOffset;
 
 var xmlZakazniciDetail;
+
+
 
 var xmlZakaznici = {
     data : null,
@@ -80,9 +82,9 @@ function backGo()
     }
 }
 
-function menuToggle()
+function menuToggle(forceShow)
 {
-    if($("div.menu").css("display")=="none")
+    if($("div.menu").css("display")=="none" || forceShow)
     {
         $("div.menu").css("display","block");
         $("#nav-toggle2").removeClass("menuRight");
@@ -127,17 +129,18 @@ function showWindow(windowName)
 
         $("div.mainContent.zakazniciSeznam").css("display","block");
         $("div.mainBottom.twoButtons.zakazniciSeznam").css("display","block");
-        $(".mainTop h1").html("Zákazníci");
+        //$(".mainTop h1").html("Zákazníci");
+        $(".mainTop input").css("display","inline-block");
     }
     if(windowName=="showZakazniciDetail")
     {
         $("div.mainContent.zakazniciDetail").css("display","block");
         $("div.mainBottom.zakazniciDetail").css("display","block");
         $(".mainTop h1").html("Zákazník");
-        $(".mainTop input").css("display","none");
         $(".mainTop h1").css("display","block");
         $(".mainTop div.zakazniciDetail").css("display","block");
         $("#rowLeft").css("display","block");
+        $("div.mainContent.zakazniciDetail").addClass("withBottom4buttons");
         backFunction = function(){
             showWindow("showZakazniciSeznam");
             $("div.mainContent.zakazniciSeznam").scrollTop(ulScrollOffset);
@@ -147,22 +150,31 @@ function showWindow(windowName)
     {
         $("div.mainContent.objednavkySeznam").css("display","block");
         $(".mainTop h1").html("Objednávky");
+        $(".mainTop input").css("display","inline-block");
     }
     if(windowName=="showSkladSeznam")
     {
         $("div.mainContent.skladSeznam").css("display","block");
         $(".mainTop h1").html("Sklad");
+        $(".mainTop input").css("display","inline-block");
     }
     if(windowName=="showTrzbySeznam")
     {
         $("div.mainContent.trzbySeznam").css("display","block");
         $(".mainTop h1").html("Trzby");
+        $(".mainTop input").css("display","inline-block");
     }
     if(windowName=="showNastaveni")
     {
         $("div.mainContent.nastaveni").css("display","block");
         $(".mainTop h1").html("Nastavení");
-        $("div.mainBottom.twoButtons.nastaveni").css("display","block");
+        $("div.mainBottom.nastaveni").css("display","block");
+    }
+    if(windowName=="showWelcome")
+    {
+        $("div.mainContent.welcome").css("display","block");
+        $(".mainTop h1").html("HairSoft");
+        menuToggle(true);
     }
 }
 
@@ -174,7 +186,7 @@ function hideAll()
     $(".main div.mainBottom").css("display","none");
     $(".mainTop h1").css("display","none");
     $("#rowLeft").css("display","none");
-    $(".mainTop input").css("display","inline-block");
+    $(".mainTop input").css("display","none");
 
     $(".mainTop div.zakazniciDetail").css("display","none");
 }
@@ -191,6 +203,7 @@ function ajaxZakaznici(onSuccess,onFail)
         url = "data/test.xml";
     else
         url = "http://admin.hairsoft.cz/mobile/index1.php?akce=128&tabulka=mob_lidi&id_id=8D47BE64559F";
+
     $.ajax({
         type: "POST",
         //url: "data/test.xml",
@@ -233,9 +246,14 @@ function renderZakazniciSeznam()
     {
         var zakaznik = lidi[i];
     //$(xmlZakaznici).find('lidi_osoba').each(function(){
+        /*
         var jmeno = zakaznik.getElementsByTagName("lidi_jmeno")[0].childNodes[0].nodeValue;
         var prijmeni = zakaznik.getElementsByTagName("lidi_prijmeni")[0].childNodes[0].nodeValue;
         var lidiID = zakaznik.getElementsByTagName("lidi_id")[0].childNodes[0].nodeValue;
+        */
+        var jmeno = xmlGetEl(zakaznik,"lidi_jmeno");
+        var prijmeni = xmlGetEl(zakaznik,"lidi_prijmeni");
+        var lidiID = xmlGetEl(zakaznik,"lidi_id");
         li += '<li class="button" data-id="'+lidiID+'"><h2>'+ prijmeni+ ' ' + jmeno +'</h2></li>';
 
     }
@@ -244,9 +262,22 @@ function renderZakazniciSeznam()
     showInfow(false);
 }
 // --------------------------------------------- zakazniciDetail
+
+function zakazniciDetailNovy()
+{
+    zakazniciDetailSetInputs(true);
+    showWindow("showZakazniciDetail");
+    $("div.mainContent.zakazniciDetail").removeClass("withBottom4buttons");
+    $("div.mainBottom.zakazniciDetail").css("display","none");
+    zakazniciDetailToEdit(true);
+    $(".twoButtons.zakazniciDetail div.right").attr("data-click","zakazniciDetailAjax('insert')");
+    $(".twoButtons.zakazniciDetail div.left").attr("data-click","backGo();zakazniciDetailToEdit(false)");
+
+}
+
 function renderZakazniciDetail(lidiIDfind)
 {
-    logging("renderZakazniciDetail",1);
+    logging("renderZakazniciDetail id:"+lidiIDfind,1);
 
     //console.log(xmlZakaznici.getElementsByTagName("lidi_osoba").length);
 
@@ -261,14 +292,18 @@ function renderZakazniciDetail(lidiIDfind)
         }
     }
 
-    zakazniciDetailSetInputs(xmlZakazniciDetail);
+
+    zakazniciDetailSetInputs();
 
 
 }
 
-function zakazniciDetailSetInputs()
+function zakazniciDetailSetInputs(clear)
 {
-    var pohlavi = xmlZakazniciDetail.getElementsByTagName("lidi_pohlavi")[0].childNodes[0].nodeValue;
+    if(clear) xmlZakazniciDetail = null;
+
+    //var pohlavi = xmlZakazniciDetail.getElementsByTagName("lidi_pohlavi")[0].childNodes[0].nodeValue;
+    var pohlavi = xmlGetEl(xmlZakazniciDetail,"lidi_pohlav");
 
     if(pohlavi=="M")
         $("#zakaznikSexM").prop("checked","true");
@@ -280,6 +315,9 @@ function zakazniciDetailSetInputs()
     $(".zakazniciDetail input[name=prijmeni]").val(xmlGetEl(xmlZakazniciDetail,"lidi_prijmeni"));
     $(".zakazniciDetail input[name=pohlavi]").val(xmlGetEl(xmlZakazniciDetail,"lidi_pohlavi"));
     //$(".zakazniciDetail input[name=adresa]").val(("lidi_adresa"));
+    $(".zakazniciDetail input[name=email]").val(xmlGetEl(xmlZakazniciDetail,"lidi_email"));
+    $(".zakazniciDetail input[name=telefon]").val(xmlGetEl(xmlZakazniciDetail,"lidi_tel1"));
+    $(".zakazniciDetail input[name=telefon2]").val(xmlGetEl(xmlZakazniciDetail,"lidi_tel2"));
     $(".zakazniciDetail input[name=adresa]").val(xmlGetEl(xmlZakazniciDetail,"lidi_adresa"));
     $(".zakazniciDetail input[name=mesto]").val(xmlGetEl(xmlZakazniciDetail,"lidi_mesto"));
     //$(".zakazniciDetail input[name=psc]").val(xmlGetEl("lidi_psc"));
@@ -301,7 +339,7 @@ function zakazniciDetailToEdit(editable)
         $(".twoButtons.zakazniciDetail .left div.labelDiv").html("ZRUŠIT");
         $(".twoButtons.zakazniciDetail .right div.labelDiv").html("ULOŽIT");
         $(".twoButtons.zakazniciDetail div.left").attr("data-click","zakazniciDetailChangeCancel()");
-        $(".twoButtons.zakazniciDetail div.right").attr("data-click","zakazniciDetailChangeSave()");
+        $(".twoButtons.zakazniciDetail div.right").attr("data-click","zakazniciDetailAjax('update')");
         $(".mainContent.zakazniciDetail input").css("background","rgb(223, 223, 223)");
 
         $(".mainContent.zakazniciDetail input").attr("readonly", false);
@@ -316,7 +354,7 @@ function zakazniciDetailToEdit(editable)
     {
         $(".twoButtons.zakazniciDetail .left div.labelDiv").html("SMAZAT");
         $(".twoButtons.zakazniciDetail .right div.labelDiv").html("UPRAVIT");
-        $(".twoButtons.zakazniciDetail div.left").attr("data-click","zakazniciDetailDelete()");
+        $(".twoButtons.zakazniciDetail div.left").attr("data-click","zakazniciDetailAjax('delete')");
         $(".twoButtons.zakazniciDetail div.right").attr("data-click","zakazniciDetailChangeToEdit()");
         $(".mainContent.zakazniciDetail input").css("background","rgb(255, 255, 255)");
 
@@ -337,34 +375,53 @@ function zakazniciDetailChangeCancel()
 }
 
 
-function zakazniciDetailChangeSave(onSuccess,onFail)
+ // type = update, insert, delete
+function zakazniciDetailAjax(type)
 {
 
-    logging("zakazniciDetailChangeSave",1);
+    logging("zakazniciDetailAjax",1);
 
-    var url;
-
-
-
-    if(local)
-        url = "data/test.xml";
-    else
-        url = "http://admin.hairsoft.cz/mobile/index1.php?akce=32&tabulka=mob_lidi&id_id=" + identifikator;
-
-    url += "&lidi_jmeno=" + $(".zakazniciDetail input[name=jmeno]").val();
-    url += "&lidi_prijmeni=" + $(".zakazniciDetail input[name=prijmeni]").val();
-    if($("#zakaznikSexM").is(':checked'))
+    if(type == "insert")
+        var akce = 16;
+    if(type == "update")
+        var akce = 32;
+    if(type == "delete")
     {
-        url += "&lidi_pohlavi=M";
-    } else
-    {
-        url += "&lidi_pohlavi=Z";
+
+        var r = confirm("Opravdu chcete záznam smazat?");
+        if (r == true) {
+            var akce = 64;
+        } else {
+            return;
+        }
     }
-    //url += "&lidi_pohlavi="
-    url += "&lidi_adresa=" + $(".zakazniciDetail input[name=adresa]").val();
-    url += "&lidi_mesto=" + $(".zakazniciDetail input[name=mesto]").val();
-    url += "&lidi_psc=" + $(".zakazniciDetail input[name=psc]").val();
-    url += "&lidi_id=" + xmlZakazniciDetail.getElementsByTagName("lidi_id")[0].childNodes[0].nodeValue;
+
+    var url = "http://admin.hairsoft.cz/mobile/index1.php?akce="+akce+"&tabulka=mob_lidi&id_id=" + identifikator;
+
+    if(type != "delete")
+    {
+        url += "&lidi_jmeno=" + $(".zakazniciDetail input[name=jmeno]").val();
+        url += "&lidi_prijmeni=" + $(".zakazniciDetail input[name=prijmeni]").val();
+        if($("#zakaznikSexM").is(':checked'))
+        {
+            url += "&lidi_pohlavi=M";
+        } else
+        {
+            url += "&lidi_pohlavi=Z";
+        }
+        //url += "&lidi_pohlavi="
+        url += "&lidi_email=" + $(".zakazniciDetail input[name=email]").val();
+        url += "&lidi_tel1=" + $(".zakazniciDetail input[name=telefon]").val();
+        url += "&lidi_tel2=" + $(".zakazniciDetail input[name=telefon2]").val();
+        url += "&lidi_adresa=" + $(".zakazniciDetail input[name=adresa]").val();
+        url += "&lidi_mesto=" + $(".zakazniciDetail input[name=mesto]").val();
+        url += "&lidi_psc=" + $(".zakazniciDetail input[name=psc]").val();
+    }
+
+    if(type == "update" || type == "delete")
+    {
+        url += "&lidi_id=" + xmlGetEl(xmlZakazniciDetail,"lidi_id");
+    }
 
 
     $.ajax({
@@ -374,10 +431,25 @@ function zakazniciDetailChangeSave(onSuccess,onFail)
         //url:'http://demo.livecycle.cz/fajnsvaca/api/getUserInfo.json',
         dataType: "xml",
         success: function(data) {
-            console.log(data);
-            xmlZakaznici.data = data;
-            var pocet = 0;
-            var ulicePredchozi = "";
+
+            var odpoved = xmlGetEl(data,"zprava");
+            if(odpoved=="UPRAVEN" || odpoved=="ZALOŽEN")
+            {
+                alert("Záznam uložen");
+                zakazniciDetailToEdit(false);
+                xmlZakaznici.data = null;
+            } else if(odpoved=="SMAZAN")
+            {
+                alert("Záznam byl smazán");
+                xmlZakaznici.data = null;
+                showWindow("showZakazniciSeznam")
+            }
+            else
+            {
+                alert(odpoved);
+
+            }
+
 
             /*
              $(xmlLidi).find('lidi_osoba').each(function(){
@@ -391,7 +463,7 @@ function zakazniciDetailChangeSave(onSuccess,onFail)
              var psc = this.getElementsByTagName("lidi_psc")[0].childNodes[0].nodeValue;
              });
              */
-            onSuccess();
+
         },
         error: ajaxErrorHandler
     });
@@ -400,33 +472,6 @@ function zakazniciDetailChangeSave(onSuccess,onFail)
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function ajaxErrorHandler(data) {
-    console.log(data);
-    if(data.msg==undefined)
-    {
-        alert("Chyba s komunikací se serverem");
-    } else
-    {
-        alert("chyba:" +data.msg);
-    }
-}
 
 var zakaznik = {
     smsSend : function (){
@@ -446,6 +491,8 @@ var zakaznik = {
 function xmlGetEl(data,elName)
 {
     if(data==null) return "";
+
+    if(data.getElementsByTagName(elName)[0]==null) return "";
     if(data.getElementsByTagName(elName)[0].childNodes[0]==null) return "";
     return data.getElementsByTagName(elName)[0].childNodes[0].nodeValue;
 }
@@ -469,20 +516,29 @@ function dataManagerLoad()
 {
     identifikator = window.localStorage.getItem("hairSoft-identifikator");
 
-    identifikator = "8D47BE64559F";
+
 
     if(identifikator!=null)
     {
-        $(".mainContent.nastaveni input").val(identifikator);
-    }
+        //hack
+        identifikator = "8D47BE64559F";
 
+        $(".mainContent.nastaveni input").val(identifikator);
+        showWindow("showWelcome");
+    } else
+    {
+        showWindow("showNastaveni");
+    }
+    showInfow(false);
+
+    /*
     var lastWindow = window.localStorage.getItem("hairSoft-lastWindow");
     if(lastWindow==null && identifikator==null)
     {
         showWindow("showNastaveni");
     }
     else if(lastWindow==null) {
-        showWindow("showObjednavkySeznam");
+        showWindow("showNastaveni");
     }
     else if(lastWindow!=null)
     {
@@ -492,12 +548,76 @@ function dataManagerLoad()
         return;
     }
     showInfow(false);
-
+*/
 
 
 }
 
 //-------------------------------------------------------------------
+
+function scan()
+{
+    cordova.plugins.barcodeScanner.scan(
+        function (result) {
+            alert("We got a barcode\n" +
+                "Result: " + result.text + "\n" +
+                "Format: " + result.format + "\n" +
+                "Cancelled: " + result.cancelled);
+            $(".mainContent.nastaveni input").val(result.text);
+        },
+        function (error) {
+            alert("Scanning failed: " + error);
+        }
+    );
+}
+
+function ajaxErrorHandler(data) {
+    console.log(data);
+
+    /*
+    if(data != null)
+    {
+        if(data.responseText!=null)
+        {
+            data = data.responseText.substring(data.responseText.indexOf("<odpoved>"));
+            if(data.length>0)
+            {
+                var xmlDoc = jQuery.parseXML(data);
+                if (xmlDoc)
+                {
+                    var odpoved = xmlGetEl(data,"zprava");
+                    if(odpoved!="")
+                    {
+                        alert(odpoved);
+                        return;
+                    }
+                }
+            }
+        }
+    }
+*/
+
+    if(!local)
+    {
+        var networkState = navigator.connection.type;
+        if(networkState == "Connection.UNKNOWN" || networkState== "Connection.NONE")
+        {
+            alert("Nelze se připojit k internetu");
+            return;false
+        }
+    }
+
+
+    if(data.msg==undefined)
+    {
+        alert("Chyba s komunikací se serverem");
+    } else
+    {
+        alert("chyba:" +data.msg);
+    }
+}
+
+
 // level: 1=INFO, 2=WARNING, 3=ERROR
 function logging(str, level) {
     if (level == 1) console.log("INFO:" + str);

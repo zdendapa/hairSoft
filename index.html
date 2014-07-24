@@ -67,7 +67,7 @@
         </div>
 
         <div class="twoButtons zakazniciDetail gradSeda">
-            <div class="button left">
+            <div data-click="zakazniciDetailAjax('delete')" class="button left">
                 <div class="borderDiv">
                     <div class="labelDiv">
                         SMAZAT
@@ -94,7 +94,7 @@
         </ul>
     </div>
 
-    <div class="mainContent zakazniciDetail">
+    <div class="mainContent zakazniciDetail withBottom4buttons">
         <div>
 
         </div>
@@ -106,6 +106,7 @@
                 <input class="css-checkbox" type="radio" value="Z" id="zakaznikSexZ" name="sex" disabled/><label class="css-label" for="zakaznikSexZ">ŽENA</label></li>
             <li><span>E-mail</span><input name="email" readonly></li>
             <li><span>Telefon</span><input name="telefon" readonly></li>
+            <li><span>Telefon2</span><input name="telefon2" readonly></li>
             <li><span>Adresa</span><input name="adresa" readonly></li>
             <li><span>Město</span><input name="mesto" readonly></li>
             <li><span>PSČ</span><input name="psc" readonly></li>
@@ -141,6 +142,11 @@
         <input value="234243">
     </div>
 
+    <div class="mainContent welcome">
+        <h1>Vyberte z menu</h1>
+
+    </div>
+
     <!-------------------------------------------------- footers -->
 
     <div class="mainBottom zakazniciDetail gradSeda">
@@ -163,7 +169,7 @@
                 </div>
             </div>
         </div><!--
-        --><div data-click="" class="button right">
+        --><div data-click="zakazniciDetailNovy()" class="button right">
         <div class="borderDiv">
             <div class="labelDiv">
                 Nový
@@ -174,7 +180,7 @@
 
     <div class="mainBottom gradSeda nastaveni">
         <div class="twoButtons">
-            <div class="button">
+            <div data-click="scan()" class="button">
                 <div class="borderDiv">
                     <div class="labelDiv left">
                         Načíst kód
