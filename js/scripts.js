@@ -5,8 +5,7 @@
 
 */
 
-// nastav true jsi-li na lokalu
-var lokal = true;
+
 
 
 var identifikator;
@@ -215,18 +214,6 @@ function ajaxZakaznici(onSuccess,onFail)
             var pocet = 0;
             var ulicePredchozi = "";
 
-            /*
-            $(xmlLidi).find('lidi_osoba').each(function(){
-                //var id = $(this).attr('id');
-                //var title = $(this).find('title').text();
-                var jmeno = this.getElementsByTagName("lidi_jmeno")[0].childNodes[0].nodeValue;
-                var prijmeni = this.getElementsByTagName("lidi_prijmeni")[0].childNodes[0].nodeValue;
-                var pohlavi = this.getElementsByTagName("lidi_pohlavi")[0].childNodes[0].nodeValue;
-                var adresa = this.getElementsByTagName("lidi_adresa")[0].childNodes[0].nodeValue;
-                var mesto = this.getElementsByTagName("lidi_mesto")[0].childNodes[0].nodeValue;
-                var psc = this.getElementsByTagName("lidi_psc")[0].childNodes[0].nodeValue;
-            });
-            */
             onSuccess();
         },
         error: ajaxErrorHandler
@@ -371,6 +358,8 @@ function zakazniciDetailToEdit(editable)
 
         $("div.mainContent.zakazniciDetail").addClass("withBottom4buttons");
         $("div.mainBottom.zakazniciDetail").css("display","block");
+
+        $(".zakazniciDetail h1").html($(".zakazniciDetail input[name=jmeno]").val() + " " + $(".zakazniciDetail input[name=prijmeni]").val());
     }
 }
 
@@ -402,6 +391,7 @@ function zakazniciDetailAjax(type)
         }
     }
 
+
     var url = "http://admin.hairsoft.cz/mobile/index1.php?akce="+akce+"&tabulka=mob_lidi&id_id=" + identifikator;
 
     if(type != "delete")
@@ -413,7 +403,7 @@ function zakazniciDetailAjax(type)
             url += "&lidi_pohlavi=M";
         } else
         {
-            url += "&lidi_pohlavi=Z";
+            url += "&lidi_pohlavi=Ž";
         }
         //url += "&lidi_pohlavi="
         url += "&lidi_email=" + $(".zakazniciDetail input[name=email]").val();
@@ -481,13 +471,14 @@ function zakazniciDetailAjax(type)
 
 var zakaznik = {
     smsSend : function (){
-        window.location = "sms:+3490322111?body=messagebody";
+        window.location = "sms:"+xmlGetEl(xmlZakazniciDetail,"lidi_tel1")+"?body=HairSoft sms tempate";
     },
     telDial : function (){
-        window.location.href='tel:800-123-4567';
+        window.location.href='tel:'+xmlGetEl(xmlZakazniciDetail,"lidi_tel1");
     },
     mailSend : function (){
-        window.location.href='mailto:email@email.com?cc=email2@email.com&bcc=email3@email.com&subject=The subject of the email&body=The body of the email';
+        //window.location.href='mailto:email@email.com?cc=email2@email.com&bcc=email3@email.com&subject=The subject of the email&body=The body of the email';
+        window.location.href='mailto:'+xmlGetEl(xmlZakazniciDetail,"lidi_email")+'?email.com&subject=HairSoft předmět&body=Zpráva';
     },
     objednat : function (){
 
@@ -535,6 +526,7 @@ function dataManagerLoad()
         // --- end hack
         showWindow("showNastaveni");
     }
+
     showInfow(false);
 
     /*

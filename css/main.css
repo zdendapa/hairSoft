@@ -216,9 +216,25 @@ div.zakazniciDetail {
 
 /* --------- content welcome */
 .mainContent.welcome h1 {
-    text-align: center;
-    padding-left: 120px;
-    margin-top: 50px;
+     text-align: center;
+     padding-left: 120px;
+     margin-top: 50px;
+ }
+
+.mainContent.welcome div.wrap {
+    width: 156px;
+    height: 162px;
+    left: 200px;
+    margin: auto;
+    margin-top: 60px;
+}
+.mainContent.welcome .wrap div {
+    width: 156px;
+    height: 162px;
+    left: 200px;
+    margin-left: 60px;
+    background-image: url(../img/nove_logo_02.png);
+    background-repeat: no-repeat;
 }
 
 /* ----------------------------------------------- bottom */
