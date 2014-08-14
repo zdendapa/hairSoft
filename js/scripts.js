@@ -14,7 +14,15 @@ var backFunction;   // what to do when you click back button
 var currentWindow;  // $(el) for quick hide(transform to offsreen)
 var ulScrollOffset;
 
+var menuVisible = false;
+var $navtoggle2;
+
 var xmlZakazniciDetail;
+var supportedTran;
+
+var transitionObject = {};
+var pageMaxLenght;
+var touched = false;
 
 
 
@@ -35,22 +43,55 @@ var xmlZakaznici = {
 
 function onDeviceReady() {
 
-    $(document).on('click', '.mainContent.zakazniciSeznam li', function() {
-        $(this).addClass('highlight');
-        var el= this;
-        setTimeout(function(){
-            $(el).removeClass('highlight');
-            renderZakazniciDetail($(el).attr("data-id"));
-            showWindow("showZakazniciDetail");
-        },100);
-    });
+}
 
-    $('.button').on('click', function(e){
+
+function onLoad() {
+
+
+    // detect if browser support things we need and set support... variable
+    supportDetect();
+
+    // by supported aceleration, prepare classes and view
+    transitionInit();
+
+    // set clicks function on buttons, touch or click
+    clickInit();
+
+    // load variable from localStore and set data it in pages
+    dataManagerLoad();
+
+    // unhide ready app :)
+    $(".special.cover").css("display","none");
+
+}
+
+
+//----------------------------------------------------------- core functions
+function clickInit()
+{
+    /*
+    types:
+    - click only with touch (doesn matter if you hold your finger)
+        my own solution on touchstart
+    - click with click (does matter if you hold your finger = button on scrollbar)
+        default click with runing fastClick
+        (with fast click its more quick, its detect touch-end, so if you tap quickly is quickly. By default if you tap quickly its waiting 300ms no matter touch end)
+     */
+
+
+    var $buttons;
+    // ------------- buttons needs click (scrollable or...)
+    $buttons = $('._buttonClick');
+
+    $buttons.on("click", function(e){
+        e.stopPropagation();
         if($(this).hasClass("buttonOpacity"))
             $(this).addClass('highlightOpacity');
         else
             $(this).addClass('highlight');
         var el= this;
+
         setTimeout(function(){
             var dataClick = $(el).attr("data-click");
             if($(el).hasClass("buttonOpacity"))
@@ -61,17 +102,80 @@ function onDeviceReady() {
             {
                 eval(dataClick);
             }
-        },100);
-        //menuToggle();
+        },150);
+    });
+
+    // ------------- buttons with touch consideration
+    // get all buttons in memory. Those that touchstart should be consider
+    $buttons = $('.button');
+
+    // set event on buttons
+
+
+    // get if touchstart is supported
+    var eventType;
+    if ('ontouchstart' in document.documentElement) {
+        eventType = "touchstart";
+        logging("ontouchstart enabled",1);
+    } else
+    {
+        eventType = "click";
+    }
+
+    // set event on buttons
+    $buttons.on(eventType, function(e){
+        e.stopPropagation();
+        // get type of higlight effect
+        if($(this).hasClass("buttonOpacity"))
+            $(this).addClass('highlightOpacity');
+        else
+            $(this).addClass('highlight');
+        var el= this;
+
+        // show effect
+        setTimeout(function(){
+            if($(el).hasClass("buttonOpacity"))
+                $(el).removeClass('highlightOpacity');
+            else
+                $(el).removeClass('highlight');
+
+            // run function
+            var dataClick = $(el).attr("data-click");
+            if(dataClick!= null)
+            {
+                eval(dataClick);
+            }
+        },150);
+
+
     });
 
 
-    //showInfow(true,"Načítám...");
-    //ajaxZakaznici(renderZakazniciSeznam);
-    dataManagerLoad();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // ----------------------- scrollable list
+    $(document).on('click', '.mainContent.zakazniciSeznam li', function() {
+        $(this).addClass('highlight');
+        var el= this;
+        setTimeout(function(){
+            $(el).removeClass('highlight');
+            renderZakazniciDetail($(el).attr("data-id"));
+            showWindow("showZakazniciDetail");
+        },100);
+    });
 }
-
-
 
 function backGo()
 {
@@ -81,7 +185,40 @@ function backGo()
     }
 }
 
+
 function menuToggle(forceShow)
+{
+    //   menu icon
+    if(!menuVisible || forceShow)
+    {
+        $navtoggle2.addClass("menuLeft");
+        $navtoggle2.removeClass("menuRight");
+    } else
+    {
+        $navtoggle2.addClass("menuRight");
+        $navtoggle2.removeClass("menuLeft");
+    }
+
+
+    //   menu bar
+    if(forceShow)
+    {
+        if(supportedTran==3) $menu.addClass("right3d");
+        if(supportedTran==2) $menu.addClass("right");
+        if(supportedTran==1) $menu.css("display","block");
+        menuVisible = true;
+    } else
+    {
+        if(supportedTran==3) $menu.toggleClass("right3d");
+        if(supportedTran==2) $menu.toggleClass("right");
+        if(supportedTran==1) $menu.toggle();
+        menuVisible = !menuVisible;
+    }
+
+
+}
+
+function menuToggle_old(forceShow)
 {
     if($("div.menu").css("display")=="none" || forceShow)
     {
@@ -98,13 +235,16 @@ function menuToggle(forceShow)
 
 function showInfow(show,msg)
 {
+
     if(show)
     {
         $("div.special.info h1").html(msg);
-        $("div.special.info").css("display","block");
+        //$("div.special.info").css("display","block");
+        containerVisibilitySet("specInfo",true);
     } else
     {
-        $("div.special.info").css("display","none");
+        //$("div.special.info").css("display","none");
+        containerVisibilitySet("specInfo",false);
     }
 
 }
@@ -124,21 +264,31 @@ function showWindow(windowName)
 
     if(windowName=="showZakazniciSeznam")
     {
+        containerVisibilitySet("zakazniciSeznam",true);
+        //$("div.mainContent.zakazniciSeznam").css("display","block");
+        //$("div.mainBottom.twoButtons.zakazniciSeznam").css("display","block");
+        containerVisibilitySet("ftZakazniciSeznam",true);
+        //$(".mainTop h1").html("Zákazníci");
+        //$(".mainTop input").css("display","inline-block");
+        containerVisibilitySet("topFind",true);
+
         xmlZakaznici.loadWhenNull(true);
 
-        $("div.mainContent.zakazniciSeznam").css("display","block");
-        $("div.mainBottom.twoButtons.zakazniciSeznam").css("display","block");
-        //$(".mainTop h1").html("Zákazníci");
-        $(".mainTop input").css("display","inline-block");
+
     }
     if(windowName=="showZakazniciDetail")
     {
-        $("div.mainContent.zakazniciDetail").css("display","block");
-        $("div.mainBottom.zakazniciDetail").css("display","block");
+        //$("div.mainContent.zakazniciDetail").css("display","block");
+        containerVisibilitySet("zakazniciDetail",true);
+        //$("div.mainBottom.zakazniciDetail").css("display","block");
+        containerVisibilitySet("ftZakazniciDetail",true);
         $(".mainTop h1").html("Zákazník");
-        $(".mainTop h1").css("display","block");
-        $(".mainTop div.zakazniciDetail").css("display","block");
-        $("#rowLeft").css("display","block");
+        //$(".mainTop h1").css("display","block");
+        containerVisibilitySet("topH1",true);
+        //$(".mainTop div.zakazniciDetail").css("display","block");
+        containerVisibilitySet("topZakazniciDetail",true);
+        //$("#rowLeft").css("display","block");
+        containerVisibilitySet("rowLeft",true);
         $("div.mainContent.zakazniciDetail").addClass("withBottom4buttons");
         backFunction = function(){
             showWindow("showZakazniciSeznam");
@@ -147,32 +297,44 @@ function showWindow(windowName)
     }
     if(windowName=="showObjednavkySeznam")
     {
-        $("div.mainContent.objednavkySeznam").css("display","block");
+        containerVisibilitySet("objednavkySeznam",true);
+        //$("div.mainContent.objednavkySeznam").css("display","block");
         $(".mainTop h1").html("Objednávky");
-        $(".mainTop input").css("display","inline-block");
+        //$(".mainTop input").css("display","inline-block");
     }
     if(windowName=="showSkladSeznam")
     {
-        $("div.mainContent.skladSeznam").css("display","block");
-        $(".mainTop h1").html("Sklad");
-        $(".mainTop input").css("display","inline-block");
+        containerVisibilitySet("skladSeznam",true);
+        //$(".mainTop input").css("display","inline-block");
+        containerVisibilitySet("topFind",true);
     }
     if(windowName=="showTrzbySeznam")
     {
+        //containerVisibilitySet("trzbySeznam",true);
         $("div.mainContent.trzbySeznam").css("display","block");
-        $(".mainTop h1").html("Trzby");
-        $(".mainTop input").css("display","inline-block");
+        //$(".mainTop input").css("display","inline-block");
+        containerVisibilitySet("topFind",true);
     }
     if(windowName=="showNastaveni")
     {
-        $("div.mainContent.nastaveni").css("display","block");
+        containerVisibilitySet("nastaveni",true);
         $(".mainTop h1").html("Nastavení");
-        $("div.mainBottom.nastaveni").css("display","block");
+        //$("div.mainBottom.nastaveni").css("display","block");
+        containerVisibilitySet("ftNastaveni",true);
+
     }
     if(windowName=="showWelcome")
     {
+        /*
         $("div.mainContent.welcome").css("display","block");
         $(".mainTop h1").html("HairSoft");
+        menuToggle(true);
+        */
+
+        containerVisibilitySet("welcome",true);
+        $(".mainTop h1").html("HairSoft");
+        //$(".mainTop h1").css("display","block");
+        containerVisibilitySet("topH1",true);
         menuToggle(true);
     }
 }
@@ -181,6 +343,7 @@ function showWindow(windowName)
 // improve to hide by 3d transforms current window
 function hideAll()
 {
+    /*
     $(".main div.mainContent").css("display","none");
     $(".main div.mainBottom").css("display","none");
     $(".mainTop h1").css("display","none");
@@ -188,6 +351,10 @@ function hideAll()
     $(".mainTop input").css("display","none");
 
     $(".mainTop div.zakazniciDetail").css("display","none");
+    */
+    //$(".mainTop h1").css("display","none");
+    //$(".mainTop input").css("display","none");
+    containerHideAll();
 }
 
 
@@ -373,6 +540,7 @@ function zakazniciDetailChangeCancel()
  // type = update, insert, delete
 function zakazniciDetailAjax(type)
 {
+    if(ajaxReadOnly) return;
 
     logging("zakazniciDetailAjax",1);
 
@@ -527,7 +695,6 @@ function dataManagerLoad()
         showWindow("showNastaveni");
     }
 
-    showInfow(false);
 
     /*
     var lastWindow = window.localStorage.getItem("hairSoft-lastWindow");
@@ -549,6 +716,110 @@ function dataManagerLoad()
 */
 
 
+}
+
+function transitionObjectInit()
+{
+    // get all containers
+    $("[data-cont]").each(function() {
+        var key = $(this).attr("data-cont");
+        transitionObject[key] = {
+            el: $(this),
+            visibility: true
+        };
+    });
+    logging("transitionObject found: " + Object.keys(transitionObject).length);
+}
+
+function containerHideAll(expectShowInfo)
+{
+    for(var o in transitionObject){
+        if(o=="specInfo" && expectShowInfo)
+        {
+        } else
+        containerVisibilitySet(o,false,true);
+    }
+}
+
+function containerVisibilitySet(contID,visibility,forced,ccsStyle)
+{
+
+    // if already visibility is do nothing
+    if(transitionObject[contID].visibility == visibility && forced != true)
+    {
+        return;
+    }
+
+
+    if(supportedTran == 3)
+    {
+        if(visibility)
+        {
+            transitionObject[contID].el.css("-webkit-transform","translate3d(0, 0, 0)");
+            transitionObject[contID].el.css("transform","translate3d(0, 0, 0)");
+        } else
+        {
+            transitionObject[contID].el.css("-webkit-transform","translate3d(-"+pageMaxLenght+"px, 0, 0)");
+            transitionObject[contID].el.css("transform","translate3d(-"+pageMaxLenght+"px, 0, 0)");
+        }
+    } else
+    {
+        if(visibility)
+        {
+            if(ccsStyle!=null)
+                transitionObject[contID].el.css("display",ccsStyle);
+            else
+                transitionObject[contID].el.css("display","block");
+        } else
+        {
+            transitionObject[contID].el.css("display","none");
+        }
+    }
+
+    transitionObject[contID].visibility = visibility;
+}
+
+
+function transitionInit()
+{
+
+    pageMaxLenght = $(document).width()>$(document).height()?$(document).width():$(document).height();
+
+    // --- menu bar
+    if(supportedTran == 3)
+    {
+        $("div.menu").css("-webkit-transform","translate3d(-100%, 0, 0)");
+        $("div.menu").css("transform","translate3d(-100%, 0, 0)");
+    } else if(supportedTran == 2)
+    {
+        $("div.menu").css("left","-100%");
+    } else
+    {
+        $("div.menu").css("display","none");
+    }
+    menuVisible = false;
+
+    $navtoggle2 = $("#nav-toggle2");
+    $menu = $("div.menu");
+
+    transitionObjectInit();
+    containerHideAll(true);
+}
+
+function supportDetect()
+{
+    supportedTran = 1;
+
+    if(supportsTransitions())
+    {
+        supportedTran = 2;
+        logging("support transition",1);
+    }
+    if(supportsTransitions3d())
+    {
+        supportedTran = 3;
+        logging("support transition3d",1);
+    }
 }
 
 //-------------------------------------------------------------------
@@ -574,29 +845,6 @@ function scan()
 function ajaxErrorHandler(data) {
     console.log(data);
 
-    /*
-    if(data != null)
-    {
-        if(data.responseText!=null)
-        {
-            data = data.responseText.substring(data.responseText.indexOf("<odpoved>"));
-            if(data.length>0)
-            {
-                var xmlDoc = jQuery.parseXML(data);
-                if (xmlDoc)
-                {
-                    var odpoved = xmlGetEl(data,"zprava");
-                    if(odpoved!="")
-                    {
-                        alert(odpoved);
-                        return;
-                    }
-                }
-            }
-        }
-    }
-*/
-
     if(!local)
     {
         showInfow(false);
@@ -621,7 +869,7 @@ function ajaxErrorHandler(data) {
 
 // level: 1=INFO, 2=WARNING, 3=ERROR
 function logging(str, level) {
-    if (level == 1) console.log("INFO:" + str);
+    if (level == 1 || level == null) console.log("INFO:" + str);
     if (level == 2) console.log("WARN:" + str);
     if (level == 3) alert("ERROR:" + str);
 
@@ -635,3 +883,47 @@ function logging(str, level) {
         $(elTextarea).scrollTop($(elTextarea)[0].scrollHeight);
     }
 };
+
+
+function supportsTransitions3d() {
+    var el = document.createElement('p'),
+        has3d,
+        transforms = {
+            'webkitTransform':'-webkit-transform',
+            'OTransform':'-o-transform',
+            'msTransform':'-ms-transform',
+            'MozTransform':'-moz-transform',
+            'transform':'transform'
+        };
+
+    // Add it to the body to get the computed style.
+    document.body.insertBefore(el, null);
+
+    for (var t in transforms) {
+        if (el.style[t] !== undefined) {
+            el.style[t] = "translate3d(1px,1px,1px)";
+            has3d = window.getComputedStyle(el).getPropertyValue(transforms[t]);
+        }
+    }
+
+    document.body.removeChild(el);
+
+    return (has3d !== undefined && has3d.length > 0 && has3d !== "none");
+}
+function supportsTransitions() {
+    var b = document.body || document.documentElement,
+        s = b.style,
+        p = 'transition';
+
+    if (typeof s[p] == 'string') { return true; }
+
+    // Tests for vendor specific prop
+    var v = ['Moz', 'webkit', 'Webkit', 'Khtml', 'O', 'ms'];
+    p = p.charAt(0).toUpperCase() + p.substr(1);
+
+    for (var i=0; i<v.length; i++) {
+        if (typeof s[v[i] + p] == 'string') { return true; }
+    }
+
+    return false;
+}

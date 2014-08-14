@@ -3,8 +3,8 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "cz.initedsolutions.hairsoft"
-        version   = "0.1b">
+        id        = "cz.initedsolutions.hairsoftTest1"
+        version   = "0.2">
     <!--
         0.1
         0.2
@@ -39,7 +39,7 @@
     <preference name="fullscreen"                 value="false" />           <!-- when is true, keyboard hide input -->
 
     <preference name="EnableViewportScale"        value="true" />
-    <preference name="phonegap-version"           value="3.3.0" />          <!-- all: current version of PhoneGap -->
+    <preference name="phonegap-version"           value="3.5.0" />          <!-- all: current version of PhoneGap -->
     <preference name="orientation"                value="default" />        <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
     <preference name="fullscreen"                 value="false" />           <!-- all: hides the status bar at the top of the screen -->

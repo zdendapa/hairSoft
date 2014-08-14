@@ -11,14 +11,19 @@
 
 
 <link rel="stylesheet" href="css/main.css" />
+<link rel="stylesheet" href="css/font-awesome.min.css" />
 <script type="text/javascript" charset="utf-8" src="js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="phonegap.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
 <script type="text/javascript" src="js/fastclick.js"></script>
 
+
 <script type="text/javascript">
 
     var local = false;
+
+    // hacks
+    ajaxReadOnly = true;
 
 
     if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
@@ -31,10 +36,7 @@
     }
 
     window.addEventListener('load', function() {
-
-
-
-
+        onLoad();
         FastClick.attach(document.body);
     }, false);
 
@@ -43,30 +45,51 @@
 </script>
 <div id="main" class="main" data-role="page">
 
-    <div class="special info">
+    <div data-cont="specJumpList" class="special jumpList">
+        <div><div>a</div></div><div><div>b</div></div><div><div>c</div></div><div><div>d</div></div><div><div>e</div></div><div><div>f</div></div><div><div>g</div></div><div><div>h</div></div><div><div>i</div></div><div><div>j</div></div><div><div>k</div></div><div><div>l</div></div><div><div>m</div></div><div><div>n</div></div><div><div>o</div></div><div><div>p</div></div><div><div>q</div></div><div><div>r</div></div><div><div>s</div></div><div><div>t</div></div><div><div>u</div></div><div><div>v</div></div><div><div>w</div></div><div><div>x</div></div><div><div>y</div></div><div><div>z</div></div>
+    </div>
+
+
+
+    <!-------------------------------------------------- this info must be last of spec! Put spec before!
+     its on the top of z-index layer
+     -->
+
+    <div class="special cover">
+    </div>
+
+
+    <div data-cont="specInfo" class="special info">
+        <div class="symbolLoading">
+            <i class="fa fa-refresh fa-spin"></i>
+        </div>
         <h1>Načítám...</h1>
     </div>
 
+
+
     <!-------------------------------------------------- menu -->
-    <div class="menu gradSeda">
-        <div data-click="menuToggle();showWindow('showObjednavkySeznam')" class="objednavky button buttonOpacity"></div>
-        <div data-click="menuToggle();showWindow('showSkladSeznam')" class="sklad button buttonOpacity"></div>
-        <div data-click="menuToggle();showWindow('showZakazniciSeznam')" class="zakaznici button buttonOpacity"></div>
-        <div data-click="menuToggle();showWindow('showTrzbySeznam')" class="trzba button buttonOpacity"></div>
-        <div data-click="menuToggle();showWindow('showNastaveni')" class="nastaveni button buttonOpacity"></div>
+    <div class="menu trans gradSeda">
+        <div data-click="menuToggle();showWindow('showObjednavkySeznam')" class="objednavky _buttonClick buttonOpacity"></div>
+        <div data-click="menuToggle();showWindow('showSkladSeznam')" class="sklad _buttonClick buttonOpacity"></div>
+        <div data-click="menuToggle();showWindow('showZakazniciSeznam')" class="zakaznici _buttonClick buttonOpacity"></div>
+        <div data-click="menuToggle();showWindow('showTrzbySeznam')" class="trzba _buttonClick buttonOpacity"></div>
+        <div data-click="menuToggle();showWindow('showNastaveni')" class="nastaveni _buttonClick buttonOpacity"></div>
     </div>
 
     <!-------------------------------------------------- tops -->
 
     <div class="mainTop gradSeda">
-        <div id="nav-toggle2" class="buttonTopMenu button buttonOpacity menuRight" onclick="menuToggle()"></div>
-        <h1></h1>
-        <input placeholder="hledat">
-        <div data-click="backGo()" id="rowLeft" class="button buttonOpacity">
+        <h1 data-cont="topH1"></h1>
+        <div data-cont="topFind" class="find">
+            <input placeholder="hledat">
+        </div>
+        <div data-click="menuToggle()" id="nav-toggle2" class="buttonTopMenu button buttonOpacity menuRight"></div>
+        <div data-cont="rowLeft" data-click="backGo()" id="rowLeft" class="button buttonOpacity">
             <span>Zpět</span>
         </div>
 
-        <div class="twoButtons zakazniciDetail gradSeda">
+        <div data-cont="topZakazniciDetail" class="twoButtons zakazniciDetail gradSeda">
             <div data-click="zakazniciDetailAjax('delete')" class="button left">
                 <div class="borderDiv">
                     <div class="labelDiv">
@@ -87,12 +110,12 @@
     </div>
 
     <!-------------------------------------------------- main content -->
-    <div class="mainContent zakazniciSeznam">
+    <div data-cont="zakazniciSeznam" class="mainContent zakazniciSeznam">
         <ul>
         </ul>
     </div>
 
-    <div class="mainContent zakazniciDetail withBottom4buttons">
+    <div data-cont="zakazniciDetail" class="mainContent zakazniciDetail withBottom4buttons">
         <div>
 
         </div>
@@ -111,7 +134,7 @@
         </ul>
     </div>
 
-    <div class="mainContent objednavkySeznam">
+    <div data-cont="objednavkySeznam" class="mainContent objednavkySeznam">
         <ul>
             <li>
                 <h2>Objednavka 1</h2>
@@ -119,7 +142,7 @@
         </ul>
     </div>
 
-    <div class="mainContent skladSeznam">
+    <div data-cont="skladSeznam" class="mainContent skladSeznam">
         <ul>
             <li>
                 <h2>sklad 1</h2>
@@ -127,7 +150,7 @@
         </ul>
     </div>
 
-    <div class="mainContent trzbySeznam">
+    <div data-cont="trzbySeznam" class="mainContent trzbySeznam">
         <ul>
             <li>
                 <h2>trzby 1</h2>
@@ -135,32 +158,31 @@
         </ul>
     </div>
 
-    <div class="mainContent nastaveni">
+    <div data-cont="nastaveni" class="mainContent nastaveni">
         <h1>Identifikátor</h1>
         <input value="">
     </div>
 
-    <div class="mainContent welcome">
+    <div data-cont="welcome" class="mainContent welcome">
         <h1>Vyberte z menu</h1>
         <div class="wrap"><div></div></div>
-
     </div>
 
     <!-------------------------------------------------- footers -->
 
-    <div class="mainBottom zakazniciDetail gradSeda">
+    <div data-cont="ftZakazniciDetail" class="mainBottom zakazniciDetail gradSeda">
            <input class="zdButtonObjednat" type="button" value="OBJEDNAT"><!--
         --><input class="zdButtonSms" type="button" value="SMS" onclick="zakaznik.smsSend()"><!--
         --><input class="zdButtonEmail" type="button" value="EMAIL" onclick="zakaznik.mailSend()"><!--
         --><input class="zdButtonVolat" type="button" value="VOLAT" onclick="zakaznik.telDial()">
     </div>
 
-    <div class="mainBottom general gradSeda">
+    <div data-cont="ftGeneral" class="mainBottom general gradSeda">
         <input class="bottomSearch">
         <input class="buttonBottomRight" type="button" value="NOVÝ">
     </div>
 
-    <div class="mainBottom twoButtons gradSeda zakazniciSeznam">
+    <div data-cont="ftZakazniciSeznam" class="mainBottom twoButtons gradSeda zakazniciSeznam">
         <div data-click="xmlZakaznici.loadForce(true)" class="button left">
             <div class="borderDiv">
                 <div class="labelDiv">
@@ -177,7 +199,7 @@
     </div>
     </div>
 
-    <div class="mainBottom gradSeda nastaveni">
+    <div data-cont="ftNastaveni" class="mainBottom gradSeda nastaveni">
         <div class="twoButtons">
             <div data-click="scan()" class="button">
                 <div class="borderDiv">
