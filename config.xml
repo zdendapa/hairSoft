@@ -4,11 +4,16 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "cz.initedsolutions.hairsoftTest1"
-        version   = "0.2">
+        version   = "0.2g">
     <!--
         0.1
         0.2
         - kompletne sekze zakaznik, bez vyhledavani
+        zakaznik complete
+        upravy welcome screen
+        prednastavni sms, tel, mail
+        0.2g
+        - optimalizovano pro lumia rozliseni
 
 
 
@@ -30,6 +35,17 @@
     <gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="com.phonegap.plugins.barcodescanner" version="1.1.0" />
+    <gap:plugin name="org.apache.cordova.statusbar"/>
+
+
+    <gap:config-file platform="ios" parent="UIStatusBarHidden">
+        <true/>
+    </gap:config-file>
+
+    <gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance">
+        <false/>
+    </gap:config-file>
+
 
 
     <feature name="http://api.phonegap.com/1.0/device" />

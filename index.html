@@ -170,11 +170,44 @@
 
     <!-------------------------------------------------- footers -->
 
-    <div data-cont="ftZakazniciDetail" class="mainBottom zakazniciDetail gradSeda">
-           <input class="zdButtonObjednat" type="button" value="OBJEDNAT"><!--
-        --><input class="zdButtonSms" type="button" value="SMS" onclick="zakaznik.smsSend()"><!--
-        --><input class="zdButtonEmail" type="button" value="EMAIL" onclick="zakaznik.mailSend()"><!--
-        --><input class="zdButtonVolat" type="button" value="VOLAT" onclick="zakaznik.telDial()">
+
+    <div data-cont="ftZakazniciDetail" class="mainBottom zakazniciDetail fourButtons">
+
+    <div class="twoButtons gradSeda zdButtonObjednat">
+        <div data-click="" class="button left">
+            <div class="borderDiv">
+                <div class="labelDiv">
+                    OBJEDNAT
+                </div>
+            </div>
+        </div><!--
+     --><div data-click="zakaznik.smsSend()" class="button right zdButtonSms">
+            <div class="borderDiv">
+                <div class="labelDiv">
+                    SMS
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="twoButtons gradSeda">
+        <div data-click="zakaznik.mailSend()" class="button left zdButtonEmail">
+            <div class="borderDiv">
+                <div class="labelDiv">
+                    EMAIL
+                </div>
+            </div>
+        </div><!--
+     --><div data-click="zakaznik.telDial()" class="button right zdButtonVolat">
+            <div class="borderDiv">
+                <div class="labelDiv">
+                    VOLAT
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     </div>
 
     <div data-cont="ftGeneral" class="mainBottom general gradSeda">
@@ -219,7 +252,7 @@
 
     </div>
 
-    <div id="verzeApp">0.2</div>
+    <div id="verzeApp">0.2g</div>
 </div>
 </body>
 </html>

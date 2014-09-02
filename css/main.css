@@ -4,6 +4,10 @@ html, body {
     margin: 0px;
     font-family: 'Arial', sans-serif;
 }
+body {
+    overflow-y: scroll;
+    position: relative;
+}
 h1, h2, h3 {
     margin: 0px;
     padding: 0px;
@@ -67,10 +71,10 @@ div.mainTop {
 }
 .mainTop input {
     margin-top: 0px;
-    width: 50%;
+    width: 40%;
     background-image: url(../img/vyhledavani.png);
     background-repeat: no-repeat;
-    background-position-x: 98%;
+    background-position-x: 100%;
     text-indent: 0.3em;
 }
 
@@ -80,7 +84,7 @@ div.mainTop {
 
 /* --------- menu */
 div.menu {
-    top: 80px;
+    top: 50px;
     z-index: 1000;
     position: absolute;
     bottom: 0px;
@@ -105,10 +109,10 @@ div.menu {
     background-image: url(../img/nastaveni.png);
 }
 .menu div {
-    height: 100px;
-    background-position: 20px 20px;
-    background-size: 80px;
-    padding-left: 120px;
+    height: 60px;
+    background-position: 12px 8px;
+    background-size: 50px;
+    padding-left: 80px;
     cursor: pointer;
     vertical-align: middle;
     background-repeat: no-repeat;
@@ -189,18 +193,19 @@ div.zakazniciDetail {
     display: table-cell;
     width: 100%;
 }
-.mainBottom input.zdButtonObjednat {
+.mainBottom.zakazniciDetail .zdButtonObjednat .borderDiv {
     background-image: url(../img/objednat.png);
 }
-.mainBottom input.zdButtonSms {
+.mainBottom.zakazniciDetail .zdButtonSms .borderDiv {
     background-image: url(../img/sms.png);
 }
-.mainBottom input.zdButtonEmail {
+.mainBottom.zakazniciDetail .zdButtonEmail .borderDiv {
     background-image: url(../img/email.png);
 }
-.mainBottom input.zdButtonVolat {
+.mainBottom.zakazniciDetail .zdButtonVolat .borderDiv {
     background-image: url(../img/volat.png);
 }
+
 /* --------- content nastaveni */
 .mainContent.nastaveni {
     text-align: center;
@@ -215,8 +220,8 @@ div.zakazniciDetail {
 /* --------- content info */
 .special.info {
     position: absolute;
-    top: 80px;
     right: 0px;
+    top: 80px;
     bottom: 100px;
     left: 0px;
     background: rgba(128, 128, 128, 0.5);
@@ -279,7 +284,7 @@ div.zakazniciDetail {
 /* --------- content welcome */
 .mainContent.welcome h1 {
      text-align: center;
-     padding-left: 120px;
+     padding-left: 80px;
      margin-top: 50px;
  }
 
@@ -294,7 +299,7 @@ div.zakazniciDetail {
     width: 156px;
     height: 162px;
     left: 200px;
-    margin-left: 60px;
+    margin-left: 40px;
     background-image: url(../img/nove_logo_02.png);
     background-repeat: no-repeat;
 }
@@ -318,7 +323,7 @@ input.buttonBottomRight {
 }
 
 .twoButtons div.borderDiv {
-    background-size: 80px;
+    background-size: 100px;
     background-repeat: no-repeat;
     background-position: 40px 6px;
 }
@@ -329,10 +334,11 @@ input.buttonBottomRight {
 }
 .twoButtons div.button > div {
     border: 1px solid;
-    height: 98px;
+    height: 58px;
 }
 .twoButtons div.labelDiv {
     padding-top: 35px;
+    padding-left: 90px;
 }
 
 /* ------------------------ zakazniciDetail bottom */
@@ -377,7 +383,7 @@ div.mainBottom.zakazniciDetail input {
 
 }
 
-@media only screen and (min-width: 100px)  and (max-width: 3025px) {
+@media only screen and (min-width: 10000px)  and (max-width: 300025px) {
     body {
         font-size: 24px;
     }
@@ -556,8 +562,8 @@ div#nav-toggle2 {
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 120px;
-    height: 78px;
+    width: 80px;
+    height: 48px;
     border-right: 2px solid;
     border-bottom: 2px solid;
 }
@@ -570,8 +576,9 @@ div#nav-toggle2 {
     background-image:url(../img/menu1zpetTransparent.png);
 }
 .buttonTopMenu {
-    background-position: 20px 17px;
+    background-position: 9px 8px;
     background-repeat: no-repeat;
+    background-size: 60px;
 }
 
 /* --------- tlac zpet */
@@ -645,3 +652,265 @@ div.menu.right {
     bottom: 0px;
 }
 
+
+
+/* -------------------------------------------------------------- media queries */
+@media only screen and (min-width: 0px)  and (max-width: 319px) {
+
+}
+@media only screen and (min-width: 320px)  and (max-width: 459px) {
+    body {
+        font-size: 12px;
+    }
+    div.mainTop {
+        height: 50px;
+    }
+    .mainTop input {
+        margin-top: 24px;
+        font-size: 1em;    
+        background-size: 20px;
+}
+
+    .mainTop h1 {
+        line-height: 50px;
+    }
+
+    .mainTop div.zakazniciDetail {
+    top: 50px;
+    }
+
+    div.mainContent {
+        top: 50px;
+        bottom: 64px;
+    }
+
+
+
+
+    /* --------- content zakazniciSeznam */
+    .mainContent.zakazniciSeznam li {
+        height: 40px;
+    }
+    .mainContent.zakazniciSeznam h2 {
+        font-size: 1em;
+        line-height: 40px;
+    }
+
+    /* --------- content zakazniciDetail */
+    .mainContent.zakazniciDetail ul {
+        padding: 10px;
+        padding-right: 15px;
+    }
+    .mainContent.zakazniciDetail h1 {
+        padding: 2%;
+    }
+    .zakazniciDetail input {
+        font-size: 1em;
+    }
+
+    div.mainContent.zakazniciDetail {
+        top: 110px;
+        bottom: 0px;
+    }
+
+    div.mainContent.zakazniciDetail.withBottom4buttons {
+        bottom: 122px;
+    }
+
+    /* --------- content nastaveni */
+    .mainContent.nastaveni input{
+        font-size: 1em;
+
+    }
+
+
+
+
+
+    div.mainBottom {
+        height: 60px;
+    }
+    input.buttonBottomRight {
+        bottom: 40px;
+    }
+
+    /* --------- content zakazniciDetail */
+    div.mainBottom.zakazniciDetail {
+        height: 120px;
+    }
+
+    div.mainBottom.zakazniciDetail input {
+        height: 100px;
+        width: 50%;
+        background-position: 40px 6px;
+        background-size: 80px;
+        padding-left: 120px;
+    }
+
+    .special.info {
+        top: 50px
+    ;
+        bottom: 60px;
+}
+
+    .twoButtons div.borderDiv {
+    background-size: 50px;
+    background-position: 15px 6px;
+}
+    .twoButtons div.labelDiv {
+padding-top: 25px;
+padding-left: 30px;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+@media only screen and (min-width: 460px)  and (max-width: 959px) {
+    body {
+        font-size: 24px;
+    }
+    div.mainTop {
+        height: 80px;
+    }
+    .mainTop input {
+        margin-top: 24px;
+        font-size: 1em;
+    }
+
+    .mainTop h1 {
+        line-height: 80px;
+    }
+
+
+
+    div.mainContent {
+        top: 80px;
+        bottom: 100px;
+    }
+
+    div#nav-toggle2 {
+        height: 78px;
+    
+        width: 110px;
+}
+div.menu {
+    top: 80px;
+    
+}
+
+.menu div {
+    background-position: 12px 8px;  
+    background-size: 70px;
+    
+    padding-left: 110px;
+    height: 90px;
+}
+
+.buttonTopMenu {
+    background-position: 12px 15px;    
+    background-size: 80px;
+    
+}
+
+/* --------- components */
+.twoButtons div.button > div
+{
+    height: 98px;
+    
+}
+.twoButtons div.borderDiv {
+    background-size: 70px;
+    
+    background-position: 17% 13px;
+}
+
+    /* --------- content zakazniciSeznam */
+    .mainContent.zakazniciSeznam li {
+        height: 60px;
+    }
+    .mainContent.zakazniciSeznam h2 {
+        font-size: 1em;
+        line-height: 60px;
+    }
+
+    /* --------- content zakazniciDetail */
+    .mainContent.zakazniciDetail ul {
+        padding: 10px;
+        padding-right: 15px;
+    }
+    .mainContent.zakazniciDetail h1 {
+        padding: 2%;
+    }
+    .zakazniciDetail input {
+        font-size: 1em;
+    }
+
+    div.mainContent.zakazniciDetail {
+        top: 180px;
+        bottom: 0px;
+    }
+
+    div.mainContent.zakazniciDetail.withBottom4buttons {
+        bottom: 200px;
+    }
+
+    /* --------- content nastaveni */
+    .mainContent.nastaveni input{
+        font-size: 1em;
+
+    }
+
+
+
+
+
+    div.mainBottom {
+        height: 100px;
+    }
+    input.buttonBottomRight {
+        bottom: 40px;
+    }
+
+    /* --------- content zakazniciDetail */
+    div.mainBottom.zakazniciDetail {
+        height: 200px;
+    }
+
+    div.mainBottom.zakazniciDetail input {
+        height: 100px;
+        width: 50%;
+        background-position: 40px 6px;
+        background-size: 80px;
+        padding-left: 120px;
+    }
+
+
+
+
+
+
+
+}
+
+
+
+@media only screen and (min-width: 960px)  and (max-width: 1279px) {
+
+}
+@media only screen and (min-width: 1280px)  and (max-width: 1599px) {
+
+}
+@media only screen and (min-width: 1600px)  and (max-width: 1919px) {
+
+}
+@media only screen and (min-width: 1920px) {
+
+}

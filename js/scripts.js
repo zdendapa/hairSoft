@@ -785,6 +785,8 @@ function transitionInit()
 
     pageMaxLenght = $(document).width()>$(document).height()?$(document).width():$(document).height();
 
+    $("body").css("min-height",pageMaxLenght + "px");
+
     // --- menu bar
     if(supportedTran == 3)
     {
@@ -868,6 +870,7 @@ function ajaxErrorHandler(data) {
 
 
 // level: 1=INFO, 2=WARNING, 3=ERROR
+// v2
 function logging(str, level) {
     if (level == 1 || level == null) console.log("INFO:" + str);
     if (level == 2) console.log("WARN:" + str);
