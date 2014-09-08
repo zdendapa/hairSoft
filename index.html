@@ -8,14 +8,19 @@
     <title>Hair soft</title>
 </head>
 <body>
+<style>
 
+</style>
 
-<link rel="stylesheet" href="css/main.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
+<link rel="stylesheet" href="css/jquery.mobile.custom.structure.css" />
+<link rel="stylesheet" href="css/jquery.mobile.custom.theme.css" />
+<link rel="stylesheet" href="css/main.css" />
 <script type="text/javascript" charset="utf-8" src="js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="phonegap.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
 <script type="text/javascript" src="js/fastclick.js"></script>
+<script type="text/javascript" src="js/jquery.mobile.custom.js"></script>
 
 
 <script type="text/javascript">
@@ -84,20 +89,20 @@
         <div data-cont="topFind" class="find">
             <input placeholder="hledat">
         </div>
-        <div data-click="menuToggle()" id="nav-toggle2" class="buttonTopMenu button buttonOpacity menuRight"></div>
-        <div data-cont="rowLeft" data-click="backGo()" id="rowLeft" class="button buttonOpacity">
+        <div data-click="menuToggle()" id="nav-toggle2" class="buttonTopMenu button _buttonClick buttonOpacity menuRight"></div>
+        <div data-cont="rowLeft" data-click="backGo()" id="rowLeft" class="button _buttonClick buttonOpacity">
             <span>Zpět</span>
         </div>
 
         <div data-cont="topZakazniciDetail" class="twoButtons zakazniciDetail gradSeda">
-            <div data-click="zakazniciDetailAjax('delete')" class="button left">
+            <div data-click="zakazniciDetailAjax('delete')" class="button _buttonClick left">
                 <div class="borderDiv">
                     <div class="labelDiv">
                         SMAZAT
                     </div>
                 </div>
             </div><!--
-        --><div data-click="zakazniciDetailChangeToEdit()" class="button right">
+        --><div data-click="zakazniciDetailChangeToEdit()" class="button _buttonClick right">
             <div class="borderDiv">
                 <div class="labelDiv">
                     UPRAVIT
@@ -123,11 +128,11 @@
         <ul>
             <li><span>Jméno</span><input name="jmeno" readonly></li>
             <li><span>Příjmení</span><input name="prijmeni" readonly></li>
-            <li><span>Pohlaví</span><input class="css-checkbox" type="radio" value="M" id="zakaznikSexM" name="sex" disabled/><label class="css-label" for="zakaznikSexM">MUŽ</label>
-                <input class="css-checkbox" type="radio" value="Z" id="zakaznikSexZ" name="sex" disabled/><label class="css-label" for="zakaznikSexZ">ŽENA</label></li>
+            <li><span>Pohlaví</span><input data-role="none" class="css-checkbox" type="radio" value="M" id="zakaznikSexM" name="sex" disabled/><label class="css-label" for="zakaznikSexM">MUŽ</label>
+                <input data-role="none" class="css-checkbox" type="radio" value="Z" id="zakaznikSexZ" name="sex" disabled/><label class="css-label" for="zakaznikSexZ">ŽENA</label></li>
             <li><span>E-mail</span><input name="email" readonly></li>
             <li><span>Telefon</span><input name="telefon" readonly></li>
-            <li><span>Telefon2</span><input name="telefon2" readonly></li>
+            <li><span>Mobil</span><input name="telefon2" readonly></li>
             <li><span>Adresa</span><input name="adresa" readonly></li>
             <li><span>Město</span><input name="mesto" readonly></li>
             <li><span>PSČ</span><input name="psc" readonly></li>
@@ -143,19 +148,856 @@
     </div>
 
     <div data-cont="skladSeznam" class="mainContent skladSeznam">
-        <ul>
-            <li>
-                <h2>sklad 1</h2>
-            </li>
-        </ul>
+
+
+    <div data-role="main" class="ui-content content">
+    <table data-role="table" data-mode="columntoggle" class="ui-responsive">
+    <thead>
+    <tr>
+        <th>Název</th>
+        <th data-priority="2">Plu</th>
+        <th data-priority="3">Nákupní cena bez DPH</th>
+        <th data-priority="4">Nákupní cena s DPH</th>
+        <th data-priority="5">Počáteční stav</th>
+        <th data-priority="6">Příjem</th>
+        <th data-priority="7">Prodej</th>
+        <th data-priority="8">Spotřeba</th>
+        <th data-priority="1">Aktuální stav na skladě</th>
+    </tr>
+    </thead>
+        <tbody>
+        <tr>
+            <td>L' Oréal - Homme Cle ar shampoo 250m I</td>
+            <td>3474630342477</td>
+            <td>73,51 Kč</td>
+            <td>88,95 Kč</td>
+            <td>0,000 ks</td>
+            <td>3,000 ks</td>
+            <td>1,000 ks</td>
+            <td>1,000 ks</td>
+            <td>2,000 ks</td>
+        </tr>
+
+    </tbody>
+    </table>
+    </div>
+
+
+
+
+
+
     </div>
 
     <div data-cont="trzbySeznam" class="mainContent trzbySeznam">
-        <ul>
-            <li>
-                <h2>trzby 1</h2>
-            </li>
-        </ul>
+
+    <div data-role="main" class="ui-content content sluzby">
+    <table data-role="table" data-mode="columntoggle" class="ui-responsive">
+    <thead>
+    <tr>
+        <th>Datum</th>
+        <th data-priority="8">Uživatel</th>
+        <th data-priority="6">Denní tržba</th>
+        <th data-priority="7">Tržba celkem</th>
+        <th data-priority="5">Denní tržba celkem</th>
+        <th data-priority="1">Celkem za měsíc</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+
+
+    <div data-role="main" class="ui-content content prodej">
+    <table data-role="table" data-mode="columntoggle" class="ui-responsive">
+    <thead>
+    <tr>
+        <th>Datum</th>
+        <th data-priority="8">Uživatel</th>
+        <th data-priority="6">Denní tržba</th>
+        <th data-priority="7">Tržba celkem</th>
+        <th data-priority="5">Denní tržba celkem</th>
+        <th data-priority="1">Celkem za měsíc</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák prodej</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>200,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>234,00 Kč</td>
+        <td>850,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>22000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>100,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>2800,00 kč</td>
+        <td>40000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Pepa Novák</td>
+        <td>500,00 Kč</td>
+        <td>1800,00 Kč</td>
+        <td>1800,00 kč</td>
+        <td>30000,00 kč</td>
+    </tr>
+    <tr>
+        <td>1.2.2014</td>
+        <td>Zuzana Vonásková</td>
+        <td>150,00 Kč</td>
+        <td>300,00 Kč</td>
+        <td>450,00 kč</td>
+        <td>12000,00 kč</td>
+    </tr>
+    <tr>
+        <td>2.2.2014</td>
+        <td>Aleš Petřík</td>
+        <td>325,00 Kč</td>
+        <td>800,00 Kč</td>
+        <td>1200,00 kč</td>
+        <td>25000,00 kč</td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+
+
+
+
+
     </div>
 
     <div data-cont="nastaveni" class="mainContent nastaveni">
@@ -174,14 +1016,14 @@
     <div data-cont="ftZakazniciDetail" class="mainBottom zakazniciDetail fourButtons">
 
     <div class="twoButtons gradSeda zdButtonObjednat">
-        <div data-click="" class="button left">
+        <div data-click="" class="button _buttonClick left">
             <div class="borderDiv">
                 <div class="labelDiv">
                     OBJEDNAT
                 </div>
             </div>
         </div><!--
-     --><div data-click="zakaznik.smsSend()" class="button right zdButtonSms">
+     --><div data-click="zakaznik.smsSend()" class="button _buttonClick right zdButtonSms">
             <div class="borderDiv">
                 <div class="labelDiv">
                     SMS
@@ -191,14 +1033,14 @@
     </div>
 
     <div class="twoButtons gradSeda">
-        <div data-click="zakaznik.mailSend()" class="button left zdButtonEmail">
+        <div data-click="zakaznik.mailSend()" class="button _buttonClick left zdButtonEmail">
             <div class="borderDiv">
                 <div class="labelDiv">
                     EMAIL
                 </div>
             </div>
         </div><!--
-     --><div data-click="zakaznik.telDial()" class="button right zdButtonVolat">
+     --><div data-click="zakaznik.telDial()" class="button _buttonClick right zdButtonVolat">
             <div class="borderDiv">
                 <div class="labelDiv">
                     VOLAT
@@ -210,20 +1052,17 @@
 
     </div>
 
-    <div data-cont="ftGeneral" class="mainBottom general gradSeda">
-        <input class="bottomSearch">
-        <input class="buttonBottomRight" type="button" value="NOVÝ">
-    </div>
+
 
     <div data-cont="ftZakazniciSeznam" class="mainBottom twoButtons gradSeda zakazniciSeznam">
-        <div data-click="xmlZakaznici.loadForce(true)" class="button left">
+        <div data-click="xmlZakaznici.loadForce(true)" class="button _buttonClick left">
             <div class="borderDiv">
                 <div class="labelDiv">
                     Obnovit
                 </div>
             </div>
         </div><!--
-        --><div data-click="zakazniciDetailNovy()" class="button right">
+        --><div data-click="zakazniciDetailNovy()" class="button _buttonClick right">
         <div class="borderDiv">
             <div class="labelDiv">
                 Nový
@@ -234,14 +1073,14 @@
 
     <div data-cont="ftNastaveni" class="mainBottom gradSeda nastaveni">
         <div class="twoButtons">
-            <div data-click="scan()" class="button">
+            <div data-click="scan()" class="button _buttonClick">
                 <div class="borderDiv">
                     <div class="labelDiv left">
                         Načíst kód
                     </div>
                 </div>
             </div><!--
-        --><div data-click="identifikatorSave()" class="button">
+        --><div data-click="identifikatorSave()" class="button _buttonClick">
             <div class="borderDiv">
                 <div class="labelDiv right">
                     Uložit
@@ -249,7 +1088,23 @@
             </div>
         </div>
         </div>
+    </div>
 
+    <div data-cont="ftTrzbySeznam" class="mainBottom twoButtons gradSeda trzbySeznam">
+        <div data-click="trzbyDisplay('sluzby')" class="button _buttonClick left">
+            <div class="borderDiv">
+                <div class="labelDiv">
+                    Tržby služeb
+                </div>
+            </div>
+        </div><!--
+        --><div data-click="trzbyDisplay('prodej')" class="button _buttonClick right">
+        <div class="borderDiv">
+            <div class="labelDiv">
+                Tržby prodeje
+            </div>
+        </div>
+    </div>
     </div>
 
     <div id="verzeApp">0.2g</div>

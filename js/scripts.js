@@ -41,6 +41,36 @@ var xmlZakaznici = {
     }
 };
 
+var xmlSklad = {
+    data : null,
+    loadWhenNull : function(showInfo, force) {
+        if(this.data == null || force)
+        {
+            if(showInfo)
+                showInfow(true,"Načítám...");
+            //ajaxZakaznici(renderSkladSeznam);
+        }
+    },
+    loadForce : function(showInfo) {
+        this.loadWhenNull(showInfo,true);
+    }
+};
+
+var xmlTrzby = {
+    data : null,
+    loadWhenNull : function(showInfo, force) {
+        if(this.data == null || force)
+        {
+            if(showInfo)
+                showInfow(true,"Načítám...");
+            //ajaxZakaznici(renderTrzbySeznam);
+        }
+    },
+    loadForce : function(showInfo) {
+        this.loadWhenNull(showInfo,true);
+    }
+};
+
 function onDeviceReady() {
 
 }
@@ -86,6 +116,8 @@ function clickInit()
 
     $buttons.on("click", function(e){
         e.stopPropagation();
+        if($(this).hasClass("buttonDisable"))
+        return;
         if($(this).hasClass("buttonOpacity"))
             $(this).addClass('highlightOpacity');
         else
@@ -107,7 +139,7 @@ function clickInit()
 
     // ------------- buttons with touch consideration
     // get all buttons in memory. Those that touchstart should be consider
-    $buttons = $('.button');
+    $buttons = $('._buttonTouch');
 
     // set event on buttons
 
@@ -290,6 +322,8 @@ function showWindow(windowName)
         //$("#rowLeft").css("display","block");
         containerVisibilitySet("rowLeft",true);
         $("div.mainContent.zakazniciDetail").addClass("withBottom4buttons");
+
+
         backFunction = function(){
             showWindow("showZakazniciSeznam");
             $("div.mainContent.zakazniciSeznam").scrollTop(ulScrollOffset);
@@ -307,13 +341,28 @@ function showWindow(windowName)
         containerVisibilitySet("skladSeznam",true);
         //$(".mainTop input").css("display","inline-block");
         containerVisibilitySet("topFind",true);
+
+        //xmlSklad.loadWhenNull(true);
+
+
     }
     if(windowName=="showTrzbySeznam")
     {
-        //containerVisibilitySet("trzbySeznam",true);
-        $("div.mainContent.trzbySeznam").css("display","block");
+        containerVisibilitySet("trzbySeznam",true);
+        //$("div.mainContent.trzbySeznam").css("display","block");
         //$(".mainTop input").css("display","inline-block");
         containerVisibilitySet("topFind",true);
+        containerVisibilitySet("ftTrzbySeznam",true);
+
+        // on start both sluzby and prodej are display none. Show first one
+        if($(".trzbySeznam div.content.sluzby").css("display") == "none" && $(".trzbySeznam div.content.prodej").css("display")=="none")
+        {
+
+            $(".trzbySeznam div.content.sluzby").css("display","block");
+        }
+
+        $(".mainBottom.trzbySeznam div.left").addClass("trzbyTypColor");
+        $(".mainBottom.trzbySeznam div.right").removeClass("trzbyTypColor");
     }
     if(windowName=="showNastaveni")
     {
@@ -415,6 +464,39 @@ function renderZakazniciSeznam()
 
     showInfow(false);
 }
+
+// --------------------------------------------- sklad
+function renderSkladSeznam()
+{
+    //var htmlData = '<table data-role="table" data-mode="columntoggle" class="ui-responsive" id="myTable">  <thead>  <tr>  <th data-priority="6">CustomerID</th>  <th>CustomerName</th>  <th data-priority="1">ContactName</th>  <th data-priority="2">Address</th>  <th data-priority="3">City</th>  <th data-priority="4">PostalCode</th>  <th data-priority="5">Country</th>  </tr>  </thead>  <tbody>  <tr>  <td>1</td>  <td>Alfreds Futterkiste</td>  <td>Maria Anders</td>  <td>Obere Str. 57</td>  <td>Berlin</td>  <td>12209</td>  <td>Germany</td>  </tr>  <tr>  <td>2</td>  <td>Antonio Moreno Taquería</td>  <td>Antonio Moreno</td>  <td>Mataderos 2312</td>  <td>México D.F.</td>  <td>05023</td>  <td>Mexico</td>  </tr>  <tr>  <td>3</td>  <td>Around the Horn</td>  <td>Thomas Hardy</td>  <td>120 Hanover Sq.</td>  <td>London</td>  <td>WA1 1DP</td>  <td>UK</td>  </tr>  <tr>  <td>4</td>  <td>Berglunds snabbköp</td>  <td>Christina Berglund</td>  <td>Berguvsvägen 8</td>  <td>Luleĺ</td>  <td>S-958 22</td>  <td>Sweden</td>  </tr>  </tbody>  </table>';
+    //$(".skladSeznam div.table").html(htmlData);
+
+
+    showInfow(false);
+}
+
+// --------------------------------------------- trzby
+
+
+function trzbyDisplay(typ)
+{
+    if(typ=="sluzby")
+    {
+        $(".trzbySeznam div.content.sluzby").css("display","block");
+        $(".trzbySeznam div.content.prodej").css("display","none");
+        $(".mainBottom.trzbySeznam div.left").addClass("trzbyTypColor");
+        $(".mainBottom.trzbySeznam div.right").removeClass("trzbyTypColor");
+    } else
+    {
+        $(".trzbySeznam div.content.sluzby").css("display","none");
+        $(".trzbySeznam div.content.prodej").css("display","block");
+        $(".mainBottom.trzbySeznam div.right").addClass("trzbyTypColor");
+        $(".mainBottom.trzbySeznam div.left").removeClass("trzbyTypColor");
+    }
+
+
+
+}
 // --------------------------------------------- zakazniciDetail
 
 function zakazniciDetailNovy()
@@ -470,12 +552,33 @@ function zakazniciDetailSetInputs(clear)
     $(".zakazniciDetail input[name=pohlavi]").val(xmlGetEl(xmlZakazniciDetail,"lidi_pohlavi"));
     //$(".zakazniciDetail input[name=adresa]").val(("lidi_adresa"));
     $(".zakazniciDetail input[name=email]").val(xmlGetEl(xmlZakazniciDetail,"lidi_email"));
-    $(".zakazniciDetail input[name=telefon]").val(xmlGetEl(xmlZakazniciDetail,"lidi_tel1"));
-    $(".zakazniciDetail input[name=telefon2]").val(xmlGetEl(xmlZakazniciDetail,"lidi_tel2"));
+    var tel1 = xmlGetEl(xmlZakazniciDetail,"lidi_tel1");
+    $(".zakazniciDetail input[name=telefon]").val(tel1);
+    var tel2 = xmlGetEl(xmlZakazniciDetail,"lidi_tel2");
+    $(".zakazniciDetail input[name=telefon2]").val(tel2);
     $(".zakazniciDetail input[name=adresa]").val(xmlGetEl(xmlZakazniciDetail,"lidi_adresa"));
     $(".zakazniciDetail input[name=mesto]").val(xmlGetEl(xmlZakazniciDetail,"lidi_mesto"));
     //$(".zakazniciDetail input[name=psc]").val(xmlGetEl("lidi_psc"));
     $(".zakazniciDetail input[name=psc]").val(xmlGetEl(xmlZakazniciDetail,"lidi_psc"));
+
+    // disable unused buttons
+
+    $(".zakazniciDetail .button").removeClass("buttonDisable");
+
+
+    if(tel1=="" &&  tel2=="") {
+
+        $("div.zdButtonVolat").addClass("buttonDisable").removeClass("_buttonClick");
+    }
+    if(tel2=="")
+    {
+        $("div.zdButtonSms").addClass("buttonDisable").removeClass("_buttonClick");
+    }
+    if(xmlGetEl(xmlZakazniciDetail,"lidi_email")=="")
+    {
+        $("div.zdButtonEmail").addClass("buttonDisable").removeClass("_buttonClick");
+    }
+
 }
 
 
@@ -642,7 +745,13 @@ var zakaznik = {
         window.location = "sms:"+xmlGetEl(xmlZakazniciDetail,"lidi_tel1")+"?body=HairSoft sms tempate";
     },
     telDial : function (){
-        window.location.href='tel:'+xmlGetEl(xmlZakazniciDetail,"lidi_tel1");
+        var tel= xmlGetEl(xmlZakazniciDetail,"lidi_tel2");
+        alert(tel);
+        if(tel.length<9)
+        {
+            tel= xmlGetEl(xmlZakazniciDetail,"lidi_tel1");
+        }
+        window.location.href='tel:'+tel;
     },
     mailSend : function (){
         //window.location.href='mailto:email@email.com?cc=email2@email.com&bcc=email3@email.com&subject=The subject of the email&body=The body of the email';
@@ -785,7 +894,7 @@ function transitionInit()
 
     pageMaxLenght = $(document).width()>$(document).height()?$(document).width():$(document).height();
 
-    $("body").css("min-height",pageMaxLenght + "px");
+    //$("body").css("min-height",pageMaxLenght + "px");
 
     // --- menu bar
     if(supportedTran == 3)
