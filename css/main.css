@@ -216,6 +216,7 @@ div.zakazniciDetail {
     overflow: scroll;
 }
 .skladSeznam .ui-content.content {
+    font-size: 16px;
     padding: 0px;
 }
 .ui-table-columntoggle-btn.ui-btn.ui-btn-a.ui-corner-all.ui-shadow.ui-mini
@@ -231,6 +232,7 @@ div.zakazniciDetail {
     overflow-y: scroll;
 }
 .trzbySeznam .ui-content.content {
+    font-size: 16px;
     padding: 0px;
 }
 .trzbySeznam div.content.sluzby, .trzbySeznam div.content.prodej {
