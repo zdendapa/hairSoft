@@ -23,6 +23,7 @@ var supportedTran;
 var transitionObject = {};
 var pageMaxLenght;
 var touched = false;
+var trLastSelected;
 
 
 
@@ -186,17 +187,6 @@ function clickInit()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     // ----------------------- scrollable list
     $(document).on('click', '.mainContent.zakazniciSeznam li', function() {
         $(this).addClass('highlight');
@@ -206,6 +196,26 @@ function clickInit()
             renderZakazniciDetail($(el).attr("data-id"));
             showWindow("showZakazniciDetail");
         },100);
+    });
+
+
+
+    // ----------------------- tables
+    $(document).on('click', 'tr', function() {
+        if($(this).parent().prop("tagName")!="TBODY")
+        {
+            return;
+        }
+        if(trLastSelected!=null)
+        {
+            $(trLastSelected).removeClass("colorTrSelected");
+            console.log("exist");
+        } else
+        {
+            $("tr").removeClass("colorTrSelected");
+        }
+        $(this).addClass("colorTrSelected");
+        trLastSelected = this;
     });
 }
 

@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "cz.initedsolutions.hairsoftTest1"
-        version   = "0.3">
+        version   = "0.4">
     <!--
         0.1
         0.2
@@ -19,7 +19,8 @@
         - telefon2 změna na mobil
         - volá na vyplněný telefon, mobil má prioritu
         - zakatniciDetail vypnuta tlacitka
-
+        0.4
+        - uprava tabulek
 
 
     -->

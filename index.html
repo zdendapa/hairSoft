@@ -1,10 +1,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
+    <meta charset="utf-8"/>
+    <meta name="format-detection" content="telephone=no"/>
     <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
     <title>Hair soft</title>
 </head>
 <body>
@@ -12,16 +13,17 @@
 
 </style>
 
-<link rel="stylesheet" href="css/main.css" />
-<link rel="stylesheet" href="css/font-awesome.min.css" />
-<link rel="stylesheet" href="css/jquery.mobile.custom.structure.css" />
-<link rel="stylesheet" href="css/jquery.mobile.custom.theme.css" />
+<link rel="stylesheet" href="css/main.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+
+<!--<link rel="stylesheet" href="css/jquery.mobile.custom.structure.css" />
+<link rel="stylesheet" href="css/jquery.mobile.custom.theme.css" />-->
 
 <script type="text/javascript" charset="utf-8" src="js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="phonegap.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
 <script type="text/javascript" src="js/fastclick.js"></script>
-<script type="text/javascript" src="js/jquery.mobile.custom.js"></script>
+<!--<script type="text/javascript" src="js/jquery.mobile.custom.js"></script>-->
 
 
 <script type="text/javascript">
@@ -36,1194 +38,1234 @@
         document.addEventListener("deviceready", onDeviceReady, false);
     }
 
-    if(local)
-    {
+    if (local) {
         window.addEventListener("load", onDeviceReady, false);
     }
 
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
         onLoad();
         FastClick.attach(document.body);
     }, false);
 
 
-
 </script>
 <div id="main" class="main" data-role="page">
 
-    <div data-cont="specJumpList" class="special jumpList">
-        <div><div>a</div></div><div><div>b</div></div><div><div>c</div></div><div><div>d</div></div><div><div>e</div></div><div><div>f</div></div><div><div>g</div></div><div><div>h</div></div><div><div>i</div></div><div><div>j</div></div><div><div>k</div></div><div><div>l</div></div><div><div>m</div></div><div><div>n</div></div><div><div>o</div></div><div><div>p</div></div><div><div>q</div></div><div><div>r</div></div><div><div>s</div></div><div><div>t</div></div><div><div>u</div></div><div><div>v</div></div><div><div>w</div></div><div><div>x</div></div><div><div>y</div></div><div><div>z</div></div>
+<div data-cont="specJumpList" class="special jumpList">
+    <div>
+        <div>a</div>
+    </div>
+    <div>
+        <div>b</div>
+    </div>
+    <div>
+        <div>c</div>
+    </div>
+    <div>
+        <div>d</div>
+    </div>
+    <div>
+        <div>e</div>
+    </div>
+    <div>
+        <div>f</div>
+    </div>
+    <div>
+        <div>g</div>
+    </div>
+    <div>
+        <div>h</div>
+    </div>
+    <div>
+        <div>i</div>
+    </div>
+    <div>
+        <div>j</div>
+    </div>
+    <div>
+        <div>k</div>
+    </div>
+    <div>
+        <div>l</div>
+    </div>
+    <div>
+        <div>m</div>
+    </div>
+    <div>
+        <div>n</div>
+    </div>
+    <div>
+        <div>o</div>
+    </div>
+    <div>
+        <div>p</div>
+    </div>
+    <div>
+        <div>q</div>
+    </div>
+    <div>
+        <div>r</div>
+    </div>
+    <div>
+        <div>s</div>
+    </div>
+    <div>
+        <div>t</div>
+    </div>
+    <div>
+        <div>u</div>
+    </div>
+    <div>
+        <div>v</div>
+    </div>
+    <div>
+        <div>w</div>
+    </div>
+    <div>
+        <div>x</div>
+    </div>
+    <div>
+        <div>y</div>
+    </div>
+    <div>
+        <div>z</div>
+    </div>
+</div>
+
+
+<!-------------------------------------------------- this info must be last of spec! Put spec before!
+ its on the top of z-index layer
+ -->
+
+<div class="special cover">
+</div>
+
+
+<div data-cont="specInfo" class="special info">
+    <div class="symbolLoading">
+        <i class="fa fa-refresh fa-spin"></i>
+    </div>
+    <h1>Načítám...</h1>
+</div>
+
+
+<!-------------------------------------------------- menu -->
+<div class="menu trans gradSeda">
+    <div data-click="menuToggle();showWindow('showObjednavkySeznam')"
+         class="objednavky _buttonClick buttonOpacity"></div>
+    <div data-click="menuToggle();showWindow('showSkladSeznam')" class="sklad _buttonClick buttonOpacity"></div>
+    <div data-click="menuToggle();showWindow('showZakazniciSeznam')" class="zakaznici _buttonClick buttonOpacity"></div>
+    <div data-click="menuToggle();showWindow('showTrzbySeznam')" class="trzba _buttonClick buttonOpacity"></div>
+    <div data-click="menuToggle();showWindow('showNastaveni')" class="nastaveni _buttonClick buttonOpacity"></div>
+</div>
+
+<!-------------------------------------------------- tops -->
+
+<div class="mainTop gradSeda">
+    <h1 data-cont="topH1"></h1>
+
+    <div data-cont="topFind" class="find">
+        <input placeholder="hledat">
+    </div>
+    <div data-click="menuToggle()" id="nav-toggle2"
+         class="buttonTopMenu button _buttonClick buttonOpacity menuRight"></div>
+    <div data-cont="rowLeft" data-click="backGo()" id="rowLeft" class="button _buttonClick buttonOpacity">
+        <span>Zpět</span>
     </div>
 
-
-
-    <!-------------------------------------------------- this info must be last of spec! Put spec before!
-     its on the top of z-index layer
-     -->
-
-    <div class="special cover">
-    </div>
-
-
-    <div data-cont="specInfo" class="special info">
-        <div class="symbolLoading">
-            <i class="fa fa-refresh fa-spin"></i>
-        </div>
-        <h1>Načítám...</h1>
-    </div>
-
-
-
-    <!-------------------------------------------------- menu -->
-    <div class="menu trans gradSeda">
-        <div data-click="menuToggle();showWindow('showObjednavkySeznam')" class="objednavky _buttonClick buttonOpacity"></div>
-        <div data-click="menuToggle();showWindow('showSkladSeznam')" class="sklad _buttonClick buttonOpacity"></div>
-        <div data-click="menuToggle();showWindow('showZakazniciSeznam')" class="zakaznici _buttonClick buttonOpacity"></div>
-        <div data-click="menuToggle();showWindow('showTrzbySeznam')" class="trzba _buttonClick buttonOpacity"></div>
-        <div data-click="menuToggle();showWindow('showNastaveni')" class="nastaveni _buttonClick buttonOpacity"></div>
-    </div>
-
-    <!-------------------------------------------------- tops -->
-
-    <div class="mainTop gradSeda">
-        <h1 data-cont="topH1"></h1>
-        <div data-cont="topFind" class="find">
-            <input placeholder="hledat">
-        </div>
-        <div data-click="menuToggle()" id="nav-toggle2" class="buttonTopMenu button _buttonClick buttonOpacity menuRight"></div>
-        <div data-cont="rowLeft" data-click="backGo()" id="rowLeft" class="button _buttonClick buttonOpacity">
-            <span>Zpět</span>
-        </div>
-
-        <div data-cont="topZakazniciDetail" class="twoButtons zakazniciDetail gradSeda">
-            <div data-click="zakazniciDetailAjax('delete')" class="button _buttonClick left">
-                <div class="borderDiv">
-                    <div class="labelDiv">
-                        SMAZAT
-                    </div>
+    <div data-cont="topZakazniciDetail" class="twoButtons zakazniciDetail gradSeda">
+        <div data-click="zakazniciDetailAjax('delete')" class="button _buttonClick left">
+            <div class="borderDiv">
+                <div class="labelDiv">
+                    SMAZAT
                 </div>
-            </div><!--
+            </div>
+        </div><!--
+
+
         --><div data-click="zakazniciDetailChangeToEdit()" class="button _buttonClick right">
             <div class="borderDiv">
                 <div class="labelDiv">
                     UPRAVIT
                 </div>
             </div>
-            </div>
         </div>
-
-
     </div>
 
-    <!-------------------------------------------------- main content -->
-    <div data-cont="zakazniciSeznam" class="mainContent zakazniciSeznam">
-        <ul>
-        </ul>
+
+</div>
+
+<!-------------------------------------------------- main content -->
+<div data-cont="zakazniciSeznam" class="mainContent zakazniciSeznam">
+    <ul>
+    </ul>
+</div>
+
+<div data-cont="zakazniciDetail" class="mainContent zakazniciDetail withBottom4buttons">
+    <div>
+
     </div>
+    <h1></h1>
+    <ul>
+        <li><span>Jméno</span><input name="jmeno" readonly></li>
+        <li><span>Příjmení</span><input name="prijmeni" readonly></li>
+        <li><span>Pohlaví</span><input data-role="none" class="css-checkbox" type="radio" value="M" id="zakaznikSexM"
+                                       name="sex" disabled/><label class="css-label" for="zakaznikSexM">MUŽ</label>
+            <input data-role="none" class="css-checkbox" type="radio" value="Z" id="zakaznikSexZ" name="sex"
+                   disabled/><label class="css-label" for="zakaznikSexZ">ŽENA</label></li>
+        <li><span>E-mail</span><input name="email" readonly></li>
+        <li><span>Telefon</span><input name="telefon" readonly></li>
+        <li><span>Mobil</span><input name="telefon2" readonly></li>
+        <li><span>Adresa</span><input name="adresa" readonly></li>
+        <li><span>Město</span><input name="mesto" readonly></li>
+        <li><span>PSČ</span><input name="psc" readonly></li>
+    </ul>
+</div>
 
-    <div data-cont="zakazniciDetail" class="mainContent zakazniciDetail withBottom4buttons">
-        <div>
+<div data-cont="objednavkySeznam" class="mainContent objednavkySeznam">
+    <ul>
+        <li>
+            <h2>Objednavka 1</h2>
+        </li>
+    </ul>
+</div>
 
-        </div>
-        <h1></h1>
-        <ul>
-            <li><span>Jméno</span><input name="jmeno" readonly></li>
-            <li><span>Příjmení</span><input name="prijmeni" readonly></li>
-            <li><span>Pohlaví</span><input data-role="none" class="css-checkbox" type="radio" value="M" id="zakaznikSexM" name="sex" disabled/><label class="css-label" for="zakaznikSexM">MUŽ</label>
-                <input data-role="none" class="css-checkbox" type="radio" value="Z" id="zakaznikSexZ" name="sex" disabled/><label class="css-label" for="zakaznikSexZ">ŽENA</label></li>
-            <li><span>E-mail</span><input name="email" readonly></li>
-            <li><span>Telefon</span><input name="telefon" readonly></li>
-            <li><span>Mobil</span><input name="telefon2" readonly></li>
-            <li><span>Adresa</span><input name="adresa" readonly></li>
-            <li><span>Město</span><input name="mesto" readonly></li>
-            <li><span>PSČ</span><input name="psc" readonly></li>
-        </ul>
-    </div>
-
-    <div data-cont="objednavkySeznam" class="mainContent objednavkySeznam">
-        <ul>
-            <li>
-                <h2>Objednavka 1</h2>
-            </li>
-        </ul>
-    </div>
-
-    <div data-cont="skladSeznam" class="mainContent skladSeznam">
+<div data-cont="skladSeznam" class="mainContent skladSeznam">
 
 
-    <div data-role="main" class="ui-content content">
+<div data-role="main" class="ui-content content">
+<table data-role="table" data-mode="columntoggle" class="ui-responsive">
+<thead>
+<tr>
+    <th>Název</th>
+    <th data-priority="2">Plu</th>
+    <th data-priority="3">Nákupní cena bez DPH</th>
+    <th data-priority="4">Nákupní cena s DPH</th>
+    <th data-priority="5">Počáteční stav</th>
+    <th data-priority="6">Příjem</th>
+    <th data-priority="7">Prodej</th>
+    <th data-priority="8">Spotřeba</th>
+    <th data-priority="1">Aktuální stav na skladě</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+    <td class="textLeft">3474630342477</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+    <td>2,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+    <td class="textLeft">3474630342422</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>82,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+    <td class="textLeft">3474630342412</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+    <td class="textLeft">3474630342342</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>0,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+    <td class="textLeft">3474630342477</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+    <td>2,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+    <td class="textLeft">3474630342422</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>82,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+    <td class="textLeft">3474630342412</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+    <td class="textLeft">3474630342342</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>0,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+    <td class="textLeft">3474630342477</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+    <td>2,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+    <td class="textLeft">3474630342422</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>82,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+    <td class="textLeft">3474630342412</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+    <td class="textLeft">3474630342342</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>0,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+    <td class="textLeft">3474630342477</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+    <td>2,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+    <td class="textLeft">3474630342422</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>82,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+    <td class="textLeft">3474630342412</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+    <td class="textLeft">3474630342342</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>0,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+    <td class="textLeft">3474630342477</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+    <td>2,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+    <td class="textLeft">3474630342422</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>82,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+    <td class="textLeft">3474630342412</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+    <td class="textLeft">3474630342342</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>0,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+    <td class="textLeft">3474630342477</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+    <td>2,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+    <td class="textLeft">3474630342422</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>82,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+    <td class="textLeft">3474630342412</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+    <td class="textLeft">3474630342342</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>0,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+    <td class="textLeft">3474630342477</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+    <td>2,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+    <td class="textLeft">3474630342422</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>82,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+    <td class="textLeft">3474630342412</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+    <td class="textLeft">3474630342342</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>0,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+    <td class="textLeft">3474630342477</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+    <td>2,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+    <td class="textLeft">3474630342422</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>82,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+    <td class="textLeft">3474630342412</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+    <td class="textLeft">3474630342342</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>0,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+    <td class="textLeft">3474630342477</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+    <td>2,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+    <td class="textLeft">3474630342422</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>82,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+    <td class="textLeft">3474630342412</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+    <td class="textLeft">3474630342342</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>0,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+    <td class="textLeft">3474630342477</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+    <td>2,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+    <td class="textLeft">3474630342422</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>82,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+    <td class="textLeft">3474630342412</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+    <td class="textLeft">3474630342342</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>0,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+    <td class="textLeft">3474630342477</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+    <td>2,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+    <td class="textLeft">3474630342422</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>82,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+    <td class="textLeft">3474630342412</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+    <td class="textLeft">3474630342342</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>0,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+    <td class="textLeft">3474630342477</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+    <td>2,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+    <td class="textLeft">3474630342422</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>82,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+    <td class="textLeft">3474630342412</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+    <td class="textLeft">3474630342342</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>0,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+    <td class="textLeft">3474630342477</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+    <td>2,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+    <td class="textLeft">3474630342422</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>82,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+    <td class="textLeft">3474630342412</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>1,000 ks</td>
+    <td>1,000 ks</td>
+</tr>
+<tr>
+    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+    <td class="textLeft">3474630342342</td>
+    <td>73,51 Kč</td>
+    <td>88,95 Kč</td>
+    <td>83,95 Kč</td>
+    <td>0,000 ks</td>
+    <td>3,000 ks</td>
+    <td>0,000 ks</td>
+    <td>0,000 ks</td>
+</tr>
+
+
+</tbody>
+</table>
+</div>
+
+
+</div>
+
+<div data-cont="trzbySeznam" class="mainContent trzbySeznam">
+<div class="buttons">
+    <div class="left _buttonClick buttonOpacity"></div>
+    <div class="right _buttonClick buttonOpacity"></div>
+</div>
+<div data-role="main" class="ui-content content sluzby">
     <table data-role="table" data-mode="columntoggle" class="ui-responsive">
-    <thead>
-    <tr>
-        <th>Název</th>
-        <th data-priority="2">Plu</th>
-        <th data-priority="3">Nákupní cena bez DPH</th>
-        <th data-priority="4">Nákupní cena s DPH</th>
-        <th data-priority="5">Počáteční stav</th>
-        <th data-priority="6">Příjem</th>
-        <th data-priority="7">Prodej</th>
-        <th data-priority="8">Spotřeba</th>
-        <th data-priority="1">Aktuální stav na skladě</th>
-    </tr>
-    </thead>
+        <thead>
+        <tr>
+            <th>Den</th>
+            <th data-priority="8">Pepa Novák</th>
+            <th data-priority="6">Dirdová Lucie</th>
+            <th data-priority="7">Tržba celkem</th>
+            <th data-priority="5">Teichmanová Lada</th>
+            <th data-priority="1">Váchová Pavla</th>
+            <th data-priority="1">Denní tržby</th>
+        </tr>
+        </thead>
         <tbody>
         <tr>
-            <td>L' Oréal - Homme Cle ar shampoo 250m I</td>
-            <td>3474630342477</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>1,000 ks</td>
-            <td>1,000 ks</td>
-            <td>2,000 ks</td>
+            <td>1</td>
+            <td>0,00 Kč</td>
+            <td>1 505,00 Kč</td>
+            <td>195,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>1 605,00 Kč</td>
+            <td>3 305,00 Kč</td>
         </tr>
         <tr>
-            <td>L' Oréal - Homme Cover 5'</td>
-            <td>3474630342422</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>Mexico D.F.</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>1,000 ks</td>
-            <td>0,000 ks</td>
+            <td>2</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
         </tr>
         <tr>
-            <td>L' Oréal - Homme Energie shampoo 250m I</td>
-            <td>3474630342412</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>London</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>1,000 ks</td>
-            <td>1,000 ks</td>
+            <td>3</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
         </tr>
         <tr>
-            <td>L' Oréal - Homme Renaxil 125ml</td>
-            <td>3474630342342</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>Lulee</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>0,000 ks</td>
-            <td>0,000 ks</td>
+            <td>4</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
         </tr>
         <tr>
-            <td>L' Oréal - Homme Cle ar shampoo 250m I</td>
-            <td>Alfreds Futterkiste</td>
-            <td>3474630342477</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>1,000 ks</td>
-            <td>2,000 ks</td>
+            <td>5</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
         </tr>
         <tr>
-            <td>L' Oréal - Homme Cover 5'</td>
-            <td>3474630342422</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>Mexico D.F.</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>1,000 ks</td>
-            <td>0,000 ks</td>
+            <td>6</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
         </tr>
         <tr>
-            <td>L' Oréal - Homme Energie shampoo 250m I</td>
-            <td>3474630342412</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>London</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>1,000 ks</td>
-            <td>1,000 ks</td>
+            <td>7</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
         </tr>
         <tr>
-            <td>L' Oréal - Homme Renaxil 125ml</td>
-            <td>3474630342342</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>Lulee</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>0,000 ks</td>
-            <td>0,000 ks</td>
+            <td>8</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
         </tr>
         <tr>
-            <td>L' Oréal - Homme Cle ar shampoo 250m I</td>
-            <td>Alfreds Futterkiste</td>
-            <td>3474630342477</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>1,000 ks</td>
-            <td>2,000 ks</td>
+            <td>9</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
         </tr>
         <tr>
-            <td>L' Oréal - Homme Cover 5'</td>
-            <td>3474630342422</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>Mexico D.F.</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>1,000 ks</td>
-            <td>0,000 ks</td>
+            <td>10</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
         </tr>
         <tr>
-            <td>L' Oréal - Homme Energie shampoo 250m I</td>
-            <td>3474630342412</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>London</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>1,000 ks</td>
-            <td>1,000 ks</td>
+            <td>11</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
         </tr>
         <tr>
-            <td>L' Oréal - Homme Renaxil 125ml</td>
-            <td>3474630342342</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>Lulee</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>0,000 ks</td>
-            <td>0,000 ks</td>
+            <td>12</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
         </tr>
         <tr>
-            <td>L' Oréal - Homme Cle ar shampoo 250m I</td>
-            <td>Alfreds Futterkiste</td>
-            <td>3474630342477</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>1,000 ks</td>
-            <td>2,000 ks</td>
+            <td>13</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>0,00 Kč</td>
+            <td>635,00 Kč</td>
         </tr>
-        <tr>
-            <td>L' Oréal - Homme Cover 5'</td>
-            <td>3474630342422</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>Mexico D.F.</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>1,000 ks</td>
-            <td>0,000 ks</td>
+        <tr class="footer">
+            <td></td>
+            <td>0,00 Kč</td>
+            <td>20 940,00 Kč</td>
+            <td>690,00 Kč</td>
+            <td>8 323,00 Kč</td>
+            <td>17 123,00 Kč</td>
+            <td>47 564,00 Kč</td>
         </tr>
-        <tr>
-            <td>L' Oréal - Homme Energie shampoo 250m I</td>
-            <td>3474630342412</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>London</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>1,000 ks</td>
-            <td>1,000 ks</td>
-        </tr>
-        <tr>
-            <td>L' Oréal - Homme Renaxil 125ml</td>
-            <td>3474630342342</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>Lulee</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>0,000 ks</td>
-            <td>0,000 ks</td>
-        </tr>
-        <tr>
-            <td>L' Oréal - Homme Cle ar shampoo 250m I</td>
-            <td>Alfreds Futterkiste</td>
-            <td>3474630342477</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>1,000 ks</td>
-            <td>2,000 ks</td>
-        </tr>
-        <tr>
-            <td>L' Oréal - Homme Cover 5'</td>
-            <td>3474630342422</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>Mexico D.F.</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>1,000 ks</td>
-            <td>0,000 ks</td>
-        </tr>
-        <tr>
-            <td>L' Oréal - Homme Energie shampoo 250m I</td>
-            <td>3474630342412</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>London</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>1,000 ks</td>
-            <td>1,000 ks</td>
-        </tr>
-        <tr>
-            <td>L' Oréal - Homme Renaxil 125ml</td>
-            <td>3474630342342</td>
-            <td>73,51 Kč</td>
-            <td>88,95 Kč</td>
-            <td>Lulee</td>
-            <td>0,000 ks</td>
-            <td>3,000 ks</td>
-            <td>0,000 ks</td>
-            <td>0,000 ks</td>
-        </tr>
-
-    </tbody>
+        </tbody>
     </table>
+</div>
+
+
+<div data-role="main" class="ui-content content prodej">
+<table data-role="table" data-mode="columntoggle" class="ui-responsive">
+<thead>
+<tr>
+    <th>Datum</th>
+    <th data-priority="8">Druh materiálu</th>
+    <th data-priority="6">Cena bez DPH</th>
+    <th data-priority="7">Cena</th>
+    <th data-priority="5">Kusů</th>
+    <th data-priority="1">Celkem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">BAABER'S BAR - Káva carra-o Glooo Oro</td>
+    <td>500,00 Kč</td>
+    <td>1800,00 Kč</td>
+    <td>8 ks</td>
+    <td>30000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">BAABER'S BAR-Pampero Rum</td>
+    <td>200,00 Kč</td>
+    <td>300,00 Kč</td>
+    <td>5 ks</td>
+    <td>12000,00 kč</td>
+</tr>
+<tr>
+    <td>2.2.2014</td>
+    <td class="textLeft">Dárkové poukazy</td>
+    <td>234,00 Kč</td>
+    <td>850,00 Kč</td>
+    <td>4 ks</td>
+    <td>22000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">BAABER'S BAR-Káva carra-o Glooo Oro</td>
+    <td>100,00 Kč</td>
+    <td>800,00 Kč</td>
+    <td>2 ks</td>
+    <td>40000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">Dárkové poukazy</td>
+    <td>150,00 Kč</td>
+    <td>300,00 Kč</td>
+    <td>1 ks</td>
+    <td>12000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">BAABER'S BAR - Káva carra-o Glooo Oro</td>
+    <td>500,00 Kč</td>
+    <td>1800,00 Kč</td>
+    <td>8 ks</td>
+    <td>30000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">BAABER'S BAR-Pampero Rum</td>
+    <td>200,00 Kč</td>
+    <td>300,00 Kč</td>
+    <td>5 ks</td>
+    <td>12000,00 kč</td>
+</tr>
+<tr>
+    <td>2.2.2014</td>
+    <td class="textLeft">Dárkové poukazy</td>
+    <td>234,00 Kč</td>
+    <td>850,00 Kč</td>
+    <td>4 ks</td>
+    <td>22000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">BAABER'S BAR-Káva carra-o Glooo Oro</td>
+    <td>100,00 Kč</td>
+    <td>800,00 Kč</td>
+    <td>2 ks</td>
+    <td>40000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">Dárkové poukazy</td>
+    <td>150,00 Kč</td>
+    <td>300,00 Kč</td>
+    <td>1 ks</td>
+    <td>12000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">BAABER'S BAR - Káva carra-o Glooo Oro</td>
+    <td>500,00 Kč</td>
+    <td>1800,00 Kč</td>
+    <td>8 ks</td>
+    <td>30000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">BAABER'S BAR-Pampero Rum</td>
+    <td>200,00 Kč</td>
+    <td>300,00 Kč</td>
+    <td>5 ks</td>
+    <td>12000,00 kč</td>
+</tr>
+<tr>
+    <td>2.2.2014</td>
+    <td class="textLeft">Dárkové poukazy</td>
+    <td>234,00 Kč</td>
+    <td>850,00 Kč</td>
+    <td>4 ks</td>
+    <td>22000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">BAABER'S BAR-Káva carra-o Glooo Oro</td>
+    <td>100,00 Kč</td>
+    <td>800,00 Kč</td>
+    <td>2 ks</td>
+    <td>40000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">Dárkové poukazy</td>
+    <td>150,00 Kč</td>
+    <td>300,00 Kč</td>
+    <td>1 ks</td>
+    <td>12000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">BAABER'S BAR - Káva carra-o Glooo Oro</td>
+    <td>500,00 Kč</td>
+    <td>1800,00 Kč</td>
+    <td>8 ks</td>
+    <td>30000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">BAABER'S BAR-Pampero Rum</td>
+    <td>200,00 Kč</td>
+    <td>300,00 Kč</td>
+    <td>5 ks</td>
+    <td>12000,00 kč</td>
+</tr>
+<tr>
+    <td>2.2.2014</td>
+    <td class="textLeft">Dárkové poukazy</td>
+    <td>234,00 Kč</td>
+    <td>850,00 Kč</td>
+    <td>4 ks</td>
+    <td>22000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">BAABER'S BAR-Káva carra-o Glooo Oro</td>
+    <td>100,00 Kč</td>
+    <td>800,00 Kč</td>
+    <td>2 ks</td>
+    <td>40000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">Dárkové poukazy</td>
+    <td>150,00 Kč</td>
+    <td>300,00 Kč</td>
+    <td>1 ks</td>
+    <td>12000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">BAABER'S BAR - Káva carra-o Glooo Oro</td>
+    <td>500,00 Kč</td>
+    <td>1800,00 Kč</td>
+    <td>8 ks</td>
+    <td>30000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">BAABER'S BAR-Pampero Rum</td>
+    <td>200,00 Kč</td>
+    <td>300,00 Kč</td>
+    <td>5 ks</td>
+    <td>12000,00 kč</td>
+</tr>
+<tr>
+    <td>2.2.2014</td>
+    <td class="textLeft">Dárkové poukazy</td>
+    <td>234,00 Kč</td>
+    <td>850,00 Kč</td>
+    <td>4 ks</td>
+    <td>22000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">BAABER'S BAR-Káva carra-o Glooo Oro</td>
+    <td>100,00 Kč</td>
+    <td>800,00 Kč</td>
+    <td>2 ks</td>
+    <td>40000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">Dárkové poukazy</td>
+    <td>150,00 Kč</td>
+    <td>300,00 Kč</td>
+    <td>1 ks</td>
+    <td>12000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">BAABER'S BAR - Káva carra-o Glooo Oro</td>
+    <td>500,00 Kč</td>
+    <td>1800,00 Kč</td>
+    <td>8 ks</td>
+    <td>30000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">BAABER'S BAR-Pampero Rum</td>
+    <td>200,00 Kč</td>
+    <td>300,00 Kč</td>
+    <td>5 ks</td>
+    <td>12000,00 kč</td>
+</tr>
+<tr>
+    <td>2.2.2014</td>
+    <td class="textLeft">Dárkové poukazy</td>
+    <td>234,00 Kč</td>
+    <td>850,00 Kč</td>
+    <td>4 ks</td>
+    <td>22000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">BAABER'S BAR-Káva carra-o Glooo Oro</td>
+    <td>100,00 Kč</td>
+    <td>800,00 Kč</td>
+    <td>2 ks</td>
+    <td>40000,00 kč</td>
+</tr>
+<tr>
+    <td>1.2.2014</td>
+    <td class="textLeft">Dárkové poukazy</td>
+    <td>150,00 Kč</td>
+    <td>300,00 Kč</td>
+    <td>1 ks</td>
+    <td>12000,00 kč</td>
+</tr>
+<tr class="footer">
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>4 006,61 Kč</td>
+    <td>4 848,20 Kč</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+</div>
+
+<div data-cont="nastaveni" class="mainContent nastaveni">
+    <h1>Identifikátor</h1>
+    <input value="">
+</div>
+
+<div data-cont="welcome" class="mainContent welcome">
+    <h1>Vyberte z menu</h1>
+
+    <div class="wrap">
+        <div></div>
     </div>
+</div>
+
+<!-------------------------------------------------- footers -->
 
 
-
-
-
-
-    </div>
-
-    <div data-cont="trzbySeznam" class="mainContent trzbySeznam">
-
-    <div data-role="main" class="ui-content content sluzby">
-    <table data-role="table" data-mode="columntoggle" class="ui-responsive">
-    <thead>
-    <tr>
-        <th>Datum</th>
-        <th data-priority="8">Uživatel</th>
-        <th data-priority="6">Denní tržba</th>
-        <th data-priority="7">Tržba celkem</th>
-        <th data-priority="5">Denní tržba celkem</th>
-        <th data-priority="1">Celkem za měsíc</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    </tbody>
-    </table>
-    </div>
-
-
-    <div data-role="main" class="ui-content content prodej">
-    <table data-role="table" data-mode="columntoggle" class="ui-responsive">
-    <thead>
-    <tr>
-        <th>Datum</th>
-        <th data-priority="8">Uživatel</th>
-        <th data-priority="6">Denní tržba</th>
-        <th data-priority="7">Tržba celkem</th>
-        <th data-priority="5">Denní tržba celkem</th>
-        <th data-priority="1">Celkem za měsíc</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák prodej</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>200,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>234,00 Kč</td>
-        <td>850,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>22000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>100,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>2800,00 kč</td>
-        <td>40000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Pepa Novák</td>
-        <td>500,00 Kč</td>
-        <td>1800,00 Kč</td>
-        <td>1800,00 kč</td>
-        <td>30000,00 kč</td>
-    </tr>
-    <tr>
-        <td>1.2.2014</td>
-        <td>Zuzana Vonásková</td>
-        <td>150,00 Kč</td>
-        <td>300,00 Kč</td>
-        <td>450,00 kč</td>
-        <td>12000,00 kč</td>
-    </tr>
-    <tr>
-        <td>2.2.2014</td>
-        <td>Aleš Petřík</td>
-        <td>325,00 Kč</td>
-        <td>800,00 Kč</td>
-        <td>1200,00 kč</td>
-        <td>25000,00 kč</td>
-    </tr>
-    </tbody>
-    </table>
-    </div>
-
-
-
-
-
-    </div>
-
-    <div data-cont="nastaveni" class="mainContent nastaveni">
-        <h1>Identifikátor</h1>
-        <input value="">
-    </div>
-
-    <div data-cont="welcome" class="mainContent welcome">
-        <h1>Vyberte z menu</h1>
-        <div class="wrap"><div></div></div>
-    </div>
-
-    <!-------------------------------------------------- footers -->
-
-
-    <div data-cont="ftZakazniciDetail" class="mainBottom zakazniciDetail fourButtons">
+<div data-cont="ftZakazniciDetail" class="mainBottom zakazniciDetail fourButtons">
 
     <div class="twoButtons gradSeda zdButtonObjednat">
         <div data-click="" class="button _buttonClick left">
@@ -1233,7 +1275,9 @@
                 </div>
             </div>
         </div><!--
-     --><div data-click="zakaznik.smsSend()" class="button _buttonClick right zdButtonSms">
+
+
+        --><div data-click="zakaznik.smsSend()" class="button _buttonClick right zdButtonSms">
             <div class="borderDiv">
                 <div class="labelDiv">
                     SMS
@@ -1250,7 +1294,9 @@
                 </div>
             </div>
         </div><!--
-     --><div data-click="zakaznik.telDial()" class="button _buttonClick right zdButtonVolat">
+
+
+        --><div data-click="zakaznik.telDial()" class="button _buttonClick right zdButtonVolat">
             <div class="borderDiv">
                 <div class="labelDiv">
                     VOLAT
@@ -1260,36 +1306,39 @@
     </div>
 
 
-    </div>
+</div>
 
 
-
-    <div data-cont="ftZakazniciSeznam" class="mainBottom twoButtons gradSeda zakazniciSeznam">
-        <div data-click="xmlZakaznici.loadForce(true)" class="button _buttonClick left">
-            <div class="borderDiv">
-                <div class="labelDiv">
-                    Obnovit
-                </div>
+<div data-cont="ftZakazniciSeznam" class="mainBottom twoButtons gradSeda zakazniciSeznam">
+    <div data-click="xmlZakaznici.loadForce(true)" class="button _buttonClick left">
+        <div class="borderDiv">
+            <div class="labelDiv">
+                Obnovit
             </div>
-        </div><!--
-        --><div data-click="zakazniciDetailNovy()" class="button _buttonClick right">
+        </div>
+    </div><!--
+
+
+    --><div data-click="zakazniciDetailNovy()" class="button _buttonClick right">
         <div class="borderDiv">
             <div class="labelDiv">
                 Nový
             </div>
         </div>
     </div>
-    </div>
+</div>
 
-    <div data-cont="ftNastaveni" class="mainBottom gradSeda nastaveni">
-        <div class="twoButtons">
-            <div data-click="scan()" class="button _buttonClick">
-                <div class="borderDiv">
-                    <div class="labelDiv left">
-                        Načíst kód
-                    </div>
+<div data-cont="ftNastaveni" class="mainBottom gradSeda nastaveni">
+    <div class="twoButtons">
+        <div data-click="scan()" class="button _buttonClick">
+            <div class="borderDiv">
+                <div class="labelDiv left">
+                    Načíst kód
                 </div>
-            </div><!--
+            </div>
+        </div><!--
+
+
         --><div data-click="identifikatorSave()" class="button _buttonClick">
             <div class="borderDiv">
                 <div class="labelDiv right">
@@ -1297,27 +1346,29 @@
                 </div>
             </div>
         </div>
-        </div>
     </div>
+</div>
 
-    <div data-cont="ftTrzbySeznam" class="mainBottom twoButtons gradSeda trzbySeznam">
-        <div data-click="trzbyDisplay('sluzby')" class="button _buttonClick left">
-            <div class="borderDiv">
-                <div class="labelDiv">
-                    Tržby služeb
-                </div>
+<div data-cont="ftTrzbySeznam" class="mainBottom twoButtons gradSeda trzbySeznam">
+    <div data-click="trzbyDisplay('sluzby')" class="button _buttonClick left">
+        <div class="borderDiv">
+            <div class="labelDiv">
+                Tržby služeb
             </div>
-        </div><!--
-        --><div data-click="trzbyDisplay('prodej')" class="button _buttonClick right">
+        </div>
+    </div><!--
+
+
+ --><div data-click="trzbyDisplay('prodej')" class="button _buttonClick right">
         <div class="borderDiv">
             <div class="labelDiv">
                 Tržby prodeje
             </div>
         </div>
     </div>
-    </div>
+</div>
 
-    <div id="verzeApp">0.2g</div>
+<div id="verzeApp">0.2g</div>
 </div>
 </body>
 </html>

@@ -23,6 +23,32 @@ ul {
 .button {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+/* ---------------table */
+td {
+    white-space: nowrap;
+    padding-right: 1em;
+    padding-left: 0.5em;
+    border: 1px solid;
+    text-align: right;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 120%;
+}
+th {
+    border: 1px solid;
+    border-bottom: 2px solid;
+}
+.footer td {
+    font-weight: bold;
+}
+.colorTrSelected {
+    background-color: rgb(178, 178, 178);
+}
+
+
 .buttonDisable {
     background: rgba(0, 0, 0, 0.37);
 }
@@ -50,6 +76,9 @@ input[type=button]:active {
     opacity: 0.5;
 }
 
+.textLeft {
+    text-align: left;
+}
 
 
 div.mainTop {
@@ -234,7 +263,13 @@ div.zakazniciDetail {
 .trzbySeznam .ui-content.content {
     font-size: 16px;
     padding: 0px;
+    overflow: scroll;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    top: 81px;
 }
+
 .trzbySeznam div.content.sluzby, .trzbySeznam div.content.prodej {
     display: none;
 }
@@ -242,6 +277,29 @@ div.zakazniciDetail {
 .trzbyTypColor {
     background: rgba(36, 255, 0, 0.36);
 }
+.mainContent.trzbySeznam .buttons {
+    height: 81px;
+}
+.trzbySeznam .buttons > div {
+    height: 80px;
+    width: 30px;
+    background-position: 50%;
+    background-size: 70px;
+    padding-left: 80px;
+    cursor: pointer;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    border: 1px solid;
+}
+.trzbySeznam .buttons .left {
+    background-image: url(../img/sem.png);
+    float: left;
+}
+.trzbySeznam .buttons .right {
+    background-image: url(../img/tam.png);
+    float: right;
+}
+
 
 /* --------- content nastaveni */
 .mainContent.nastaveni {
