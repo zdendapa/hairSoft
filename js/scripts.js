@@ -187,7 +187,7 @@ function clickInit()
 
 
 
-    // ----------------------- scrollable list
+    // ------- scrollable list
     $(document).on('click', '.mainContent.zakazniciSeznam li', function() {
         $(this).addClass('highlight');
         var el= this;
@@ -200,7 +200,7 @@ function clickInit()
 
 
 
-    // ----------------------- tables
+    // ------ tables
     $(document).on('click', 'tr', function() {
         if($(this).parent().prop("tagName")!="TBODY")
         {
@@ -216,6 +216,25 @@ function clickInit()
         }
         $(this).addClass("colorTrSelected");
         trLastSelected = this;
+    });
+
+    // validace
+    $("input._validaceTelAAA").keydown(function (e) {
+
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 187]) !== -1 ||
+            // Allow: Ctrl+A
+            (e.keyCode == 65 && e.ctrlKey === true) ||
+            // Allow: home, end, left, right
+            (e.keyCode >= 35 && e.keyCode <= 39)) {
+            // let it happen, don't do anything
+            return;
+        }
+
+        if(!(e.keyCode > 47 && e.keyCode<59)) {
+            e.preventDefault();
+            alert("Vložte prosím jen čísla")
+        }
     });
 }
 
@@ -649,6 +668,65 @@ function zakazniciDetailChangeCancel()
     zakazniciDetailToEdit(false);
 }
 
+function validaceDetail()
+{
+    // validace telefonu a emailu
+    var mail = $(".zakazniciDetail input[name=email]").val();
+    var tel =   $(".zakazniciDetail input[name=telefon]").val();
+    var mobil = $(".zakazniciDetail input[name=telefon2]").val();
+
+    if(!validaceTelefonu(tel))
+    {
+        alert("Telefoní číslo musí obsahovat pouze čísla");
+        return false
+    }
+    if(!validaceTelefonu(mobil))
+    {
+        alert("Mobilní číslo musí obsahovat pouze čísla");
+        return false
+    }
+    if(!validaceMailu(mail))
+    {
+        alert("Zadejte prosím platný e-mail");
+        return false
+    }
+
+
+
+
+
+
+    return true;
+
+
+}
+
+function validaceTelefonu(num)
+{
+    if(num==undefined) return true;
+    if(num.length==0) return true;
+    num = num.replace(/ /g,"");
+    num = num.replace("+","");
+    return !isNaN(num);
+}
+
+function validaceMailu(mail)
+{
+    if(mail== undefined) return true;
+    if(mail == "") return true;
+
+    var isEmail_re = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
+    if(String(mail).search (isEmail_re) != -1)
+    {
+        console.log("email true");
+        return true;
+    }
+    else
+    {
+        console.log("email false");
+        return false;
+    }
+}
 
  // type = update, insert, delete
 function zakazniciDetailAjax(type)
@@ -660,7 +738,13 @@ function zakazniciDetailAjax(type)
     if(type == "insert")
         var akce = 16;
     if(type == "update")
-        var akce = 32;
+    {
+        if(validaceDetail())
+        {
+            var akce = 32;
+        } else
+        return;
+    }
     if(type == "delete")
     {
 
@@ -671,6 +755,8 @@ function zakazniciDetailAjax(type)
             return;
         }
     }
+
+
 
 
     var url = "http://admin.hairsoft.cz/mobile/index1.php?akce="+akce+"&tabulka=mob_lidi&id_id=" + identifikator;
@@ -756,7 +842,6 @@ var zakaznik = {
     },
     telDial : function (){
         var tel= xmlGetEl(xmlZakazniciDetail,"lidi_tel2");
-        alert(tel);
         if(tel.length<9)
         {
             tel= xmlGetEl(xmlZakazniciDetail,"lidi_tel1");
@@ -925,6 +1010,22 @@ function transitionInit()
 
     transitionObjectInit();
     containerHideAll(true);
+
+    // sent pinchable element
+    var elementToZoom = document.getElementsByClassName("mainContent skladSeznam")[0].getElementsByTagName("table")[0];
+    var elementPinch = document.getElementsByClassName("mainContent skladSeznam")[0];
+    var pinch1 = new PinchEl(elementToZoom, elementPinch, 100);
+
+
+    elementToZoom = document.getElementsByClassName("mainContent trzbySeznam")[0].getElementsByTagName("table")[0];
+    elementPinch = document.getElementsByClassName("mainContent trzbySeznam")[0].getElementsByTagName("table")[0];
+    var pinch2 = new PinchEl(elementToZoom, elementPinch, 100);
+
+    elementToZoom = document.getElementsByClassName("mainContent trzbySeznam")[0].getElementsByTagName("table")[1];
+    elementPinch = document.getElementsByClassName("mainContent trzbySeznam")[0].getElementsByTagName("table")[1];
+    var pinch3 = new PinchEl(elementToZoom, elementPinch, 100);
+
+
 }
 
 function supportDetect()
@@ -988,25 +1089,6 @@ function ajaxErrorHandler(data) {
 }
 
 
-// level: 1=INFO, 2=WARNING, 3=ERROR
-// v2
-function logging(str, level) {
-    if (level == 1 || level == null) console.log("INFO:" + str);
-    if (level == 2) console.log("WARN:" + str);
-    if (level == 3) alert("ERROR:" + str);
-
-    var elLog = $("#log");
-    if(elLog.length>0)
-    {
-        var elTextarea = $("#log").find("textarea");
-        var text= $(elTextarea).val();
-        text += str + "\n";
-        $(elTextarea).val(text);
-        $(elTextarea).scrollTop($(elTextarea)[0].scrollHeight);
-    }
-};
-
-
 function supportsTransitions3d() {
     var el = document.createElement('p'),
         has3d,
@@ -1049,3 +1131,65 @@ function supportsTransitions() {
 
     return false;
 }
+
+function PinchEl(elementToZoom, elementPinch, startFontSizePercentage)
+{
+    /*
+     elementToZoom - element that will be zoomed
+     elementPinch - element where is pinch proceed. Probably elementToZoom
+     startFontSizePercentage - size of font, for example 100. (Must be se because I cant get it by $(el).css("font-size")! Because result is not in percentage but in px
+     */
+    this.elementToZoom = elementToZoom;
+    this.elementPinch = elementPinch;
+    this.scaling = false;
+    this.scaleFontPercentage = startFontSizePercentage;
+    this.windowWidth;
+    this.scaleWidthStart;
+
+    this.elementPinch.addEventListener('touchstart', function(e) {
+        if (e.touches.length ==2) {
+            this.windowWidth = $(window).width();
+            this.scaling = true;
+            this.scaleWidthStart = Math.sqrt((e.touches[0].pageX-e.touches[1].pageX) * (e.touches[0].pageX-e.touches[1].pageX) + (e.touches[0].pageY-e.touches[1].pageY) * (e.touches[0].pageY-e.touches[1].pageY));
+
+        }
+
+    }.bind(this), false);
+
+    /* universal workarround code for addEventListener
+    this.elementPinch.addEventListener('touchmove', this, false);
+    this.handleEvent = function(event) {
+        switch(event.type) {
+            case 'touchmove':
+                alert(this.testValue);
+                break;
+            case 'dblclick':
+                // some code here...
+                break;
+        }
+    };
+    */
+
+    this.elementPinch.addEventListener('touchmove', function(e) {
+        if(this.scaling)
+        {
+            // pythagoras for distance
+            var distPinch = Math.sqrt((e.touches[0].pageX-e.touches[1].pageX) * (e.touches[0].pageX-e.touches[1].pageX) + (e.touches[0].pageY-e.touches[1].pageY) * (e.touches[0].pageY-e.touches[1].pageY));
+            var distPinchChange = distPinch - this.scaleWidthStart;
+            var distPinchChangePercentage = 100/this.windowWidth*distPinchChange;
+            //var distPinchChangePercentage = 100/$(this.elementPinch).width()*distPinchChange/2;
+            this.scaleFontPercentage += distPinchChangePercentage;
+            if(this.scaleFontPercentage > 20 && this.scaleFontPercentage<400)
+                $(this.elementToZoom).css("font-size",this.scaleFontPercentage+ "%");
+
+        }
+    }.bind(this), false);
+
+    this.elementPinch.addEventListener('touchend', function(e) {
+        if(this.scaling) {
+            this.scaling = false;
+        }
+    }.bind(this), false);
+}
+
+

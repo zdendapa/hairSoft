@@ -259,6 +259,8 @@ div.zakazniciDetail {
 /* --------- content trzby */
 .mainContent.trzbySeznam {
     overflow-y: scroll;
+    position: absolute;
+    width: 100%;
 }
 .trzbySeznam .ui-content.content {
     font-size: 16px;

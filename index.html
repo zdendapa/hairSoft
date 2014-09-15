@@ -15,14 +15,15 @@
 
 <link rel="stylesheet" href="css/main.css"/>
 <link rel="stylesheet" href="css/font-awesome.min.css"/>
-
+<script type="text/javascript" src="phonegap.js"></script>
+<script type="text/javascript" src="js/inited.js"></script>
+<script type="text/javascript" src="js/scripts.js"></script>
+<script type="text/javascript" src="js/fastclick.js"></script>
 <!--<link rel="stylesheet" href="css/jquery.mobile.custom.structure.css" />
 <link rel="stylesheet" href="css/jquery.mobile.custom.theme.css" />-->
 
 <script type="text/javascript" charset="utf-8" src="js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="phonegap.js"></script>
-<script type="text/javascript" src="js/scripts.js"></script>
-<script type="text/javascript" src="js/fastclick.js"></script>
+
 <!--<script type="text/javascript" src="js/jquery.mobile.custom.js"></script>-->
 
 
@@ -31,7 +32,7 @@
     var local = false;
 
     // hacks
-    ajaxReadOnly = true;
+    ajaxReadOnly = false;
 
 
     if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
@@ -214,8 +215,8 @@
             <input data-role="none" class="css-checkbox" type="radio" value="Z" id="zakaznikSexZ" name="sex"
                    disabled/><label class="css-label" for="zakaznikSexZ">ŽENA</label></li>
         <li><span>E-mail</span><input name="email" readonly></li>
-        <li><span>Telefon</span><input name="telefon" readonly></li>
-        <li><span>Mobil</span><input name="telefon2" readonly></li>
+        <li><span>Telefon</span><input class="_validaceTel" name="telefon" readonly></li>
+        <li><span>Mobil</span><input class="_validaceTel" name="telefon2" readonly></li>
         <li><span>Adresa</span><input name="adresa" readonly></li>
         <li><span>Město</span><input name="mesto" readonly></li>
         <li><span>PSČ</span><input name="psc" readonly></li>
@@ -234,597 +235,590 @@
 
 
 <div data-role="main" class="ui-content content">
+
+
 <table data-role="table" data-mode="columntoggle" class="ui-responsive">
-<thead>
-<tr>
-    <th>Název</th>
-    <th data-priority="2">Plu</th>
-    <th data-priority="3">Nákupní cena bez DPH</th>
-    <th data-priority="4">Nákupní cena s DPH</th>
-    <th data-priority="5">Počáteční stav</th>
-    <th data-priority="6">Příjem</th>
-    <th data-priority="7">Prodej</th>
-    <th data-priority="8">Spotřeba</th>
-    <th data-priority="1">Aktuální stav na skladě</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
-    <td class="textLeft">3474630342477</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-    <td>2,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
-    <td class="textLeft">3474630342422</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>82,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
-    <td class="textLeft">3474630342412</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
-    <td class="textLeft">3474630342342</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>0,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
-    <td class="textLeft">3474630342477</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-    <td>2,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
-    <td class="textLeft">3474630342422</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>82,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
-    <td class="textLeft">3474630342412</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
-    <td class="textLeft">3474630342342</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>0,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
-    <td class="textLeft">3474630342477</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-    <td>2,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
-    <td class="textLeft">3474630342422</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>82,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
-    <td class="textLeft">3474630342412</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
-    <td class="textLeft">3474630342342</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>0,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
-    <td class="textLeft">3474630342477</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-    <td>2,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
-    <td class="textLeft">3474630342422</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>82,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
-    <td class="textLeft">3474630342412</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
-    <td class="textLeft">3474630342342</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>0,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
-    <td class="textLeft">3474630342477</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-    <td>2,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
-    <td class="textLeft">3474630342422</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>82,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
-    <td class="textLeft">3474630342412</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
-    <td class="textLeft">3474630342342</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>0,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
-    <td class="textLeft">3474630342477</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-    <td>2,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
-    <td class="textLeft">3474630342422</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>82,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
-    <td class="textLeft">3474630342412</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
-    <td class="textLeft">3474630342342</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>0,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
-    <td class="textLeft">3474630342477</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-    <td>2,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
-    <td class="textLeft">3474630342422</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>82,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
-    <td class="textLeft">3474630342412</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
-    <td class="textLeft">3474630342342</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>0,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
-    <td class="textLeft">3474630342477</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-    <td>2,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
-    <td class="textLeft">3474630342422</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>82,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
-    <td class="textLeft">3474630342412</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
-    <td class="textLeft">3474630342342</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>0,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
-    <td class="textLeft">3474630342477</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-    <td>2,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
-    <td class="textLeft">3474630342422</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>82,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
-    <td class="textLeft">3474630342412</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
-    <td class="textLeft">3474630342342</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>0,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
-    <td class="textLeft">3474630342477</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-    <td>2,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
-    <td class="textLeft">3474630342422</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>82,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
-    <td class="textLeft">3474630342412</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
-    <td class="textLeft">3474630342342</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>0,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
-    <td class="textLeft">3474630342477</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-    <td>2,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
-    <td class="textLeft">3474630342422</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>82,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
-    <td class="textLeft">3474630342412</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
-    <td class="textLeft">3474630342342</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>0,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
-    <td class="textLeft">3474630342477</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-    <td>2,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
-    <td class="textLeft">3474630342422</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>82,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
-    <td class="textLeft">3474630342412</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
-    <td class="textLeft">3474630342342</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>0,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
-    <td class="textLeft">3474630342477</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-    <td>2,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
-    <td class="textLeft">3474630342422</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>82,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
-    <td class="textLeft">3474630342412</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>1,000 ks</td>
-    <td>1,000 ks</td>
-</tr>
-<tr>
-    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
-    <td class="textLeft">3474630342342</td>
-    <td>73,51 Kč</td>
-    <td>88,95 Kč</td>
-    <td>83,95 Kč</td>
-    <td>0,000 ks</td>
-    <td>3,000 ks</td>
-    <td>0,000 ks</td>
-    <td>0,000 ks</td>
-</tr>
+                <thead>
+                <tr>
+                    <th>Název</th>
+                    <th data-priority="8">Plu</th>
+                    <th data-priority="6">Nákupní cena bez DPH</th>
+                    <th data-priority="7">Nákupní cena s DPH</th>
+                    <th data-priority="5">Počáteční stav</th>
+                    <th data-priority="1">Příjem</th>
+                    <th data-priority="1">Prodej</th>
+                    <th data-priority="1">Spotřeba</th>
+                    <th data-priority="1">Aktuální stav na skladě</th>
+                </tr>
 
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+                    <td class="textLeft">3474630342422</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>82,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+                    <td class="textLeft">3474630342412</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+                    <td class="textLeft">3474630342342</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>0,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+                    <td class="textLeft">3474630342477</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>2,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+                    <td class="textLeft">3474630342422</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>82,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+                    <td class="textLeft">3474630342412</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+                    <td class="textLeft">3474630342342</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>0,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+                    <td class="textLeft">3474630342477</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>2,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+                    <td class="textLeft">3474630342422</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>82,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+                    <td class="textLeft">3474630342412</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+                    <td class="textLeft">3474630342342</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>0,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+                    <td class="textLeft">3474630342477</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>2,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+                    <td class="textLeft">3474630342422</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>82,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+                    <td class="textLeft">3474630342412</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+                    <td class="textLeft">3474630342342</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>0,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+                    <td class="textLeft">3474630342477</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>2,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+                    <td class="textLeft">3474630342422</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>82,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+                    <td class="textLeft">3474630342412</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+                    <td class="textLeft">3474630342342</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>0,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+                    <td class="textLeft">3474630342477</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>2,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+                    <td class="textLeft">3474630342422</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>82,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+                    <td class="textLeft">3474630342412</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+                    <td class="textLeft">3474630342342</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>0,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+                    <td class="textLeft">3474630342477</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>2,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+                    <td class="textLeft">3474630342422</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>82,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+                    <td class="textLeft">3474630342412</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+                    <td class="textLeft">3474630342342</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>0,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+                    <td class="textLeft">3474630342477</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>2,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+                    <td class="textLeft">3474630342422</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>82,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+                    <td class="textLeft">3474630342412</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+                    <td class="textLeft">3474630342342</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>0,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+                    <td class="textLeft">3474630342477</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>2,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+                    <td class="textLeft">3474630342422</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>82,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+                    <td class="textLeft">3474630342412</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+                    <td class="textLeft">3474630342342</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>0,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+                    <td class="textLeft">3474630342477</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>2,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+                    <td class="textLeft">3474630342422</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>82,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+                    <td class="textLeft">3474630342412</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+                    <td class="textLeft">3474630342342</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>0,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+                    <td class="textLeft">3474630342477</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>2,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+                    <td class="textLeft">3474630342422</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>82,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+                    <td class="textLeft">3474630342412</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+                    <td class="textLeft">3474630342342</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>0,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+                    <td class="textLeft">3474630342477</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>2,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+                    <td class="textLeft">3474630342422</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>82,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+                    <td class="textLeft">3474630342412</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+                    <td class="textLeft">3474630342342</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>0,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cle ar shampoo 250m I</td>
+                    <td class="textLeft">3474630342477</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>2,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Cover 5'</td>
+                    <td class="textLeft">3474630342422</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>82,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Energie shampoo 250m I</td>
+                    <td class="textLeft">3474630342412</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>1,000 ks</td>
+                    <td>1,000 ks</td>
+                </tr>
+                <tr>
+                    <td class="textLeft">L' Oréal - Homme Renaxil 125ml</td>
+                    <td class="textLeft">3474630342342</td>
+                    <td>73,51 Kč</td>
+                    <td>88,95 Kč</td>
+                    <td>83,95 Kč</td>
+                    <td>0,000 ks</td>
+                    <td>3,000 ks</td>
+                    <td>0,000 ks</td>
+                    <td>0,000 ks</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-</tbody>
-</table>
 </div>
 
 
@@ -1368,7 +1362,7 @@
     </div>
 </div>
 
-<div id="verzeApp">0.2g</div>
+<div id="verzeApp">0.5</div>
 </div>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "cz.initedsolutions.hairsoftTest1"
-        version   = "0.4">
+        version   = "0.5">
     <!--
         0.1
         0.2
@@ -21,6 +21,11 @@
         - zakatniciDetail vypnuta tlacitka
         0.4
         - uprava tabulek
+        0.5
+        - uprava tabulek
+        - validace emailu a telefonů
+        - nastaveno na portrait
+        - oprava ukladani
 
 
     -->
@@ -62,7 +67,7 @@
 
     <preference name="EnableViewportScale"        value="true" />
     <preference name="phonegap-version"           value="3.5.0" />          <!-- all: current version of PhoneGap -->
-    <preference name="orientation"                value="default" />        <!-- all: default means both landscape and portrait are enabled -->
+    <preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
     <preference name="fullscreen"                 value="false" />           <!-- all: hides the status bar at the top of the screen -->
     <preference name="prerendered-icon"           value="true" />           <!-- ios: if icon is prerendered, iOS will not apply it's gloss to the app's icon on the user's home screen -->
