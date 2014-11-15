@@ -97,7 +97,7 @@ function onLoad() {
     // unhide ready app :)
     $(".special.cover").css("display","none");
 
-    showWindow("showObjednavkySeznam")
+    //showWindow("showObjednavkySeznam")
 
 }
 
