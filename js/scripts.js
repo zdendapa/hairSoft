@@ -9,6 +9,8 @@
 
 
 var identifikator;
+var prihlaseni;
+var objednavamZakaznika = false;
 
 var backFunction;   // what to do when you click back button
 var currentWindow;  // $(el) for quick hide(transform to offsreen)
@@ -95,12 +97,18 @@ function onLoad() {
     // unhide ready app :)
     $(".special.cover").css("display","none");
 
+    showWindow("showObjednavkySeznam")
+
 }
 
 
 //----------------------------------------------------------- core functions
 function clickInit()
 {
+
+    //initialize hw back button
+    enableBackButton();
+
     /*
     types:
     - click only with touch (doesn matter if you hold your finger)
@@ -233,7 +241,7 @@ function clickInit()
 
         if(!(e.keyCode > 47 && e.keyCode<59)) {
             e.preventDefault();
-            alert("Vložte prosím jen čísla")
+            alertG("Vložte prosím jen čísla","Upozornění!");
         }
     });
 }
@@ -314,6 +322,15 @@ function showInfow(show,msg)
 
 function showWindow(windowName)
 {
+    if(prihlaseni == "no")
+    {
+        if(windowName=="showTrzbySeznam")
+        {
+            alertG("Do této sekce nemáte oprávnění");
+            return;
+        }
+    }
+
     window.localStorage.setItem("hairSoft-lastWindow",windowName);
 
     if(windowName=="showZakazniciDetail") {
@@ -360,10 +377,23 @@ function showWindow(windowName)
     }
     if(windowName=="showObjednavkySeznam")
     {
+
+        containerVisibilitySet("topH1",true);
         containerVisibilitySet("objednavkySeznam",true);
-        //$("div.mainContent.objednavkySeznam").css("display","block");
-        $(".mainTop h1").html("Objednávky");
-        //$(".mainTop input").css("display","inline-block");
+        if(objednavamZakaznika)
+        {
+            $(".mainContent.objednavkySeznam .objednavka").css("display", "block");
+            containerVisibilitySet("ftObjednavky",true);
+            $(".mainTop h1").html("Objednávka");
+            $(".mainContent.objednavkySeznam .objednavka .zakaznik").html("Zákazník: " + xmlGetEl(xmlZakazniciDetail,"lidi_jmeno") + " " + xmlGetEl(xmlZakazniciDetail,"lidi_prijmeni"));
+            objednavamZakaznika = false;
+        } else
+        {
+            $(".mainTop h1").html("Objednávky");
+            $(".mainContent.objednavkySeznam .objednavka").css("display", "none");
+        }
+
+
     }
     if(windowName=="showSkladSeznam")
     {
@@ -530,6 +560,11 @@ function trzbyDisplay(typ)
 
 function zakazniciDetailNovy()
 {
+    if(prihlaseni == "no")
+    {
+        alertG("Pro tuto funkci nemáte oprávnění");
+        return;
+    }
     zakazniciDetailSetInputs(true);
     showWindow("showZakazniciDetail");
     $("div.mainContent.zakazniciDetail").removeClass("withBottom4buttons");
@@ -581,10 +616,10 @@ function zakazniciDetailSetInputs(clear)
     $(".zakazniciDetail input[name=pohlavi]").val(xmlGetEl(xmlZakazniciDetail,"lidi_pohlavi"));
     //$(".zakazniciDetail input[name=adresa]").val(("lidi_adresa"));
     $(".zakazniciDetail input[name=email]").val(xmlGetEl(xmlZakazniciDetail,"lidi_email"));
-    var tel1 = xmlGetEl(xmlZakazniciDetail,"lidi_tel1");
-    $(".zakazniciDetail input[name=telefon]").val(tel1);
-    var tel2 = xmlGetEl(xmlZakazniciDetail,"lidi_tel2");
-    $(".zakazniciDetail input[name=telefon2]").val(tel2);
+    //var tel1 = xmlGetEl(xmlZakazniciDetail,"lidi_tel1");
+    $(".zakazniciDetail input[name=telefon]").val(xmlGetEl(xmlZakazniciDetail,"lidi_tel1"));
+    //var tel2 = xmlGetEl(xmlZakazniciDetail,"lidi_tel2");
+    $(".zakazniciDetail input[name=telefon2]").val(xmlGetEl(xmlZakazniciDetail,"lidi_tel2"));
     $(".zakazniciDetail input[name=adresa]").val(xmlGetEl(xmlZakazniciDetail,"lidi_adresa"));
     $(".zakazniciDetail input[name=mesto]").val(xmlGetEl(xmlZakazniciDetail,"lidi_mesto"));
     //$(".zakazniciDetail input[name=psc]").val(xmlGetEl("lidi_psc"));
@@ -592,9 +627,9 @@ function zakazniciDetailSetInputs(clear)
 
     // disable unused buttons
 
-    $(".zakazniciDetail .button").removeClass("buttonDisable");
 
 
+/*
     if(tel1=="" &&  tel2=="") {
 
         $("div.zdButtonVolat").addClass("buttonDisable").removeClass("_buttonClick");
@@ -607,13 +642,40 @@ function zakazniciDetailSetInputs(clear)
     {
         $("div.zdButtonEmail").addClass("buttonDisable").removeClass("_buttonClick");
     }
+    */
+    zakazniciDetailButtonsVisibility();
+}
+
+function zakazniciDetailButtonsVisibility()
+{
+    var tel1 = $(".zakazniciDetail input[name=telefon]").val();
+    var tel2 = $(".zakazniciDetail input[name=telefon2]").val();
+    var mail = $(".zakazniciDetail input[name=email]").val();
+
+    $(".zakazniciDetail .button").removeClass("buttonDisable");
+
+    if(tel1=="" &&  tel2=="") {
+
+        $("div.zdButtonVolat").addClass("buttonDisable").removeClass("_buttonClick");
+    }
+    if(tel2=="")
+    {
+        $("div.zdButtonSms").addClass("buttonDisable").removeClass("_buttonClick");
+    }
+    if(mail=="")
+    {
+        $("div.zdButtonEmail").addClass("buttonDisable").removeClass("_buttonClick");
+    }
 
 }
 
-
 function zakazniciDetailChangeToEdit()
 {
-
+    if(prihlaseni == "no")
+    {
+        alertG("Pro tuto funkci nemáte oprávnění");
+        return;
+    }
     //$(".mainBottom.zakazniciDetail").css("display","none");
     zakazniciDetailToEdit(true);
 }
@@ -677,17 +739,17 @@ function validaceDetail()
 
     if(!validaceTelefonu(tel))
     {
-        alert("Telefoní číslo musí obsahovat pouze čísla");
+        alertG("Telefoní číslo musí obsahovat pouze čísla","Upozornění!");
         return false
     }
     if(!validaceTelefonu(mobil))
     {
-        alert("Mobilní číslo musí obsahovat pouze čísla");
+        alertG("Mobilní číslo musí obsahovat pouze čísla","Upozornění!");
         return false
     }
     if(!validaceMailu(mail))
     {
-        alert("Zadejte prosím platný e-mail");
+        alertG("Zadejte prosím platný e-mail","Upozornění!");
         return false
     }
 
@@ -732,6 +794,11 @@ function validaceMailu(mail)
 function zakazniciDetailAjax(type)
 {
     if(ajaxReadOnly) return;
+    if(prihlaseni == "no")
+    {
+        alertG("Pro tuto funkci nemáte oprávnění");
+        return;
+    }
 
     logging("zakazniciDetailAjax",1);
 
@@ -786,7 +853,7 @@ function zakazniciDetailAjax(type)
         url += "&lidi_id=" + xmlGetEl(xmlZakazniciDetail,"lidi_id");
     }
 
-
+    showInfow(true);
     $.ajax({
         type: "POST",
         //url: "data/test.xml",
@@ -794,22 +861,23 @@ function zakazniciDetailAjax(type)
         //url:'http://demo.livecycle.cz/fajnsvaca/api/getUserInfo.json',
         dataType: "xml",
         success: function(data) {
-
+            showInfow(false);
             var odpoved = xmlGetEl(data,"zprava");
             if(odpoved=="UPRAVEN" || odpoved=="ZALOŽEN")
             {
-                alert("Záznam uložen");
+                alertG("Záznam uložen","Potvrzení");
                 zakazniciDetailToEdit(false);
+                zakazniciDetailButtonsVisibility();
                 xmlZakaznici.data = null;
             } else if(odpoved=="SMAZAN")
             {
-                alert("Záznam byl smazán");
+                alertG("Záznam byl smazán","Potvrzení");
                 xmlZakaznici.data = null;
                 showWindow("showZakazniciSeznam")
             }
             else
             {
-                alert(odpoved);
+                alertG(odpoved);
 
             }
 
@@ -869,36 +937,41 @@ function xmlGetEl(data,elName)
 
 function identifikatorSave()
 {
-    var val = $(".mainContent.nastaveni input").val();
+    var val = $("#identifikator").val();
     if(val!="")
     {
         identifikator = val;
         window.localStorage.setItem("hairSoft-identifikator",identifikator);
-        alert("Identifikátor změněn");
+        alertG("Identifikátor změněn","Potvrzení");
     } else
     {
-        alert("Vložte prosím identofokátor");
+        alertG("Vložte prosím identofokátor");
     }
 }
 
 function dataManagerLoad()
 {
     identifikator = window.localStorage.getItem("hairSoft-identifikator");
+    prihlaseni = window.localStorage.getItem("hairSoft-prihlaseni");
 
 
     if(identifikator!=null)
     {
-        $(".mainContent.nastaveni input").val(identifikator);
+        $("#identifikator").val(identifikator);
         showWindow("showWelcome");
     } else
     {
         // hack
         identifikator = "8D47BE64559F";
-        $(".mainContent.nastaveni input").val(identifikator);
+        $("#identifikator").val(identifikator);
         // --- end hack
         showWindow("showNastaveni");
     }
 
+    if(prihlaseni==null)
+    {
+        prihlaseni = "no";
+    }
 
     /*
     var lastWindow = window.localStorage.getItem("hairSoft-lastWindow");
@@ -1051,40 +1124,55 @@ function scan()
     cordova.plugins.barcodeScanner.scan(
         function (result) {
             /*
-            alert("We got a barcode\n" +
+            alertG("We got a barcode\n" +
                 "Result: " + result.text + "\n" +
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);
                 */
-            $(".mainContent.nastaveni input").val(result.text);
+            $("#identifikator").val(result.text);
         },
         function (error) {
-            alert("Scanning failed: " + error);
+            alertG("Scanning failed: " + error);
         }
     );
 }
 
 function ajaxErrorHandler(data) {
     console.log(data);
+    showInfow(false);
 
     if(!local)
     {
-        showInfow(false);
-        var networkState = navigator.connection.type;
-        if(networkState == Connection.UNKNOWN || networkState== Connection.NONE)
+        if(typeof navigator.connection!="undefined")
         {
-            alert("Nelze se připojit k internetu");
-            return;false
+            showInfow(false);
+            var networkState = navigator.connection.type;
+            if(networkState == Connection.UNKNOWN || networkState== Connection.NONE)
+            {
+                alertG("Nelze se připojit k internetu","Chyba!");
+                return;false
+            }
         }
+
     }
 
-
-    if(data.msg==undefined)
+    var msg = "";
+    if(typeof data.msg != "undefined")
     {
-        alert("Chyba s komunikací se serverem");
+        msg = data.msg;
+    }
+
+    if(typeof data.responseText != "undefined")
+    {
+        msg = data.responseText;
+    }
+
+    if(msg=="")
+    {
+        alertG("Chyba s komunikací se serverem","Chyba!");
     } else
     {
-        alert("chyba:" +data.msg);
+        alertG("chyba:" +data.msg,"Chyba!");
     }
 }
 
@@ -1161,7 +1249,7 @@ function PinchEl(elementToZoom, elementPinch, startFontSizePercentage)
     this.handleEvent = function(event) {
         switch(event.type) {
             case 'touchmove':
-                alert(this.testValue);
+                alertG(this.testValue);
                 break;
             case 'dblclick':
                 // some code here...
@@ -1193,3 +1281,21 @@ function PinchEl(elementToZoom, elementPinch, startFontSizePercentage)
 }
 
 
+function callShow()
+{
+    //window.location.href='CALSHOW://';
+    //window.location.href='content://com.android.calendar';
+}
+
+function hesloVlozit()
+{
+    if($("#password").val()=="heslo")
+    {
+        alertG("Plná oprávnění","Info");
+        prihlaseni = "yes";
+        window.localStorage.setItem("hairSoft-prihlaseni","yes");
+    } else
+    {
+        alertG("Špatné heslo","Info");
+    }
+}

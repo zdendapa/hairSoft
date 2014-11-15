@@ -6,6 +6,8 @@ function enableMenuButton()
 function enableBackButton()
 {
     document.addEventListener("backbutton", backKeyDown, true);
+    if(typeof navigator.app== "undefined") return;
+    if(typeof navigator.app.overrideBackbutton== "undefined") return;
     navigator.app.overrideBackbutton(true);
 }
 
@@ -37,3 +39,23 @@ function logging(str, level) {
         $(elTextarea).scrollTop($(elTextarea)[0].scrollHeight);
     }
 };
+
+function alertG(msg,title)
+{
+    if(typeof navigator.notification!="undefined")
+    {
+        if(title == undefined) title = "Upozornění!";
+
+        navigator.notification.alert(
+            msg,  // message
+            null,         // callback
+            title,            // title
+            'OK'                  // buttonName
+        );
+    } else
+    {
+        alert(msg);
+    }
+
+
+}
