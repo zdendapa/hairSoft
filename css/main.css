@@ -1,4 +1,9 @@
 
+@viewport
+{
+    width:320px;
+}
+
 html, body {
     padding: 0px;
     margin: 0px;
@@ -266,8 +271,11 @@ div.zakazniciDetail {
     height: 60%;
     margin-top: 10px;
 }
-.objednavkySeznam .objednavka, .objednavkySeznam .uzivatel {
+.objednavkySeznam .margin {
     margin-left: 5px;
+}
+.objednavkySeznam .uzivatel .oneButton {
+    float: right;
 }
 .objednavkySeznam .tabulka {
     height: 100%;
@@ -1101,7 +1109,7 @@ div.menu.right {
     .mainTop input {
         margin-top: 18px;
         font-size: 1.5em;
-    
+
         background-size: 45px;
 }
 
@@ -1123,37 +1131,37 @@ div.menu.right {
 
     div#nav-toggle2 {
         height: 78px;
-    
+
         width: 110px;
 }
 div.menu {
     top: 80px;
-    
+
 }
 
 .menu div {
-    background-position: 12px 8px;  
+    background-position: 12px 8px;
     background-size: 70px;
-    
+
     padding-left: 110px;
     height: 90px;
 }
 
 .buttonTopMenu {
-    background-position: 12px 15px;    
+    background-position: 12px 15px;
     background-size: 80px;
-    
+
 }
 
 /* --------- components */
 .twoButtons div.button > div
 {
     height: 98px;
-    
+
 }
 .twoButtons div.borderDiv {
     background-size: 70px;
-    
+
     background-position: 17% 13px;
 }
 
