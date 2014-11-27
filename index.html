@@ -5,8 +5,8 @@
     <meta name="format-detection" content="telephone=no"/>
     <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
 
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">-->
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>-->
 
     <title>Hair soft</title>
 </head>
@@ -175,6 +175,9 @@
     <div data-cont="rowLeft" data-click="backGo()" id="rowLeft" class="button _buttonClick buttonOpacity">
         <span>Zpět</span>
     </div>
+    <div data-cont="pridat" data-click="objednavkyPridatShowDialog(true)" id="pridat" class="button _buttonClick buttonOpacity">
+        <span>Přidat</span>
+    </div>
 
     <div data-cont="topZakazniciDetail" class="twoButtons zakazniciDetail gradSeda">
         <div data-click="zakazniciDetailAjax('delete')" class="button _buttonClick left">
@@ -225,58 +228,86 @@
     </ul>
 </div>
 
+<div id="objednavkyEdit" class="mainContent objednavkyEdit">
+    <div class="table">
+        <div class="tableCellMiddle">
+            <div class="objednavka">
+                <span class="zakaznik"></span>
+                <div class="uzivatel">
+                    <span>Uživatel</span>
+                    <select>
+                        <option value="123">Pepa</option>
+                        <option value="456">Franta Novák</option>
+                    </select>
+                </div>
+                <br>
+                <div class="cas">
+                    <span>Čas</span>
+                    <select class="hodina">
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <span>:</span>
+                    <select class="minuta">
+                        <option value="00">00</option>
+                        <option value="15">15</option>
+                        <option value="45">45</option>
+                    </select>
+                </div>
+                <br>
+                <div class="sluzby">
+                    <span>Služba</span>
+                    <select>
+                        <option value="1">Mytí hlavy</option>
+                        <option value="2">Stříhání</option>
+                    </select>
+                </div>
 
+
+                <div class="twoButtons gradSeda">
+                    <div data-click="objednavkyPridatShowDialog(false)" class="button _buttonClick left">
+                        <div class="borderDiv">
+                            <div class="labelDiv">
+                                ZRUŠIT
+                            </div>
+                        </div>
+                    </div><!--
+
+
+        --><div data-click="objednavkyPridatUlozit()" class="button _buttonClick right">
+                    <div class="borderDiv">
+                        <div class="labelDiv">
+                            ULOŽIT
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
 
 <div data-cont="objednavkySeznam" class="mainContent objednavkySeznam">
     <div class="buttons stepper">
-        <div class="left sipka _buttonClick buttonOpacity"></div>
-        <div class="text">2.12.2014</div>
-        <div class="right sipka _buttonClick buttonOpacity"></div>
+        <div class="left sipka _buttonTouch buttonOpacity" data-click="objednavkyDateAdd('remDay')"></div>
+        <div class="right sipka _buttonTouch buttonOpacity" data-click="objednavkyDateAdd('addDay')"></div>
+        <div id="objednavkaDatum" class="text datum">2.12.2014</div>
+        <div class="text jmeno" onclick='fakeObjednavkyVybranyZakaznik = "vybrat!";showWindow("showZakazniciSeznam")'></div>
+        <div class="text prijmeni" onclick='fakeObjednavkyVybranyZakaznik = "vybrat!";showWindow("showZakazniciSeznam")'></div>
     </div>
     <div class="tabulky">
-        <div class="margin">
-
-            <div class="objednavka">
-                <span class="zakaznik"></span>
-                <br>
-                <span>Čas</span>
-                <select>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                </select>
-                <span>:</span>
-                <select>
-                    <option value="00">00</option>
-                    <option value="15">15</option>
-                    <option value="45">45</option>
-                </select>
-                <br>
-                <span>Služba</span>
-                <select>
-                    <option value="1">Mytí hlavy</option>
-                    <option value="2">Stříhání</option>
-                </select>
-            </div>
-            <div class="oneButton gradSeda">+ Přidat</div>
-            <div class="uzivatel">
-                <span>Uživatel</span>
-                <select>
-                    <option value="123">Pepa</option>
-                    <option value="456">Franta Novák</option>
-                </select>
-                <div class="oneButton gradSeda">Zobrazení 1den</div>
-            </div>
-        </div>
         <div class="tabulka">
             <table>
                 <tr><td class="hodina" rowspan=4>8</td><td>:00</td><td></td></tr>
-                <tr><td>:15</td><td></td></tr>
-                <tr><td>:30</td><td></td></tr>
+                <tr class="testa"><td>:15</td><td></td></tr>
+                <tr class="testb"><td>:30</td><td></td></tr>
                 <tr><td>:45</td><td></td></tr>
-                <tr><td class="hodina" rowspan=4>9</td><td>:00</td><td style="background-color: blue" rowspan=2> Pepa<br>s </td></tr>
+                <tr><td class="hodina" rowspan=4>9</td><td>:00</td><td style="background-color: blue" rowspan=2 onclick="fakeObjednavkyEdit=true;objednavkyTableClick('Pepa')"> Pepa<br>s </td></tr>
                 <tr><td>:15</td></tr>
                 <tr><td>:30</td><td></td></tr>
                 <tr><td>:45</td><td></td></tr>
@@ -308,7 +339,6 @@
                 <tr><td>:15</td><td></td></tr>
                 <tr><td>:30</td><td></td></tr>
                 <tr><td>:45</td><td></td></tr>
-
             </table>
         </div>
     </div>
@@ -1431,21 +1461,21 @@
     </div>
 </div>
 
-<div data-cont="ftObjednavky" class="mainBottom gradSeda nastaveni">
+<div data-cont="ftObjednavky" class="mainBottom gradSeda objednavky">
     <div class="twoButtons">
-        <div data-click="alertG('Uloženo')" class="button _buttonClick">
+        <div data-click="objednavkyZobrazeni('den')" class="button _buttonClick">
             <div class="borderDiv">
                 <div class="labelDiv left">
-                    Uložit
+                    Den
                 </div>
             </div>
         </div><!--
 
 
-        --><div data-click="showWindow('showObjednavkySeznam')" class="button _buttonClick">
+        --><div data-click="objednavkyZobrazeni('tyden')" class="button _buttonClick">
         <div class="borderDiv">
             <div class="labelDiv right">
-                Zrušit
+                Týden
             </div>
         </div>
     </div>

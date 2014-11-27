@@ -59,3 +59,20 @@ function alertG(msg,title)
 
 
 }
+// vstup 23.2.2014
+function stringToDate(str)
+{
+    d = str.split(".");
+    var date = new Date(d[2],Number(d[1])-1,d[0]);
+    return date;
+}
+
+// vystup 23.2.2014
+function dateToString(date)
+{
+    var mesic = date.getMonth() + 1;//leden je 0
+    var denVMesici = date.getDate();
+    var rok = date.getFullYear();
+    return denVMesici + "." + mesic + "." + rok;
+
+}

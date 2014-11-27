@@ -27,7 +27,8 @@ var pageMaxLenght;
 var touched = false;
 var trLastSelected;
 
-
+var fakeObjednavkyVybranyZakaznik = "";
+var fakeObjednavkyEdit = false;
 
 var xmlZakaznici = {
     data : null,
@@ -73,6 +74,7 @@ var xmlTrzby = {
         this.loadWhenNull(showInfo,true);
     }
 };
+
 
 function onDeviceReady() {
 
@@ -158,6 +160,7 @@ function clickInit()
     if ('ontouchstart' in document.documentElement) {
         eventType = "touchstart";
         logging("ontouchstart enabled",1);
+
     } else
     {
         eventType = "click";
@@ -202,6 +205,16 @@ function clickInit()
         setTimeout(function(){
             $(el).removeClass('highlight');
             renderZakazniciDetail($(el).attr("data-id"));
+            // ---- fake objednavky start
+            if(fakeObjednavkyVybranyZakaznik == "vybrat!")
+            {
+                fakeObjednavkyVybranyZakaznik = $(el).attr("data-id");
+                showWindow("showObjednavkySeznam");
+                fakeObjednavkyVybranyZakaznik = "vybrano!";
+                objednavkyPridatShowDialog(true);
+                return;
+            }
+            // ---- fake objednavky end
             showWindow("showZakazniciDetail");
         },100);
     });
@@ -209,7 +222,7 @@ function clickInit()
 
 
     // ------ tables
-    $(document).on('click', 'tr', function() {
+    $(document).on('click', '.trzbySeznam tr, .prodej tr, .skladSeznam tr', function() {
         if($(this).parent().prop("tagName")!="TBODY")
         {
             return;
@@ -380,10 +393,11 @@ function showWindow(windowName)
 
         containerVisibilitySet("topH1",true);
         containerVisibilitySet("objednavkySeznam",true);
+        containerVisibilitySet("pridat",true);
+        containerVisibilitySet("ftObjednavky",true);
         if(objednavamZakaznika)
         {
             $(".mainContent.objednavkySeznam .objednavka").css("display", "block");
-            containerVisibilitySet("ftObjednavky",true);
             $(".mainTop h1").html("Objednávka");
             $(".mainContent.objednavkySeznam .objednavka .zakaznik").html("Zákazník: " + xmlGetEl(xmlZakazniciDetail,"lidi_jmeno") + " " + xmlGetEl(xmlZakazniciDetail,"lidi_prijmeni"));
             objednavamZakaznika = false;
@@ -993,6 +1007,8 @@ function dataManagerLoad()
 */
 
 
+    $(".buttons.stepper .text.datum").html(dateToString(new Date()));
+
 }
 
 function transitionObjectInit()
@@ -1278,6 +1294,83 @@ function PinchEl(elementToZoom, elementPinch, startFontSizePercentage)
             this.scaling = false;
         }
     }.bind(this), false);
+}
+function objednavkyTableClick(id)
+{
+    $(".objednavkyEdit span.zakaznik").html(id);
+    $(".objednavkyEdit span.zakaznik").html(id);
+
+    $(".objednavkyEdit .uzivatel select").val("123");
+    $(".objednavkyEdit .cas select.hodina").val("9");
+    $(".objednavkyEdit .cas select.minuta").val("00");
+    $(".objednavkyEdit .sluzby select").val("1");
+
+    //fakeObjednavkyVybranyZakaznik = id;
+    objednavkyPridatShowDialog(true);
+}
+function objednavkyPridatShowDialog(show)
+{
+    if(!show)
+    {
+        $("#objednavkyEdit").css("display","none");
+        fakeObjednavkyEdit = false;
+        return;
+    }
+
+    if(fakeObjednavkyVybranyZakaznik=="" && fakeObjednavkyEdit == false)
+    {
+        alertG("Vyberte prosím zákazníka");
+        fakeObjednavkyVybranyZakaznik = "vybrat!";
+        showWindow("showZakazniciSeznam");
+        return;
+    }
+    if(fakeObjednavkyVybranyZakaznik=="vybrano!")
+    {
+        fakeObjednavkyVybranyZakaznik = xmlGetEl(xmlZakazniciDetail,"lidi_jmeno") + " " + xmlGetEl(xmlZakazniciDetail,"lidi_prijmeni");
+        $(".objednavkyEdit span.zakaznik").html(fakeObjednavkyVybranyZakaznik);
+        $(".buttons.stepper .jmeno").html(xmlGetEl(xmlZakazniciDetail,"lidi_jmeno"));
+        $(".buttons.stepper .prijmeni").html(xmlGetEl(xmlZakazniciDetail,"lidi_prijmeni"));
+    }
+
+
+    $("#objednavkyEdit").css("display","block");
+}
+function objednavkyPridatUlozit()
+{
+    //alertG("objednavkyPridatUlozit")
+    objednavkyPridatShowDialog(false);
+    var jmeno = $(".objednavkyEdit span.zakaznik").html();
+    $(".objednavkySeznam tr.testa").html('<td>:15</td><td style="background-color: blue" rowspan=2 onclick="fakeObjednavkyEdit=true;objednavkyTableClick(&#39;'+jmeno+'&#39;)">'+jmeno+'<br>s </td>');
+    $(".objednavkySeznam tr.testb").html('<td>:30</td>');
+
+    alertG("Vloženo","Potvrzení");
+    fakeObjednavkyEdit = false;
+
+
+}
+// type = den/tyden
+function objednavkyZobrazeni(type)
+{
+
+
+
+}
+
+
+function objednavkyDateAdd(type)
+{
+    var dateStr = $(".buttons.stepper .text.datum").html();
+    var date = stringToDate(dateStr);
+    ff = date;
+
+    if(type=="addDay")
+    {
+        date.setDate(date.getDate() + 1);
+    } else
+    {
+        date.setDate(date.getDate() - 1);
+    }
+    $(".buttons.stepper .text.datum").html(dateToString(date));
 }
 
 
