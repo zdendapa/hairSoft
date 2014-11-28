@@ -68,9 +68,20 @@ function alertConfirm(msg,title,confirmFun, disconfirmFun)
     {
         if(title == undefined) title = "Upozornění!";
 
-        navigator.notification.alert(
+        navigator.notification.confirm(
             msg,  // message
-            null,         // callback
+            function(buttonIndex){  // callback function
+                if(buttonIndex==1){
+                    if (typeof confirmFun != "undefined") {
+                        confirmFun();
+                    } else
+                    {
+                        if (typeof disconfirmFun != "undefined") {
+                            disconfirmFun();
+                        }
+                    }
+                }
+            },         // callback
             title,            // title
             ['OK','Cancel']  // buttonName
         );
