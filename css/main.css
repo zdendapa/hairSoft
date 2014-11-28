@@ -40,7 +40,7 @@ td {
 table {
     border-collapse: collapse;
     width: 100%;
-    font-size: 130%;
+    font-size: 100%;
 }
 th {
     border: 1px solid;
@@ -631,112 +631,6 @@ div.mainBottom.zakazniciDetail input {
 
 
 
-@media only screen and (min-width: 10000px)  and (max-width: 300025px) {
-    body {
-        font-size: 24px;
-    }
-    div.mainTop {
-        height: 80px;
-    }
-    .mainTop input {
-        margin-top: 24px;
-        font-size: 1em;
-    }
-
-    .mainTop h1 {
-        line-height: 80px;
-    }
-
-
-
-    div.mainContent {
-        top: 80px;
-        bottom: 100px;
-    }
-
-
-
-
-    /* --------- content zakazniciSeznam */
-    .mainContent.zakazniciSeznam li {
-        height: 60px;
-    }
-    .mainContent.zakazniciSeznam h2 {
-        font-size: 1em;
-        line-height: 60px;
-    }
-
-    /* --------- content zakazniciDetail */
-    .mainContent.zakazniciDetail ul {
-        padding: 10px;
-        padding-right: 15px;
-    }
-    .mainContent.zakazniciDetail h1 {
-        padding: 2%;
-    }
-    .zakazniciDetail input {
-        font-size: 1em;
-    }
-
-    div.mainContent.zakazniciDetail {
-        top: 180px;
-        bottom: 0px;
-    }
-
-    div.mainContent.zakazniciDetail.withBottom4buttons {
-        bottom: 200px;
-    }
-
-    /* --------- content nastaveni */
-
-    .mainContent.nastaveni input{
-        font-size: 1em;
-
-    }
-
-
-
-
-
-    div.mainBottom {
-        height: 100px;
-    }
-    input.buttonBottomRight {
-        bottom: 40px;
-    }
-
-    /* --------- content zakazniciDetail */
-    div.mainBottom.zakazniciDetail {
-        height: 200px;
-    }
-
-    div.mainBottom.zakazniciDetail input {
-        height: 100px;
-        width: 50%;
-        background-position: 40px 6px;
-        background-size: 80px;
-        padding-left: 120px;
-    }
-
-
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 label.css-label{
     margin-left: 20px;
@@ -1048,7 +942,7 @@ div.menu.right {
 
 
 }
-@media only screen and (min-width: 320px)  and (max-width: 659px) {
+@media only screen and (min-width: 320px)  and (max-width: 400px) {
     body {
         font-size: 12px;
     }
@@ -1180,6 +1074,176 @@ div.menu.right {
 
 
 
+@media only screen and (min-width: 401px)  and (max-width: 659px) {
+    body {
+        font-size: 24px;
+    }
+    div.mainTop {
+        height: 80px;
+    }
+    .mainTop input {
+        margin-top: 18px;
+        font-size: 1.5em;
+
+        background-size: 45px;
+    }
+
+    .mainTop h1 {
+        line-height: 90px;
+    }
+
+
+
+    div.mainContent {
+        top: 80px;
+        bottom: 100px;
+    }
+
+    .mainContent.welcome h1 {
+        padding-left: 100px;
+
+    }
+
+    div#nav-toggle2 {
+        height: 78px;
+
+        width: 110px;
+    }
+    div#pridat {
+        height: 78px;
+        width: 110px;
+    }
+    #pridat span {
+        line-height: 80px;
+    }
+    div.menu {
+        top: 100px;
+
+    }
+
+    .menu div {
+        background-position: 12px 8px;
+        background-size: 70px;
+
+        padding-left: 110px;
+        height: 90px;
+    }
+
+    .buttonTopMenu {
+        background-position: 12px 15px;
+        background-size: 80px;
+
+    }
+
+    /* --------- components */
+    .twoButtons div.button > div
+    {
+        height: 98px;
+
+    }
+    .twoButtons div.borderDiv {
+        background-size: 70px;
+
+        background-position: 17% 13px;
+    }
+    /* --------- top zakazniciSeznam */
+    .mainTop div.zakazniciDetail {
+        top: 80px;
+    }
+
+    /* --------- content zakazniciSeznam */
+    .mainContent.zakazniciSeznam h2 {
+        font-size: 1em;
+        line-height: 3em;
+
+    }
+
+    /* --------- content zakazniciDetail */
+    .mainContent.zakazniciDetail ul {
+        padding: 10px;
+        padding-right: 15px;
+    }
+    .mainContent.zakazniciDetail h1 {
+        padding: 2%;
+    }
+    .zakazniciDetail input {
+        font-size: 1em;
+    }
+
+    div.mainContent.zakazniciDetail {
+        top: 180px;
+        bottom: 0px;
+    }
+
+    div.mainContent.zakazniciDetail.withBottom4buttons {
+        bottom: 200px;
+    }
+
+    /* --------- content nastaveni */
+    .mainContent.nastaveni input{
+        font-size: 1em;
+
+    }
+
+
+
+
+
+    div.mainBottom {
+        height: 100px;
+    }
+    input.buttonBottomRight {
+        bottom: 40px;
+    }
+
+    /* --------- content zakazniciDetail */
+    div.mainBottom.zakazniciDetail {
+        height: 200px;
+    }
+
+
+    div.mainBottom.zakazniciDetail input {
+        height: 100px;
+        width: 50%;
+        background-position: 40px 6px;
+        background-size: 80px;
+        padding-left: 120px;
+    }
+
+
+    /* --------- content sklad */
+    .mainContent.skladSeznam {
+        font-size: 130%;
+    }
+    .mainContent.skladSeznam table {
+        font-size: 150%;
+    }
+
+    /* --------- content trzby */
+    .trzbySeznam .ui-content.content {
+        top: 142px;}
+    .mainContent.trzbySeznam {
+        font-size: 130%;
+    }
+    .buttons.stepper .text {
+        padding-top: 1.5em;
+    }
+    .mainContent.trzbySeznam table {
+        font-size: 150%;
+    }
+    /* --------- content objednavkyEdit */
+    .objednavkySeznam .tabulky {
+        top: 142px;
+    }
+    .objednavkyEdit select {
+        font-size: 1.2em;
+    }
+    .buttons.stepper .sipka {
+        height: 140px;
+        width: 60px;
+    }
+
+}
 
 
 

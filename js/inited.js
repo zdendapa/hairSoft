@@ -12,12 +12,17 @@ function enableBackButton()
 }
 
 function backKeyDown() {
+    /*
     var r = confirm("Chcete opustit aplikaci?");
     if (r == true) {
         navigator.app.exitApp();
     } else {
         return;
     }
+    */
+    alertConfirm("Chcete opustit aplikaci?","Upozornění!",function(){
+        navigator.app.exitApp();
+    });
 }
 
 
@@ -56,9 +61,35 @@ function alertG(msg,title)
     {
         alert(msg);
     }
-
-
 }
+function alertConfirm(msg,title,confirmFun, disconfirmFun)
+{
+    if(typeof navigator.notification!="undefined")
+    {
+        if(title == undefined) title = "Upozornění!";
+
+        navigator.notification.alert(
+            msg,  // message
+            null,         // callback
+            title,            // title
+            ['OK','Cancel']  // buttonName
+        );
+    } else
+    {
+        var r = confirm(msg);
+        if (r == true)
+        {
+            if (typeof confirmFun != "undefined") {
+                confirmFun();
+            }
+        } else {
+            if (typeof disconfirmFun != "undefined") {
+                disconfirmFun();
+            }
+        }
+    }
+}
+
 // vstup 23.2.2014
 function stringToDate(str)
 {

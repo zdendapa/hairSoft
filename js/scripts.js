@@ -852,12 +852,18 @@ function zakazniciDetailAjax(type)
     if(type == "delete")
     {
 
+        alertConfirm("Opravdu chcete záznam smazat?","Upozornění!",function(){
+            var akce = 64;
+        });
+
+        /*
         var r = confirm("Opravdu chcete záznam smazat?");
         if (r == true) {
             var akce = 64;
         } else {
             return;
         }
+        */
     }
 
 
