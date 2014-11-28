@@ -422,7 +422,10 @@ function showWindow(windowName)
         {
             $(".mainContent.objednavkySeznam .objednavka").css("display", "block");
             $(".mainTop h1").html("Objednávka");
-            $(".mainContent.objednavkySeznam .objednavka .zakaznik").html("Zákazník: " + xmlGetEl(xmlZakazniciDetail,"lidi_jmeno") + " " + xmlGetEl(xmlZakazniciDetail,"lidi_prijmeni"));
+            fakeObjednavkyVybranyZakaznik = xmlGetEl(xmlZakazniciDetail,"lidi_jmeno") + " " + xmlGetEl(xmlZakazniciDetail,"lidi_prijmeni");
+            $(".objednavkyEdit span.zakaznik").html(fakeObjednavkyVybranyZakaznik);
+            $(".buttons.stepper .jmeno").html(xmlGetEl(xmlZakazniciDetail,"lidi_jmeno"));
+            $(".buttons.stepper .prijmeni").html(xmlGetEl(xmlZakazniciDetail,"lidi_prijmeni"));
             objednavamZakaznika = false;
         } else
         {

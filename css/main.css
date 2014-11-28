@@ -393,7 +393,7 @@ div.zakazniciDetail {
 .buttons.stepper .prijmeni {
     font-weight: normal;
     cursor: pointer;
-    padding-top: 0.5em;
+    padding-top: 0.5em !important;
 }
 .buttons.stepper .left {
     background-image: url(../img/sem.png);
@@ -1226,7 +1226,7 @@ div.menu.right {
         font-size: 130%;
     }
     .buttons.stepper .text {
-        padding-top: 1.5em;
+        padding-top: 1em;
     }
     .mainContent.trzbySeznam table {
         font-size: 150%;
