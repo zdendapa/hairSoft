@@ -40,7 +40,7 @@ td {
 table {
     border-collapse: collapse;
     width: 100%;
-    font-size: 120%;
+    font-size: 130%;
 }
 th {
     border: 1px solid;
@@ -196,8 +196,8 @@ div.mainContent.zakazniciSeznam {
 }
 .mainContent.zakazniciSeznam li {
     width: 100%;
-    /*border: 1px solid;*/
-    /*border-radius: 5px;*/
+    border: 1px solid;
+    border-radius: 5px;
     background: #dddddd;
     margin-top: 1px;
     cursor: pointer;
@@ -206,7 +206,7 @@ div.mainContent.zakazniciSeznam {
     font-size: 1em;
     line-height: 20px;
     font-weight: normal;
-    padding-left: 10px;
+    padding-left: 1em;
 }
 
 /* --------- content zakaznikDetail */
@@ -227,11 +227,12 @@ div.mainContent.zakazniciSeznam {
 .zakazniciDetail li {
     display: table;
     width: 100%;
-    padding-bottom: 10px;
+    padding-bottom: 0.5em;
 }
 .zakazniciDetail span {
     display: table-cell;
-    width: 100px;
+    width: 5em;
+    text-indent: 0.2em;
 }
 div.zakazniciDetail {
     width: 100%;
@@ -241,7 +242,11 @@ div.zakazniciDetail {
 }
 .mainContent.zakazniciDetail input {
     display: table-cell;
-    width: 100%;
+    width: 100%;  
+    border: 1px solid #dddddd;  border-radius: 5px;    margin-top: 1px;  cursor: pointer;
+    line-height: 2em;
+    text-indent: 0.5em;
+    background:  #dddddd;
 }
 .mainBottom.zakazniciDetail .zdButtonObjednat .borderDiv {
     background-image: url(../img/objednat.png);
@@ -323,7 +328,17 @@ div.zakazniciDetail {
     background: white;
     padding: 5% 5%;
 }
-
+.objednavkyEdit span {
+    line-height: 1.5em;
+    display: inline-block;
+    width: 4em;
+}
+.objednavkyEdit span.zakaznik {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
 
 /* --------- content trzby */
 .mainContent.trzbySeznam {
@@ -395,7 +410,7 @@ div.zakazniciDetail {
     text-align: center;
 }
 .mainContent.nastaveni h1, .mainContent.nastaveni input {
-    margin-top: 20px;
+    margin-top: 1em;
 }
 .mainContent.nastaveni input {
     width: 80%;
@@ -673,6 +688,7 @@ div.mainBottom.zakazniciDetail input {
     }
 
     /* --------- content nastaveni */
+
     .mainContent.nastaveni input{
         font-size: 1em;
 
@@ -869,13 +885,9 @@ div#pridat {
     border-bottom: 2px solid;
 }
 #pridat span {
-    position: absolute;
-    left: 22px;
-    top: 16px;
-    font-weight: bold;
+    line-height: 50px;
+    
 }
-
-
 
 
 /* --------- translate3d */
@@ -900,7 +912,7 @@ div.menu.right {
 
 
 #verzeApp {
-    position: absolute;
+    position: fixed;
     right: 0px;
     bottom: 0px;
 }
@@ -1174,10 +1186,10 @@ div.menu.right {
 
 @media only screen and (min-width: 660px)  and (max-width: 959px) {
     body {
-        font-size: 24px;
+        font-size: 34px;
     }
     div.mainTop {
-        height: 80px;
+        height: 100px;
     }
     .mainTop input {
         margin-top: 18px;
@@ -1187,13 +1199,13 @@ div.menu.right {
 }
 
     .mainTop h1 {
-        line-height: 80px;
+        line-height: 90px;
     }
 
 
 
     div.mainContent {
-        top: 80px;
+        top: 100px;
         bottom: 100px;
     }
 
@@ -1203,12 +1215,19 @@ div.menu.right {
     }
 
     div#nav-toggle2 {
-        height: 78px;
+        height: 98px;
 
-        width: 110px;
+        width: 120px;
+}
+    div#pridat {
+        height: 98px;
+        width: 120px;
+}
+#pridat span {
+    line-height: 90px;
 }
 div.menu {
-    top: 80px;
+    top: 100px;
 
 }
 
@@ -1221,7 +1240,7 @@ div.menu {
 }
 
 .buttonTopMenu {
-    background-position: 12px 15px;
+    background-position: 15px 25px;
     background-size: 80px;
 
 }
@@ -1237,15 +1256,17 @@ div.menu {
 
     background-position: 17% 13px;
 }
+ /* --------- top zakazniciSeznam */
+    .mainTop div.zakazniciDetail {
+top: 100px;
+}
 
     /* --------- content zakazniciSeznam */
-    .mainContent.zakazniciSeznam li {
-        height: 60px;
-    }
     .mainContent.zakazniciSeznam h2 {
         font-size: 1em;
-        line-height: 60px;
-    }
+        line-height: 3em;
+    
+}
 
     /* --------- content zakazniciDetail */
     .mainContent.zakazniciDetail ul {
@@ -1290,6 +1311,7 @@ div.menu {
         height: 200px;
     }
 
+
     div.mainBottom.zakazniciDetail input {
         height: 100px;
         width: 50%;
@@ -1303,12 +1325,33 @@ div.menu {
     .mainContent.skladSeznam {
         font-size: 130%;
     }
+    .mainContent.skladSeznam table {
+    font-size: 250%;
+    }
 
     /* --------- content trzby */
+    .trzbySeznam .ui-content.content {
+        top: 160px;}
     .mainContent.trzbySeznam {
         font-size: 130%;
     }
-
+    .buttons.stepper .text {
+        padding-top: 0.5em;
+    }
+    .mainContent.trzbySeznam table {
+        font-size: 250%;
+    }
+    /* --------- content objednavkyEdit */
+    .objednavkySeznam .tabulky {
+        top: 162px;
+    }
+    .objednavkyEdit select {
+        font-size: 1.2em;
+    }
+    .buttons.stepper .sipka {
+        height: 160px;
+        width: 80px;
+    }
 
 }
 

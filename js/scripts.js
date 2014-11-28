@@ -96,11 +96,27 @@ function onLoad() {
     // load variable from localStore and set data it in pages
     dataManagerLoad();
 
+
     // unhide ready app :)
     $(".special.cover").css("display","none");
 
-    showWindow("showObjednavkySeznam")
 
+    //showWindow("showObjednavkySeznam");
+    /*
+    showWindow("showObjednavkySeznam");
+
+    $("div.mainContent").css("display","none");
+    $("div.mainTop").css("display","none");
+    $("div.mainBottom").css("display","none");
+    $("body > div").css("display","none");
+
+    //showInfow(true);
+    //$("div.special").css("display","block");
+    $("div.main").css("display","block");
+    $(".mainContent.nastaveni").css("display","block");
+    showWindow("showNastaveni");
+*/
+    //alertG($(window).width());
 }
 
 
@@ -285,6 +301,7 @@ function menuToggle(forceShow)
     //   menu bar
     if(forceShow)
     {
+
         if(supportedTran==3) $menu.addClass("right3d");
         if(supportedTran==2) $menu.addClass("right");
         if(supportedTran==1) $menu.css("display","block");
@@ -295,6 +312,12 @@ function menuToggle(forceShow)
         if(supportedTran==2) $menu.toggleClass("right");
         if(supportedTran==1) $menu.toggle();
         menuVisible = !menuVisible;
+        /*
+        if(!menuVisible)
+        $menu.css("display","none");
+        else
+            $menu.css("display","block");
+            */
     }
 
 
@@ -702,7 +725,7 @@ function zakazniciDetailToEdit(editable)
         $(".twoButtons.zakazniciDetail .right div.labelDiv").html("ULOŽIT");
         $(".twoButtons.zakazniciDetail div.left").attr("data-click","zakazniciDetailChangeCancel()");
         $(".twoButtons.zakazniciDetail div.right").attr("data-click","zakazniciDetailAjax('update')");
-        $(".mainContent.zakazniciDetail input").css("background","rgb(223, 223, 223)");
+        $(".mainContent.zakazniciDetail input").css("background","#EEEEEE");
 
         $(".mainContent.zakazniciDetail input").attr("readonly", false);
         $(".mainContent.zakazniciDetail input.css-checkbox").prop("disabled", false);
@@ -721,7 +744,7 @@ function zakazniciDetailToEdit(editable)
         $(".twoButtons.zakazniciDetail .right div.labelDiv").html("UPRAVIT");
         $(".twoButtons.zakazniciDetail div.left").attr("data-click","zakazniciDetailAjax('delete')");
         $(".twoButtons.zakazniciDetail div.right").attr("data-click","zakazniciDetailChangeToEdit()");
-        $(".mainContent.zakazniciDetail input").css("background","rgb(255, 255, 255)");
+        $(".mainContent.zakazniciDetail input").css("background","#DDDDDD");
 
         $(".mainContent.zakazniciDetail input").attr("readonly", true);
         $(".mainContent.zakazniciDetail input.css-checkbox").prop("disabled", true);
@@ -1120,6 +1143,7 @@ function transitionInit()
 function supportDetect()
 {
     supportedTran = 1;
+
 
     if(supportsTransitions())
     {
